@@ -3,16 +3,40 @@ import React from 'react'
 
 const Ujaama = () => {
   return (
-    <div className='flex'>
-        <div className='relative w-[50%] h-[500px]'>
-          <Image fill={true} src={"/sign.png"}></Image>
+    <div className='flex flex-col gap-[120px] px-2 w-full md:w-7/12 mx-auto py-[100px]'>
+      <div className='flex justify-between'>
+        <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
+          <Image fill={true} src={"/ujaama.png"}></Image>
         </div>
-        <div className='w-1/2 flex flex-col text-right'>
-          <h1 className='text-6xl font-semibold'>UJAMAA</h1>
-          <h3 className='tracking-wider'>Economics Community</h3>
-          <p className='text-sm w-1/2 text-center'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the .</p>
-          <button>Join Us</button>
+        <div className='flex flex-col items-end w-[50%]'>
+          <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>UJAAMA</h2>
+          <h5 className='text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right'>Cooperative Economics</h5>
+          <p className='text-right text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>At Ujamaa Economic, we are committed to applying the principles of Ujamaa to foster economic empowerment, entrepreneurship, and sustainable development within our communities.</p>
+          <button className='bg-[#F41717] text-sm md:text-2xl rounded-md border-[1px] border-white px-2 md:px-10 py-1 md:py-2 font-medium shadow-[#211e1e] shadow-md'>Join Us</button>
         </div>
+      </div>
+      <div className='flex flex-row-reverse justify-between'>
+        <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
+          <Image fill={true} src={"/rab.png"}></Image>
+        </div>
+        <div className='flex flex-col items-start w-[50%]'>
+          <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>R & B</h2>
+          <h5 className='text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right'>MUSIC</h5>
+          <p className='text-left text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>We're passionate about celebrating the rich history, vibrant culture, and timeless music of R&B.</p>
+          <button className='bg-[#F41717] text-sm md:text-2xl rounded-md border-[1px] border-white px-2 md:px-10 py-1 md:py-2 font-medium shadow-[#211e1e] shadow-md'>Join Us</button>
+        </div>
+      </div>
+      <div className='flex justify-between'>
+        <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
+          <Image fill={true} src={"/mmtm.png"}></Image>
+        </div>
+        <div className='flex flex-col items-end w-[50%]'>
+          <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>MMTM</h2>
+          <h5 className='text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right'>COMMUNITY</h5>
+          <p className='text-right text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>At "My Mama Told Me," we celebrate the timeless wisdom, guidance, and life lessons passed down from mothers to their children.</p>
+          <button className='bg-[#F41717] text-sm md:text-2xl rounded-md border-[1px] border-white px-2 md:px-10 py-1 md:py-2 font-medium shadow-[#211e1e] shadow-md'>Join Us</button>
+        </div>
+      </div>
     </div>
   )
 }

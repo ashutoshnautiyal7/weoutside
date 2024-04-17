@@ -9,13 +9,23 @@ import Footer from "@/components/footer/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar/>
-      <Joinus/>
-      <Mid/>
-      <Ujaama/>
-      <Support/>
-      <GetinTouch/>
-      <Footer/>
+      <div className="bg-gradient-to-b from-[#182023] to-[#0B1016]">
+        <Navbar/>
+        <Joinus/>
+      </div>
+      <div className="bg-[#0D1218]">
+        <Mid/>
+        <Ujaama/>
+        <Support/>
+        <div className="w-full px-2 md:px-0 md:w-5/6 pt-10 mx-auto">
+          <div className="py-16">
+            <GetinTouch/>
+          </div>
+          <div className="py-10">
+            <Footer/>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

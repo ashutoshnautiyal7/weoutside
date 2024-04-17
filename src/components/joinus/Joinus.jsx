@@ -3,22 +3,16 @@ import React from 'react'
 
 const Joinus = () => {
   return (
-    <div className='flex gap-20'>
-      <div className='flex flex-col justify-center items-end w-[50%]'>
-        <div className='items-center justify-center mx-auto my-24'>
-          <h1 className='text-6xl font-black text-shadow shadow-red-600'>WE</h1>
-          <div className='tracking-wider text-2xl my-2'>
-            <h3>Melanted</h3>
-            <h3>Community</h3>
-          </div>
-          <p className='w-56 text-xs mb-8'>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the .
-          </p>
-          <button className='text-red-700 bg-white px-9 py-1 rounded-md'>Join Us</button>
+    <div className='flex flex-col-reverse md:flex-row flex-wrap justify-between w-full md:w-5/6 mx-auto'>
+      <div className='flex flex-col justify-center w-full md:w-[40%]'>
+        <div className='flex flex-col md:items-start items-center justify-center px-3 py-2'>
+          <h2 className='text-4xl md:text-5xl  font-semibold text-center md:text-left leading-snug'>EMPOWERING THE MELANATED COMMMUNITY</h2>
+          <p className='font-medium my-5 text-center md:text-left leading-loose'>We are dedicated to uplifting and empowering the Melanated Community through a vibrant online platform.</p>
+          <button className='w-1/2 bg-gradient-to-b from-[#FF1111] to-[#692323] text-white px-10 py-2 rounded-xl border-[1px] border-white text-xl font-light'>JOIN US</button>
         </div>
       </div>
-      <div className='w-[50%] '>
-        <Image className='flex' width={750} height={750} src={"/WhatsApp_Image.png"}></Image>
+      <div className='w-full md:w-[60%] flex'>
+        <Image className='' width={750} height={750} src={"/Whatsapp_Image.png"}></Image>
       </div>
     </div>
   )
