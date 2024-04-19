@@ -1,7 +1,10 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
 
 const Topbar = () => {
+    const token=localStorage.getItem("access_token");
+    const user=JSON.parse(localStorage.getItem(token));
   return (
     <div className='flex items-center justify-between py-5'>
         <div className='w-[50%] md:w-[65%] flex gap-2 md:gap-5 items-center '>
@@ -22,7 +25,7 @@ const Topbar = () => {
             <div className='relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]'>
                 <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
             </div>
-            <h4 className='text-sm md:text-lg'>AndrewDK</h4>
+            <h4 className='text-sm md:text-lg'>{user.name}</h4>
         </div>
     </div>
   )
