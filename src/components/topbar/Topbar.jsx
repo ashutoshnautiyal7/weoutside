@@ -4,25 +4,25 @@ import React from 'react'
 const Topbar = () => {
   return (
     <div className='flex items-center justify-between py-5'>
-        <div className='w-[65%] flex gap-5 items-center '>
-            <div className='relative w-[80px] h-[70px]'>
+        <div className='w-[50%] md:w-[65%] flex gap-2 md:gap-5 items-center '>
+            <div className='relative w-[50px] h-[40px] md:w-[120px] md:h-[100px]'>
                 <Image fill={true} src={"/image5.png"}></Image>
             </div>
-            <div className='bg-white flex gap-1 h-fit w-full items-center py-2 px-5 rounded-full'>
-                <div className='relative w-[20px] h-[20px]'>
+            <div className='bg-white flex gap-1 h-fit w-full justify-center items-center py-1 md:py-2 px-2 md:px-5 rounded-full'>
+                <div className='relative w-[18px] h-[14px] md:w-[20px] md:h-[20px]'>
                     <Image fill={true} src={"/search.png"}></Image>
                 </div>
-                <input className='w-full outline-none text-black placeholder:text-sm placeholder:text-black placeholder:font-light' placeholder='Search'></input>
+                <input className='w-full outline-none text-black text-xs md:text-base placeholder:text-xs md:placeholder:text-sm placeholder:text-black placeholder:font-light' placeholder='Search'></input>
             </div>
         </div>
-        <div className='w-[25%] flex items-center justify-start gap-6'>
-            <div className='relative h-[50px] w-[50px]'>
+        <div className='w-[45%] md:w-[25%] flex items-center justify-start gap-2 md:gap-6'>
+            <div className='relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]'>
                 <Image fill={true} src={"/Group_97.png"}></Image>
             </div>
-            <div className='relative h-[50px] w-[50px]'>
+            <div className='relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]'>
                 <Image fill={true} src={"/Ellipse_3.png"}></Image>
             </div>
-            <h4 className='text-lg'>AndrewDK</h4>
+            <h4 className='text-sm md:text-lg'>AndrewDK</h4>
         </div>
     </div>
   )

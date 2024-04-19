@@ -6,15 +6,12 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='w-full bg-gradient-to-b from-[#a43122] to-[#430102]'>
-        <div className='w-10/12 mx-auto'>
+    <div className='w-full bg-gradient-to-b from-[#470a0a] via-black to-[#480203]'>
+        <div className='w-full px-2 md:px-0 md:w-10/12 mx-auto'>
             <Topbar/>
             <div className='flex justify-between my-5'>
-                <div className='w-[65%]'>
+                <div className='w-full md:w-[65%]'>
                     <LeftSection/>
-                </div>
-                <div className='w-[25%]'>
-                    <RightSection/>
                 </div>
             </div>
             <div className='py-5'>
