@@ -38,7 +38,7 @@ const page = () => {
                         <button className='w-7/12 bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl md:rounded-tr-full font-medium p-2'>
                             LETS CONNECT
                             <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
-                                <Image fill={true} src={"/rightarrow.png"}></Image>
+                                <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
                             </div>
                         </button>
                     </div>
@@ -47,7 +47,7 @@ const page = () => {
             <div className='md:w-1/2'>
                 <div className='md:h-full rounded-[71px] md:w-[550px] md:bg-[#99C2EB]'>
                     <div className='relative -top-1.5 h-[200px] w-11/12 mx-auto md:mx-0 md:h-[375px] md:w-[543px]'>
-                        <Image src={"/legalsup.png"} fill={true}></Image>
+                        <Image alt="image" src={"/legalsup.png"} fill={true}></Image>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ const page = () => {
             <div className='w-[45%]'>
                 <div className='bg-white h-[185px] w-[185px] md:h-[450px] md:w-[450px] rounded-tl-full'>
                     <div className='relative -top-4 -left-4 h-[190px] w-[190px] md:h-[450px] md:w-[450px]'>
-                        <Image fill={true} src={"/woman2.png"}></Image>
+                        <Image alt="image" fill={true} src={"/woman2.png"}></Image>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ const page = () => {
         <div className='flex justify-center'>
             <button className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
                 <div className='relative h-[20px] w-[25px] md:h-[25px] md:w-[40px]'>
-                    <Image fill={true} src={"/rightarrow.png"}></Image>
+                    <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
                 </div>
                 <span className='text-lg md:text-2xl font-medium'>COMMUNITY FORMS</span>
             </button>

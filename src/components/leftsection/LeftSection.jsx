@@ -87,6 +87,7 @@ const LeftSection = () => {
     const [warn,setWarn]=useState(false);
     const [posts,setPosts]=useState([]);
     const token=localStorage.getItem('access_token');
+    const user=JSON.parse(localStorage.getItem(token));
     function handleOnChange(changeEvent) {
         const reader = new FileReader();
         const files = changeEvent.target.files;
@@ -218,7 +219,7 @@ const LeftSection = () => {
         <div className='flex flex-col gap-2'>
             {
                 posts?.map((p)=>(
-                    <Post key={p?.id} post={p}/>
+                    <Post key={p?.id} post={p} user={user}/>
                 ))
             }
         </div>

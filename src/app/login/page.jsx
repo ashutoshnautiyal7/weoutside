@@ -32,7 +32,7 @@ const page = () => {
         });
         const data=await res.json();
         res.status===200&&localStorage.setItem("access_token",data.access_token);
-        res.status===200&&localStorage.setItem(data.access_token,email);
+        res.status===200&&localStorage.setItem(data.access_token,JSON.stringify(data.payloadData));
         res.status===200&&router.push("/");
       }catch(err){
       }
