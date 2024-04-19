@@ -5,7 +5,7 @@ import { signIn} from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   
   if(localStorage.getItem("access_token"))
@@ -69,4 +69,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
