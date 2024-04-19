@@ -1,16 +1,13 @@
 "use client"
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { signIn,useSession} from 'next-auth/react';
+import { signIn} from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 
 const page = () => {
 
-  const session=useSession();
   const router = useRouter();
-
-  // console.log(session);
 
   if(localStorage.getItem("access_token"))
   {

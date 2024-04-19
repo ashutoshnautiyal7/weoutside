@@ -155,7 +155,7 @@ const Mid = () => {
         <div className='mx-auto w-5/6 flex gap-10 md:gap-16 items-center justify-center flex-wrap'>
         {
             data2.map((d)=>(
-                <Card2 d={d}/>
+                <Card2 key={d.id} d={d}/>
             ))
         }
         </div>

@@ -21,7 +21,7 @@ const Footer = () => {
             <h5 className='text-sm md:text-lg font-semibold'>Contact</h5>
             <span>Why Weoutside</span>
             <span>Partner with us</span>
-            <span>FAQ's</span>
+            <span>FAQ&apos;s</span>
             <span>Support us</span>
         </div>
         <div className='text-xs md:text-sm w-[40%] md:w-[18%] flex flex-col gap-2 md:gap-5'>

@@ -191,7 +191,7 @@ const LeftSection = () => {
                 <div className='flex flex-col gap-2 pb-5'>
                     {
                         imageSrc.map((image)=>(
-                            <div className='relative h-[400px] w-[400px]'>
+                            <div key={image} className='relative h-[400px] w-[400px]'>
                                 <Image className='object-cover' src={image} fill={true} alt=''/>
                             </div>
                         ))

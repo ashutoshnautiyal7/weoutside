@@ -8,7 +8,7 @@ const Fundraise = () => {
             <div className='flex gap-1 md:w-11/12 mx-auto'>
                 <div className='w-1/2 flex flex-col gap-5 items-start'>
                     <h2 className='text-lg md:text-5xl font-medium md:tracking-wide md:leading-normal'>TRANSFORMING THE FUNDRAISING <span className='text-red-700'>!</span></h2>
-                    <p className='text-xs md:text-lg md:tracking-wide'>Empowering our cause through shared generosity, we're transforming fundraising into a beacon of collective impact.</p>
+                    <p className='text-xs md:text-lg md:tracking-wide'>Empowering our cause through shared generosity, we&apos;re transforming fundraising into a beacon of collective impact.</p>
                     <button className='bg-[#D93737] text-xs md:text-xl font-medium py-2 md:py-4 px-2 md:px-8 rounded-tr-full flex justify-center items-center gap-1 md:gap-2'>LETS JOIN
                     <div className='relative h-[10px] w-[15px] md:h-[25px] md:w-[35px]'>
                         <Image fill={true} src={"/rightarrow.png"}></Image>

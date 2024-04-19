@@ -92,7 +92,7 @@ const Post = ({post}) => {
                 <div className='flex flex-col gap-1 md:gap-5'>
                     {
                         comments?.map((comment)=>(
-                            <p className='px-2 py-0.5'>{comment.content}</p>
+                            <p key={comment.userId} className='px-2 py-0.5'>{comment.content}</p>
                         ))
                     }
                 </div>

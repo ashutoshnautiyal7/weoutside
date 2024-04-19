@@ -22,7 +22,7 @@ const Ujaama = () => {
         <div className='flex flex-col items-start w-[50%]'>
           <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>R & B</h2>
           <h5 className='text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right'>MUSIC</h5>
-          <p className='text-left text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>We're passionate about celebrating the rich history, vibrant culture, and timeless music of R&B.</p>
+          <p className='text-left text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>We&apos;re passionate about celebrating the rich history, vibrant culture, and timeless music of R&B.</p>
           <button className='bg-[#F41717] text-sm md:text-2xl rounded-md border-[1px] border-white px-2 md:px-10 py-1 md:py-2 font-medium shadow-[#211e1e] shadow-md'>Join Us</button>
         </div>
       </div>
@@ -33,7 +33,7 @@ const Ujaama = () => {
         <div className='flex flex-col items-end w-[50%]'>
           <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>MMTM</h2>
           <h5 className='text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right'>COMMUNITY</h5>
-          <p className='text-right text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>At "My Mama Told Me," we celebrate the timeless wisdom, guidance, and life lessons passed down from mothers to their children.</p>
+          <p className='text-right text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5'>At &quot;My Mama Told Me,&quot; we celebrate the timeless wisdom, guidance, and life lessons passed down from mothers to their children.</p>
           <button className='bg-[#F41717] text-sm md:text-2xl rounded-md border-[1px] border-white px-2 md:px-10 py-1 md:py-2 font-medium shadow-[#211e1e] shadow-md'>Join Us</button>
         </div>
       </div>

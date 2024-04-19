@@ -5,7 +5,7 @@ const Support = () => {
   return (
     <div className='flex flex-col items-center justify-center text-center'>
         <h1 className='text-3xl md:text-6xl font-medium py-5'>JOIN OUR WEOUTSIDE COMMUNITY</h1>
-        <h4 className='text-lg md:text-3xl py-5 leading-normalmd:leading-snug w-4/6'>Stay informed with educational content, participate in polls, and embody our community's shared values of adventure and environmental stewardship.</h4>
+        <h4 className='text-lg md:text-3xl py-5 leading-normalmd:leading-snug w-4/6'>Stay informed with educational content, participate in polls, and embody our community&apos;s shared values of adventure and environmental stewardship.</h4>
         <div className='relative h-[200px] w-[290px] md:h-[500px] md:w-[700px] py-10'>
           <Image className='' fill={true} src={"/financial-icon.png"}></Image>
         </div>
