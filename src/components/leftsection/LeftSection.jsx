@@ -168,7 +168,7 @@ const LeftSection = () => {
                 services.map((s)=>(
                     <button key={s.id} className='py-1.5 md:py-2 px-2 md:px-3 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center'>
                         <div className='relative h-[25px] w-[25px]'>
-                            <Image fill={true} src={s.icon}></Image>
+                            <Image alt="image" fill={true} src={s.icon}></Image>
                         </div>
                         <span className='text-xs'>{s.title}</span>
                     </button>
@@ -182,7 +182,7 @@ const LeftSection = () => {
                 </div>
                 <div className='flex items-center gap-2 my-4 bg-[#F6F3F3] rounded-xl p-5'>
                     <div className='relative h-[30px] w-[30px] rounded-l-xl '>
-                        <Image fill={true} src={"/person.png"}></Image>
+                        <Image alt="image" fill={true} src={"/person.png"}></Image>
                     </div>
                 <input ref={contentRef} className='outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black' placeholder="What's on your mind"></input>
             </div>
@@ -191,7 +191,7 @@ const LeftSection = () => {
                     {
                         imageSrc.map((image)=>(
                             <div key={image} className='relative h-[400px] w-[400px]'>
-                                <Image className='object-cover' src={image} fill={true} alt=''/>
+                                <Image alt="image" className='object-cover' src={image} fill={true} alt=''/>
                             </div>
                         ))
                     }
@@ -200,17 +200,17 @@ const LeftSection = () => {
             <div className='flex gap-2 md:gap-0 justify-center md:justify-between items-center md:text-base text-sm'>
                 <div className='flex items-center justify-center gap-1.5 md:gap-5'>
                     <label for='gallery' className='cursor-pointer flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2' >
-                        <Image width={20} height={20} src={"/gallery.png"}></Image>
+                        <Image alt="image" width={20} height={20} src={"/gallery.png"}></Image>
                         <span>Gallery</span>
                     </label>
                     <input name='file' ref={imageRef} onChange={handleOnChange} id='gallery' className='hidden' type='file'/>
                     <label className='flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2' >
-                        <Image width={20} height={20} src={"/tag.png"}></Image>
+                        <Image alt="image" width={20} height={20} src={"/tag.png"}></Image>
                         <span>Tag</span>
                     </label>
                 </div>
                 <button type='submit' className='bg-[#2CC34D] flex items-center justify-center gap-2 text-white rounded-full px-6 py-2'>
-                    <Image width={20} height={20} src={"/publish.png"}></Image>
+                    <Image alt="image" width={20} height={20} src={"/publish.png"}></Image>
                     <span>Publish</span>
                 </button>
             </div>

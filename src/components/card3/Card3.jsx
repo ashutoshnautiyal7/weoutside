@@ -7,7 +7,7 @@ const Card3 = ({d}) => {
         <p className='text-xs leading-relaxed'>{d.desc}</p>
         <div className='flex gap-5'>
             <div className='relative w-[60px] h-[60px] rounded-full'>
-              <Image className='rounded-full object-cover bg-red-600' fill={true} src={d.img}></Image>
+              <Image alt="image" className='rounded-full object-cover bg-red-600' fill={true} src={d.img}></Image>
             </div>
             <div className=''>
                 <div className='flex flex-col justify-center'>
@@ -15,19 +15,19 @@ const Card3 = ({d}) => {
                     <h4 className='text-[12px]'>{d.title}</h4>
                     <div className='flex gap-0.5'>
                       <div className='relative h-[15px] w-[15px]'>
-                        <Image fill={true} src={d.rating>=1?"/Star.png":"/Unstar.png"}></Image>
+                        <Image alt="image" fill={true} src={d.rating>=1?"/Star.png":"/Unstar.png"}></Image>
                       </div>
                       <div className='relative h-[15px] w-[15px]'>
-                        <Image fill={true} src={d.rating>=2?"/Star.png":"/Unstar.png"}></Image>
+                        <Image alt="image" fill={true} src={d.rating>=2?"/Star.png":"/Unstar.png"}></Image>
                       </div>
                       <div className='relative h-[15px] w-[15px]'>
-                        <Image fill={true} src={d.rating>=3?"/Star.png":"/Unstar.png"}></Image>
+                        <Image alt="image" fill={true} src={d.rating>=3?"/Star.png":"/Unstar.png"}></Image>
                       </div>
                       <div className='relative h-[15px] w-[15px]'>
-                        <Image fill={true} src={d.rating>=4?"/Star.png":"/Unstar.png"}></Image>
+                        <Image alt="image" fill={true} src={d.rating>=4?"/Star.png":"/Unstar.png"}></Image>
                       </div>
                       <div className='relative h-[15px] w-[15px]'>
-                        <Image fill={true} src={d.rating>=5?"/Star.png":"/Unstar.png"}></Image>
+                        <Image alt="image" fill={true} src={d.rating>=5?"/Star.png":"/Unstar.png"}></Image>
                       </div>
                     </div>
                 </div>

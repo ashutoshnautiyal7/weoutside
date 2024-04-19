@@ -6,7 +6,7 @@ const Ujaama = () => {
     <div className='flex flex-col gap-[120px] px-2 w-full md:w-7/12 mx-auto py-[100px]'>
       <div className='flex justify-between'>
         <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
-          <Image fill={true} src={"/ujaama.png"}></Image>
+          <Image alt="image" fill={true} src={"/ujaama.png"}></Image>
         </div>
         <div className='flex flex-col items-end w-[50%]'>
           <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>UJAAMA</h2>
@@ -17,7 +17,7 @@ const Ujaama = () => {
       </div>
       <div className='flex flex-row-reverse justify-between'>
         <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
-          <Image fill={true} src={"/rab.png"}></Image>
+          <Image alt="image" fill={true} src={"/rab.png"}></Image>
         </div>
         <div className='flex flex-col items-start w-[50%]'>
           <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>R & B</h2>
@@ -28,7 +28,7 @@ const Ujaama = () => {
       </div>
       <div className='flex justify-between'>
         <div className='relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
-          <Image fill={true} src={"/mmtm.png"}></Image>
+          <Image alt="image" fill={true} src={"/mmtm.png"}></Image>
         </div>
         <div className='flex flex-col items-end w-[50%]'>
           <h2 className='text-2xl md:text-7xl font-bold tracking-wide'>MMTM</h2>

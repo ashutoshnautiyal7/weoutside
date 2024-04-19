@@ -50,7 +50,7 @@ const Post = ({post}) => {
         <div className='w-full md:w-9/12'>
             <div className='flex items-center gap-2 my-2'>
                 <div className='relative rounded-full h-[60px] w-[60px]'>
-                    <Image className='rounded-full object-cover' fill={true} src={"/usericon.png"}></Image>
+                    <Image alt="image" className='rounded-full object-cover' fill={true} src={"/usericon.png"}></Image>
                 </div>
                 <div className='flex flex-col'>
                     <h2 className='text-sm font-medium'>{post?.name}</h2>
@@ -63,22 +63,22 @@ const Post = ({post}) => {
                 <div className='flex flex-col'>
                     {post.images?.map((image)=>(
                         <div key={image} className='relative w-full md:w-10/12 h-[250px] my-2'>
-                            <Image className='object-cover' fill={true} src={image}></Image>
+                            <Image alt="image" className='object-cover' fill={true} src={image}></Image>
                         </div>
                         ))
                     }
                 </div>
                 <div className='flex items-center gap-8 mt-4'>
                     <div className='cursor-pointer flex items-center justify-center gap-2'>
-                        <Image onClick={handleLike} height={25} width={25} src={"/like.png"}></Image>
+                        <Image alt="image" onClick={handleLike} height={25} width={25} src={"/like.png"}></Image>
                         <span className='font-medium'>{likes}</span>
                     </div>
                     <div className='cursor-pointer flex items-center justify-center gap-2'>
-                        <Image onClick={()=>(setcommopen(!commOpen))} height={20} width={23} src={"/comment.png"}></Image>
+                        <Image alt="image" onClick={()=>(setcommopen(!commOpen))} height={20} width={23} src={"/comment.png"}></Image>
                         <span className='font-medium'>{post?.comments.length}</span>
                     </div>
                     <div className='flex items-center justify-center gap-1'>
-                        <Image height={20} width={20} src={"/share.png"}></Image>
+                        <Image alt="image" height={20} width={20} src={"/share.png"}></Image>
                         <span className='text-xs'>Share</span>
                     </div>
                 </div>

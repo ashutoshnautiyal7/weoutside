@@ -102,7 +102,7 @@ const Mid = () => {
         <div className='w-5/6 flex flex-wrap md:justify-between justify-center gap-8 md:gap-0 py-5 mx-auto'>
             <div className='flex flex-col items-center gap-3 md:gap-8 w-[320px]'>
                 <div className='relative h-[120px] w-[120px]'>
-                    <Image fill={true} src={"/vision.png"}></Image>
+                    <Image alt="image" fill={true} src={"/vision.png"}></Image>
                 </div>
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR VISION</span>
@@ -111,7 +111,7 @@ const Mid = () => {
             </div>
             <div className='flex flex-col items-center gap-3 md:gap-8 w-[320px]'>
                 <div className='relative h-[120px] w-[120px]'>
-                    <Image fill={true} src={"/mission.png"}></Image>
+                    <Image alt="image" fill={true} src={"/mission.png"}></Image>
                 </div>
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md'>
                     <span className='text-3xl font-semibold'>OUR MISSION</span>
@@ -120,7 +120,7 @@ const Mid = () => {
             </div>
             <div className='flex flex-col items-center gap-3 md:gap-8 w-[320px]'>
                 <div className='relative h-[120px] w-[125px]'>
-                    <Image fill={true} src={"/goal.png"}></Image>
+                    <Image alt="image" fill={true} src={"/goal.png"}></Image>
                 </div>
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR GOAL</span>
@@ -133,21 +133,21 @@ const Mid = () => {
             <div className='hidden md:flex justify-between relative -top-5'>
                 <div className='flex flex-col items-center gap-5'>
                     <div className='relative h-[100px] w-[100px]'>
-                        <Image fill={true} src={"/q4.png"}></Image>
+                        <Image alt="image" fill={true} src={"/q4.png"}></Image>
                     </div>
                     <div className='relative h-[200px] w-[200px]'>
-                        <Image fill={true} src={"/q3.png"}></Image>
+                        <Image alt="image" fill={true} src={"/q3.png"}></Image>
                     </div>
                 </div>
                 <div className='relative h-[240px] w-[160px]'>
-                    <Image fill={true} src={"/q1.png"}></Image>
+                    <Image alt="image" fill={true} src={"/q1.png"}></Image>
                 </div>
                 <div className='flex flex-col items-center gap-5'>
                     <div className='relative h-[100px] w-[100px]'>
-                        <Image fill={true} src={"/q2.png"}></Image>
+                        <Image alt="image" fill={true} src={"/q2.png"}></Image>
                     </div>
                     <div className='relative h-[200px] w-[200px]'>
-                        <Image fill={true} src={"/q5.png"}></Image>
+                        <Image alt="image" fill={true} src={"/q5.png"}></Image>
                     </div>
                 </div>
             </div>

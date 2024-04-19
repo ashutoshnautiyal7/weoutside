@@ -66,19 +66,19 @@ const page = () => {
           <div className='flex flex-col justify-center items-center gap-10 py-5 w-5/6 mx-auto'>
             <div className='flex items-center gap-1'>
               <div className='relative h-[15px] w-[15px]'>
-                <Image fill={true} src={"/tick.png"}></Image>
+                <Image alt="image" fill={true} src={"/tick.png"}></Image>
               </div>
               <h4 className='text-2xl md:text-5xl font-semibold'>Payment Method</h4>
             </div>
             <div className='flex flex-wrap justify-center items-center gap-8'>
               <div className='bg-white px-14 py-3 rounded-md flex justify-center items-center'>
                 <div className='relative h-[25px] w-[90px] md:h-[45px] md:w-[160px]'>
-                  <Image fill={true} src={"/paypal.png"}></Image>
+                  <Image alt="image" fill={true} src={"/paypal.png"}></Image>
                 </div>
               </div>
               <div className='bg-white px-14 py-3 rounded-md'>
                 <div className='relative h-[25px] w-[90px] md:h-[45px] md:w-[160px] flex justify-center items-center'>
-                  <Image fill={true} src={"/visa.png"}></Image>
+                  <Image alt="image" fill={true} src={"/visa.png"}></Image>
                 </div>
               </div>
             </div>

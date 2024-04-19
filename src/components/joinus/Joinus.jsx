@@ -12,7 +12,7 @@ const Joinus = () => {
         </div>
       </div>
       <div className='w-full md:w-[60%] flex'>
-        <Image className='' width={750} height={750} src={"/Whatsapp_Image.png"}></Image>
+        <Image alt="image" className='' width={750} height={750} src={"/Whatsapp_Image.png"}></Image>
       </div>
     </div>
   )

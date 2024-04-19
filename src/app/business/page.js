@@ -16,13 +16,13 @@ const page = () => {
             </div>
             <div className='py-5 md:py-10'>
                 <div className='relative object-cover w-[330px] h-[200px] md:w-[1040px] md:h-[468px]'>
-                    <Image fill={true} src={"/busi.png"}></Image>
+                    <Image alt="image" fill={true} src={"/busi.png"}></Image>
                 </div>
             </div>
             <button className='flex text-lg md:text-3xl tracking-tight font-semibold justify-center items-center bg-[#D32626] px-3 py-2 md:px-5 md:py-4 rounded-2xl gap-2'>
                 LETS CONNECT
                 <div className='relative w-[20px] h-[15px] md:w-[30px] md:h-[20px]'>
-                    <Image fill={true} src={"/rightarrow.png"}></Image>
+                    <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
                 </div>
             </button>
         </div>
@@ -31,7 +31,7 @@ const page = () => {
                 <div className='w-[50%] md:w-[45%]'>
                     <div className='bg-white py-14 w-full flex justify-center items-center rounded-3xl'>
                         <div className='relative h-[120px] w-[125px] md:h-[220px] md:w-[230px]'>
-                            <Image fill={true} src={"/rocket.png"}></Image>
+                            <Image alt="image" fill={true} src={"/rocket.png"}></Image>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ const page = () => {
                 <div className='w-[50%] md:w-[45%]'>
                     <div className='bg-white py-14 w-full flex justify-center items-center rounded-3xl'>
                         <div className='relative h-[120px] w-[125px] md:h-[220px] md:w-[230px]'>
-                            <Image fill={true} src={"/res.png"}></Image>
+                            <Image alt="image" fill={true} src={"/res.png"}></Image>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ const page = () => {
                 <div className='w-[50%] md:w-[45%]'>
                     <div className='bg-white py-14 w-full flex justify-center items-center rounded-3xl'>
                         <div className='relative h-[120px] w-[125px] md:h-[220px] md:w-[230px]'>
-                            <Image fill={true} src={"/mentor.png"}></Image>
+                            <Image alt="image" fill={true} src={"/mentor.png"}></Image>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ const page = () => {
         <div className='flex justify-center'>
             <button className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
                 <div className='relative h-[20px] w-[25px] md:h-[25px] md:w-[40px]'>
-                    <Image fill={true} src={"/rightarrow.png"}></Image>
+                    <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
                 </div>
                 <span className='text-lg md:text-2xl font-medium'>COMMUNITY FORMS</span>
             </button>

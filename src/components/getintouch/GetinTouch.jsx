@@ -13,7 +13,7 @@ const GetinTouch = () => {
             <div className='w-2/3 md:w-5/12 bg-white border-gray-500 border-[1px] p-2 flex gap-4 justify-center items-center'>
                 <input className='w-5 h-5' type='checkbox'></input>
                 <span>I&apos;m not a robot</span>
-                <Image width={50} height={50} src={"/captcha.png"}></Image>
+                <Image alt="image" width={50} height={50} src={"/captcha.png"}></Image>
             </div>
             <button className='bg-gradient-to-b from-[#FF1010] to-[#692323] rounded-sm text-white p-3 w-[200px]'>Send Message</button>
         </div>

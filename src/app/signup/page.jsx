@@ -1,9 +1,9 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { signIn} from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 const page = () => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const page = () => {
   return (
     <div className='flex flex-col items-center bg-[#000000] h-screen'>
         <div className='bg-[#F41717] rounded-b-full h-[120px] flex items-end'>
-            <Image width={80} height={80} src={"/image5.png"}></Image>    
+            <Image alt="image" width={80} height={80} src={"/image5.png"}></Image>    
         </div>
         <div className='w-11/12 md:w-4/12 '>
             <h1 className='text-4xl text-center my-5'>Sign Up</h1>
@@ -61,7 +61,7 @@ const page = () => {
                 <p className='text-white font-medium'>OR</p>
                 <button className='flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md' onClick={()=>signIn("google")}>
                   <div className='relative h-[40px] w-[40px]'>
-                    <Image fill={true} src={"/google.png"}></Image>
+                    <Image alt="image" fill={true} src={"/google.png"}></Image>
                   </div>
                   Continue with Google
                 </button>

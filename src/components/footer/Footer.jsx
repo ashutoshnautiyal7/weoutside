@@ -6,7 +6,7 @@ const Footer = () => {
     <div className='flex flex-wrap gap-5 md:gap-1 justify-between'>
         <div className='flex flex-col gap-2 w-[40%] md:w-[18%]'>
             <div className='flex gap-1.5 items-center'>
-                <Image width={40} height={40} src={'/image5.png'}></Image>
+                <Image alt="image" width={40} height={40} src={'/image5.png'}></Image>
                 <span className='text-sm md:text-lg font-semibold'>We Outside</span>
             </div>
             <p className='text-xs md:text-lg font-medium'>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>

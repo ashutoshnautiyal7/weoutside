@@ -43,7 +43,7 @@ const RightSection = () => {
                 data.map((d)=>(
                     <div key={d.id} className='flex gap-3'>
                         <div className='relative h-[100px] w-[100px]'>
-                            <Image fill={true} src={d.img}></Image>
+                            <Image alt="image" fill={true} src={d.img}></Image>
                         </div>
                         <div className='flex flex-col items-start'>
                             <h2 className='font-bold text-sm'>{d.name}</h2>
