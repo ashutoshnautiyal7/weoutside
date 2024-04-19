@@ -62,7 +62,7 @@ const Post = ({post}) => {
                 <p>{post?.content}</p>
                 <div className='flex flex-col'>
                     {post.images?.map((image)=>(
-                        <div className='relative w-full md:w-10/12 h-[250px] my-2'>
+                        <div key={image} className='relative w-full md:w-10/12 h-[250px] my-2'>
                             <Image className='object-cover' fill={true} src={image}></Image>
                         </div>
                         ))
