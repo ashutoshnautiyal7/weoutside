@@ -101,7 +101,7 @@ const LeftSection = () => {
             reader.readAsDataURL(file);
         }
       }
-      console.log(imageSrc)
+
     useEffect(()=>{
         const getPosts=async()=>{
             const res=await fetch("https://we-out-backend.vercel.app/api/posts",{
@@ -112,12 +112,11 @@ const LeftSection = () => {
                 }, 
               });
               const resp=await res.json();
-              const data=resp.data;
-              setPosts([...data]);
+              const data=resp.formattedPosts;
+              setPosts(data);
             }
            getPosts();
     },[]);
-
     const handleSubmit=async(e)=>{
         e.preventDefault();
         const title=e.target[0].value;

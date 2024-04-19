@@ -5,13 +5,15 @@ import { signIn} from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 
-const Page = () => {
+const page = () => {
   const router = useRouter();
   
-  if(localStorage.getItem("access_token"))
-  {
-    router.push("/");
-  }
+  useEffect(()=>{
+    if(localStorage.getItem("access_token"))
+    {
+      router.push("/");
+    }
+  },[]);
   const handleSubmit=async(e)=>{
     e.preventDefault();
     const name=e.target[0].value;
@@ -69,4 +71,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default page

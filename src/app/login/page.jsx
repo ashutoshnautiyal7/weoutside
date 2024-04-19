@@ -1,18 +1,21 @@
 "use client"
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { signIn} from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
-const Page = () => {
+const page = () => {
 
   const router = useRouter();
 
-  if(localStorage.getItem("access_token"))
-  {
-    router.push("/");
-  }
+
+  useEffect(()=>{
+    if(localStorage.getItem("access_token"))
+    {
+      router.push("/");
+    }
+  },[]);
   const handleSubmit=async(e)=>{
       e.preventDefault();
       const email=e.target[0].value;
@@ -60,4 +63,4 @@ const Page = () => {
     </div>
   )
 }
-export default Page
+export default page
