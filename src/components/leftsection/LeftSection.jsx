@@ -191,7 +191,7 @@ const LeftSection = () => {
                     {
                         imageSrc.map((image)=>(
                             <div key={image} className='relative h-[400px] w-[400px]'>
-                                <Image alt="image" className='object-cover' src={image} fill={true} alt=''/>
+                                <Image alt="image" className='object-cover' src={image} fill={true}/>
                             </div>
                         ))
                     }
