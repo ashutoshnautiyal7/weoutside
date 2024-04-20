@@ -236,7 +236,7 @@ const page = () => {
               <Image fill={true} src={"/play.png"}></Image>
             </div>
           </div>
-          <div className='relative h-[12px] w-[350px] md:h-[28px] md:w-[820px]'>
+          <div className='relative h-[12px] w-[320px] md:h-[28px] md:w-[820px]'>
             <Image fill={true} src={"/volume.png"}></Image>
           </div>
           <p className='text-center w-9/12 leading-relaxed text-sm md:text-xl'>R&B, short for rhythm and blues, emerged in the African American communities of the United States in the early 20th century.It evolved from a blend of jazz, gospel, and blues, with influences from African musical traditions and European harmonies.</p>
