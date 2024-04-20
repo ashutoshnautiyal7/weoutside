@@ -1,3 +1,5 @@
+'use client'
+
 import Footer from '@/components/footer/Footer';
 import Fundraise from '@/components/fundraise/Fundraise';
 import GetinTouch from '@/components/getintouch/GetinTouch';
