@@ -1,8 +1,15 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
-const Topbar = () => {
+const Topbar = ({posts,onSearch}) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
+  };
   const token =
     typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
   const user = token ? JSON.parse(localStorage.getItem(token)) : null;
@@ -19,6 +26,8 @@ const Topbar = () => {
           <input
             className="w-full outline-none text-black text-xs md:text-base placeholder:text-xs md:placeholder:text-sm placeholder:text-black placeholder:font-light"
             placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearch}
           ></input>
         </div>
       </div>

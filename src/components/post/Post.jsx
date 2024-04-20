@@ -67,7 +67,8 @@ const Post = ({post,user}) => {
                     postId,content
                 })
             });
-            res.status===201&&setComments([...comments,{"userId":user.id,"username":user.name,"content":content}]);
+            const data=await res.json();
+            res.status===201&&setComments([...comments,{"commentId":data.data.id,"userId":user.id,"username":user.name,"content":content}]);
             e.target[0].value="";
         }
         catch(err){
@@ -187,8 +188,8 @@ const Post = ({post,user}) => {
                 <p>{post?.content}</p>
                 <div className='flex flex-col'>
                     {post?.images?.map((image)=>(
-                        <div key={image} className='relative w-full md:w-10/12 h-[250px] my-2'>
-                            <Image alt="image" className='object-cover' fill={true} src={image}></Image>
+                        <div key={image} className='relative w-full h-full my-2'>
+                            <Image alt="image" className='h-full w-full' width={1000} height={1000} src={image}></Image>
                         </div>
                         ))
                     }
@@ -222,7 +223,7 @@ const Post = ({post,user}) => {
                                 <span className='text-sm font-semibold'>{comment.username}</span>
                                 <div className='flex justify-between items-end'>
                                     <p className=''>{comment.content}</p>
-                                    {comment.userId==user.id&&comment.commentId&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
+                                    {comment.userId==user.id&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
                                 </div>
                             </div>
                         ))
