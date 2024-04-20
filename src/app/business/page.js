@@ -1,3 +1,5 @@
+'use client';
+
 import Footer from '@/components/footer/Footer'
 import GetinTouch from '@/components/getintouch/GetinTouch'
 import Navbar2 from '@/components/navbar2/Navbar2'
