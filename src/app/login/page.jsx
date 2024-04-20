@@ -1,15 +1,17 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const router = useRouter();
-
+  const[invalid,setInvalid]=useState(false);
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
   useEffect(() => {
-    if (localStorage.getItem("access_token")) {
+    if (token) {
       router.push("/");
     }
   }, []);
@@ -39,8 +41,9 @@ const LoginPage = () => {
           data.access_token,
           JSON.stringify(data.payloadData)
         );
-      res.status === 200 && router.push("/");
-    } catch (err) {}
+      res.status === 200 ? router.push("/"):setInvalid(true);
+    } catch (err) {
+    }
   };
   return (
     <div className="flex flex-col items-center bg-[#000000] h-screen">
@@ -65,6 +68,10 @@ const LoginPage = () => {
             placeholder="Password *"
             required={true}
           ></input>
+          {
+            invalid&&
+            <p className="text-red-600 text-sm">Invalid Credentials*</p>
+          }
           <button
             type="submit"
             className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-xl"

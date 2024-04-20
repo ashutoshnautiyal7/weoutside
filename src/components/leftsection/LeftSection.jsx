@@ -88,7 +88,7 @@ const LeftSection = () => {
   const [posts, setPosts] = useState([]);
   const token =
     typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token ? JSON.parse(localStorage.getItem(token)) : null;
+  const user = token!==null ? JSON.parse(localStorage.getItem(token)) : null;
 
   function handleOnChange(changeEvent) {
     const reader = new FileReader();

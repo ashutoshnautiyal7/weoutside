@@ -5,7 +5,7 @@ import React, { useRef } from "react";
 const GetinTouch = () => {
   const token =
     typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token ? JSON.parse(localStorage.getItem(token)) : null;
+    
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;

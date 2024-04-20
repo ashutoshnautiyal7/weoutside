@@ -12,7 +12,8 @@ const Post = ({post,user}) => {
     const [likes,setLikes]=useState(post?.likeCount);
     const [comments,setComments]=useState(post?.comments);
     const [commOpen,setcommopen]=useState(false);
-    const token=localStorage.getItem('access_token');
+    const token =
+    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
 
     useEffect(()=>{
         post.likes.forEach(like => {

@@ -1,15 +1,17 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
   const router = useRouter();
-
+  const [exists,setExists]=useState(false)
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
   useEffect(() => {
-    if (localStorage.getItem("access_token")) {
+    if (token) {
       router.push("/");
     }
   }, []);
@@ -37,15 +39,16 @@ const SignUpPage = () => {
       );
       // console.log(res);
       const data = await res.json();
-      console.log(data);
+      // console.log(data.user);
       res.status === 200 &&
         localStorage.setItem("access_token", data.access_token);
       res.status === 200 &&
         localStorage.setItem(
           data.access_token,
-          JSON.stringify(data.payloadData)
+          JSON.stringify(data.user)
         );
       res.status === 200 && router.push("/");
+      res.status===400&&setExists(true);
     } catch (err) {}
   };
   return (
@@ -72,6 +75,7 @@ const SignUpPage = () => {
           ></input>
           <input
             type="password"
+            minLength={8}
             className="w-full rounded-full outline-none p-3.5 placeholder:text-black"
             placeholder="Password *"
             required={true}
@@ -83,9 +87,14 @@ const SignUpPage = () => {
             <input
               className="w-8/12 p-3.5 outline-none rounded-r-full placeholder:text-[#B0ADAD]"
               placeholder="Raise Fund"
+              minLength={6}
               required={true}
             ></input>
           </div>
+          {
+            exists&&
+            <p className="text-sm text-red-600">Email already exists*</p>
+          }
           <button className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-xl">
             Continue
           </button>
