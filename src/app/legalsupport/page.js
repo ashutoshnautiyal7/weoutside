@@ -62,13 +62,13 @@ const page = () => {
                 }
             </div>
         </div>
-        <div className='flex justify-between py-16 px-2 md:px-0 md:w-4/6 mx-auto'>
-            <div className='w-[50%] flex flex-col gap-5 justify-end'>
-                <h1 className='text-2xl md:text-5xl font-medium'>How We Can Help ?</h1>
-                <p className='text-sm md:text-xl md:tracking-wider md:leading-normal'>Whether you&apos;re facing a legal issue, seeking information about your rights, or looking to get involved in advocacy efforts, We Outside Community is here to support you. Our legal support program aims to empower individuals, promote justice, and build a more resilient and equitable community for all.</p>
+        <div className='flex flex-wrap-reverse justify-between py-16 px-2 md:px-0 md:w-4/6 mx-auto'>
+            <div className='md:w-[50%] flex flex-col gap-5 justify-end'>
+                <h1 className='text-2xl md:text-5xl font-medium text-center md:text-left'>How We Can Help ?</h1>
+                <p className='text-sm md:text-xl md:tracking-wider md:leading-normal text-center md:text-left'>Whether you&apos;re facing a legal issue, seeking information about your rights, or looking to get involved in advocacy efforts, We Outside Community is here to support you. Our legal support program aims to empower individuals, promote justice, and build a more resilient and equitable community for all.</p>
             </div>
-            <div className='w-[45%]'>
-                <div className='bg-white h-[185px] w-[185px] md:h-[450px] md:w-[450px] rounded-tl-full'>
+            <div className='w-full py-2 md:w-[45%] flex justify-center md:justify-start'>
+                <div className='bg-white h-[180px] w-[180px] md:h-[450px] md:w-[450px] rounded-tl-full'>
                     <div className='relative -top-4 -left-4 h-[190px] w-[190px] md:h-[450px] md:w-[450px]'>
                         <Image alt="image" fill={true} src={"/woman2.png"}></Image>
                     </div>

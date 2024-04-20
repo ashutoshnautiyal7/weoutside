@@ -79,6 +79,7 @@ const services=[
 // ];
 
 const LeftSection = () => {
+    const [currentPage,setCurrentPage]=useState(1);
     const titleRef=useRef();
     const contentRef=useRef();
     const imageRef=useRef();
@@ -88,6 +89,7 @@ const LeftSection = () => {
     const [posts,setPosts]=useState([]);
     const token=localStorage.getItem('access_token');
     const user=JSON.parse(localStorage.getItem(token));
+
     function handleOnChange(changeEvent) {
         const reader = new FileReader();
         const files = changeEvent.target.files;
@@ -105,19 +107,25 @@ const LeftSection = () => {
 
     useEffect(()=>{
         const getPosts=async()=>{
-            const res=await fetch("https://we-out-backend.vercel.app/api/posts",{
-                method:"GET",
-                headers:{
-                  "Content-Type":"application/json",
-                  'Authorization': token,
-                }, 
-              });
-              const resp=await res.json();
-              const data=resp.formattedPosts;
-              setPosts(data);
+            try{
+                const res=await fetch("https://we-out-backend.vercel.app/api/posts?page="+currentPage,{
+                    method:"GET",
+                    headers:{
+                      "Content-Type":"application/json",
+                      'Authorization': token,
+                    }, 
+                  });
+                  const resp=await res.json();
+                  const data=resp.formattedPosts;
+                  setPosts(data);
+                }
+                catch(err){
+
+                }
             }
-           getPosts();
-    },[]);
+            getPosts();
+    },[currentPage]);
+
     const handleSubmit=async(e)=>{
         e.preventDefault();
         const title=e.target[0].value;
@@ -134,7 +142,6 @@ const LeftSection = () => {
                   method: 'POST',
                   body: formData
                 }).then(r => r.json());
-        
                 console.log(data);
                 images.push(data.url);
               } catch (error) {
@@ -154,14 +161,15 @@ const LeftSection = () => {
           })
         });
         const data=await res.json();
-        console.log(data)
         titleRef.current.value="";
         contentRef.current.value="";
         imageRef.current.value=[];
         setImageSrc([]);
+        location.reload();
       }catch(err){
       }
     }
+
   return (
     <div>
         <div className='flex flex-wrap gap-3 md:gap-5'>
@@ -197,7 +205,7 @@ const LeftSection = () => {
                         ))
                     }
                 </div>
-                }
+            }
             <div className='flex gap-2 md:gap-0 justify-center md:justify-between items-center md:text-base text-sm'>
                 <div className='flex items-center justify-center gap-1.5 md:gap-5'>
                     <label for='gallery' className='cursor-pointer flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2' >
@@ -225,7 +233,7 @@ const LeftSection = () => {
         </div>
         <div className='w-full flex justify-center my-8'>
             <div className='bg-white p-0.5 md:p-1 rounded-lg'>
-                <button className='rounded-lg py-2 px-8 bg-gradient-to-b from-[#FF1111] to-[#692323] md:text-xl text-base text-white'>Next Page</button>                
+                <button onClick={()=>{setCurrentPage(currentPage+1),window.scrollTo({top: 0,behavior: "smooth"});}} className='rounded-lg py-2 px-8 bg-gradient-to-b from-[#FF1111] to-[#692323] md:text-xl text-base text-white'>Next Page</button>                
             </div>
         </div>
     </div>

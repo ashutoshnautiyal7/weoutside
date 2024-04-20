@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-import { debounce, update } from 'lodash';
+import { debounce, forEach, update } from 'lodash';
 import {format} from 'timeago.js'
 
 const Post = ({post,user}) => {
@@ -9,6 +9,11 @@ const Post = ({post,user}) => {
     const [openUpdate,setOpenUpdate]=useState(false)
     const titleRef=useRef();
     const contentRef=useRef();
+    const [likes,setLikes]=useState(post?.likeCount);
+    const [comments,setComments]=useState(post?.comments);
+    const [commOpen,setcommopen]=useState(false);
+    const token=localStorage.getItem('access_token');
+
     useEffect(()=>{
         post.likes.forEach(like => {
             if(like.userId===user.id)
@@ -17,27 +22,30 @@ const Post = ({post,user}) => {
             }
         });
     },[])
-    const [likes,setLikes]=useState(post?.likeCount);
-    const [comments,setComments]=useState(post?.comments);
-    const [commOpen,setcommopen]=useState(false);
-    const token=localStorage.getItem('access_token');
+    
 
     const likeUnlikePost=async()=>{
         const postId=post.id;
-        const res=await fetch("https://we-out-backend.vercel.app/api/likepost",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-                'Authorization': token,
-            },
-            body:JSON.stringify({
-                postId
-            })
-        });
-        const data=await res.json();
-        setIsLiked(!isLiked)
-        setLikes((likes+(isLiked?-1:1)));
+        try{
+            const res=await fetch("https://we-out-backend.vercel.app/api/likepost",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    'Authorization': token,
+                },
+                body:JSON.stringify({
+                    postId
+                })
+            });
+            const data=await res.json();
+            setIsLiked(!isLiked)
+            setLikes((likes+(isLiked?-1:1)));
+        }
+        catch(err){
+
+        }
     }
+
     const debouncedLikeUnlikePost = debounce(likeUnlikePost, 200);
     const handleLike = () => {
         debouncedLikeUnlikePost();
@@ -47,66 +55,99 @@ const Post = ({post,user}) => {
         e.preventDefault();
         const postId=post.id;
         const content=e.target[0].value;
-        const res=await fetch("https://we-out-backend.vercel.app/api/comment",{
+        try{
+            const res=await fetch("https://we-out-backend.vercel.app/api/comment",{
                 method:"POST",
                 headers:{
-                  "Content-Type":"application/json",
-                  'Authorization': token,
+                    "Content-Type":"application/json",
+                    'Authorization': token,
                 },
                 body:JSON.stringify({
                     postId,content
                 })
-              });
-              res.status===201&&setComments([...comments,{"username":user.name,"content":content}]);
-              e.target[0].value="";
+            });
+            res.status===201&&setComments([...comments,{"userId":user.id,"username":user.name,"content":content}]);
+            e.target[0].value="";
+        }
+        catch(err){
+
+        }
     }
 
     const handleDelete=async(e)=>{
         e.preventDefault();
         const postId=post.id;
-        const res=await fetch("https://we-out-backend.vercel.app/api/deletepost",{
+        try{
+            const res=await fetch("https://we-out-backend.vercel.app/api/deletepost",{
                 method:"DELETE",
                 headers:{
-                  "Content-Type":"application/json",
-                  'Authorization': token,
+                    "Content-Type":"application/json",
+                    'Authorization': token,
                 },
                 body:JSON.stringify({
                     postId
                 })
-              });
-              setOpenMenu(false)
+            });
+            setOpenMenu(false)
+        }
+        catch(err){
+
+        }
     }
+
     const handleUpdate=async(e)=>{
         e.preventDefault();
         const title=e.target[0].value;
         const content=e.target[1].value;
         const postId=post.id;
-        const res=await fetch("https://we-out-backend.vercel.app/api/updatepost",{
-            method:"PUT",
-            headers:{
-                "Content-Type":"application/json",
-                'Authorization': token,
-            },
-            body:JSON.stringify({
-                title,content,postId
-            })
-        });
-        setOpenUpdate(false)
+        try
+        {
+            const res=await fetch("https://we-out-backend.vercel.app/api/updatepost",{
+                method:"PUT",
+                headers:{
+                    "Content-Type":"application/json",
+                    'Authorization': token,
+                },
+                body:JSON.stringify({
+                    title,content,postId
+                })
+            });
+            setOpenUpdate(false)
+            location.reload();
+        }
+        catch(err)
+        {
+
+        }
     }
+
     const handleDeleteComment=async(e,commId)=>{
         e.preventDefault();
         const commentId=commId;
-        const res=await fetch("https://we-out-backend.vercel.app/api/deletecomment",{
-            method:"DELETE",
-            headers:{
-                "Content-Type":"application/json",
-                'Authorization': token,
-            },
-            body:JSON.stringify({
-                commentId
-            })
-        });
+        try{
+            const res=await fetch("https://we-out-backend.vercel.app/api/deletecomment",{
+                method:"DELETE",
+                headers:{
+                    "Content-Type":"application/json",
+                    'Authorization': token,
+                },
+                body:JSON.stringify({
+                    commentId
+                })
+            });
+            const newcomms=[]
+            comments.forEach(comment=> {
+                if(comment.commentId!==commId)
+                {
+                    newcomms.push(comment);
+                }
+            });
+            setComments(newcomms);
+        }
+        catch(err){
+        }
     }
+
   return (
     <div className='bg-white p-4 md:p-6 rounded-3xl flex text-black'>
         <div className='w-full md:w-9/12'>
@@ -122,10 +163,10 @@ const Post = ({post,user}) => {
             {openUpdate?
             <form onSubmit={handleUpdate}>
                 <div className='flex items-center gap-2 my-2 bg-[#F6F3F3] rounded-xl py-3 px-5'>
-                    <input ref={titleRef} className='outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black' placeholder="Title"></input>
+                    <input ref={titleRef} defaultValue={post?.title} className='outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black' placeholder="Title"></input>
                 </div>
                 <div className='flex items-center gap-2 my-4 bg-[#F6F3F3] rounded-xl p-5'>
-                    <input ref={contentRef} className='outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black' placeholder="Content"></input>
+                    <input ref={contentRef} defaultValue={post?.content} className='outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black' placeholder="Content"></input>
                 </div>
                 <div className='flex flex-col'>
                     {post?.images?.map((image)=>(
@@ -158,7 +199,7 @@ const Post = ({post,user}) => {
                     </div>
                     <div className='cursor-pointer flex items-center justify-center gap-2'>
                         <Image alt="image" onClick={()=>(setcommopen(!commOpen))} height={20} width={23} src={"/comment.png"}></Image>
-                        <span className='font-medium'>{post?.comments.length}</span>
+                        <span className='font-medium'>{comments.length}</span>
                     </div>
                     <div className='flex items-center justify-center gap-1'>
                         <Image alt="image" height={20} width={20} src={"/share.png"}></Image>
@@ -180,7 +221,7 @@ const Post = ({post,user}) => {
                                 <span className='text-sm font-semibold'>{comment.username}</span>
                                 <div className='flex justify-between items-end'>
                                     <p className=''>{comment.content}</p>
-                                    {comment.userId==user.id&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
+                                    {comment.userId==user.id&&comment.commentId&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
                                 </div>
                             </div>
                         ))
