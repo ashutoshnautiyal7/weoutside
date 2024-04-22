@@ -38,53 +38,44 @@ const Post = ({ post, user, token }) => {
     } catch (err) {}
   };
 
-  const debouncedLikeUnlikePost = debounce(likeUnlikePost, 200);
-  const handleLike = () => {
-    debouncedLikeUnlikePost();
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const postId = post.id;
-    const content = e.target[0].value;
-    const commentData = {
-      postId,
-      content,
+    const debouncedLikeUnlikePost = debounce(likeUnlikePost, 200);
+    const handleLike = () => {
+        debouncedLikeUnlikePost();
     };
-    try {
-      const res = await axios.post(
-        "https://we-out-backend.vercel.app/api/comment",
-        commentData,
-        { headers: { Authorization: token } }
-      );
-      const data = res.data;
-      res.status === 201 &&
-        setComments([
-          {
-            commentId: data.data.id,
-            userId: user.id,
-            username: user.name,
-            content: content,
-          },
-          ...comments,
-        ]);
-      e.target[0].value = "";
-    } catch (err) {}
-  };
+    
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        const postId=post.id;
+        const content=e.target[0].value;
+        const commentData={
+            postId,content
+        }
+        try{
+            const res=await axios.post("https://we-out-backend.vercel.app/api/comment",commentData,
+            { headers: { Authorization: token } }
+            );
+            const data=res.data;
+            const newComm={"commentId":data.data.id,"userId":user.id,"username":user.name,"content":content};
+            res.status===201&&setComments(prev=>([newComm,...prev]));
+            e.target[0].value="";
+        }
+        catch(err){
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    const postId = post.id;
-
-    try {
-      const res = await axios.delete(
-        "https://we-out-backend.vercel.app/api/deletepost",
-        { headers: { Authorization: token }, data: { postId } }
-      );
-      setOpenMenu(false);
-      location.reload();
-    } catch (err) {}
-  };
+        }
+    }
+    
+    const handleDelete=async(e)=>{
+        e.preventDefault();
+        const postId=post.id;
+       
+        try{
+            const res=await axios.delete("https://we-out-backend.vercel.app/api/deletepost",
+            { headers: { Authorization: token },data:{postId} }
+            );
+            setOpenMenu(false)
+            location.reload()
+        }
+        catch(err){
 
   const handleUpdate = async (e) => {
     e.preventDefault();
