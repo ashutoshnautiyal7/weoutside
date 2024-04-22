@@ -169,6 +169,7 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
         <h2 className="text-base font-medium ml-5">Create Post</h2>
         <div className="flex items-center gap-2 my-2 bg-[#F6F3F3] rounded-xl py-3 px-5">
           <input
+            required={true}
             ref={titleRef}
             className="outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black"
             placeholder="Title"
@@ -180,6 +181,7 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
           </div>
           <input
             ref={contentRef}
+            required={true}
             className="outline-none rounded-r-xl w-full bg-[#F6F3F3] placeholder:text-black"
             placeholder="What's on your mind"
           ></input>
