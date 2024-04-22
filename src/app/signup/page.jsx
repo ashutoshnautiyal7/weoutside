@@ -1,52 +1,44 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import GetCookie from "@/components/getCookie/GetCookie";
 
 const SignUpPage = () => {
   const router = useRouter();
+  const [exists,setExists]=useState(false)
 
-  useEffect(() => {
-    if (localStorage.getItem("access_token")) {
+  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+   useEffect(() => {
+    if (token) {
       router.push("/");
     }
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
     const goals = e.target[3].value;
+    const user={
+      name,
+      email,
+      password,
+      goals
+    }
     try {
-      const res = await fetch(
-        "https://we-out-backend.vercel.app/api/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-            goals,
-          }),
-        }
+      const res = await axios.post("https://we-out-backend.vercel.app/api/auth/register",user
       );
-      // console.log(res);
-      const data = await res.json();
-      console.log(data);
-      res.status === 200 &&
-        localStorage.setItem("access_token", data.access_token);
-      res.status === 200 &&
-        localStorage.setItem(
-          data.access_token,
-          JSON.stringify(data.payloadData)
-        );
-      res.status === 200 && router.push("/");
-    } catch (err) {}
+      // document.cookie="token="+res.data.access_token+"; max-age=7200";
+      // document.cookie=res.data.access_token+"="+JSON.stringify(res.data.user)+"; max-age=7200";
+      res.status === 200 && router.push("/login")
+    } catch (err) {
+      setExists(true)
+    }
   };
   return (
     <div className="flex flex-col items-center bg-[#000000] h-screen">
@@ -54,9 +46,9 @@ const SignUpPage = () => {
         <Image alt="image" width={80} height={80} src={"/image5.png"}></Image>
       </div>
       <div className="w-11/12 md:w-4/12 ">
-        <h1 className="text-4xl text-center my-5">Sign Up</h1>
+        <h1 className="text-2xl md:text-4xl text-center my-5">Sign Up</h1>
         <form
-          className="flex flex-col gap-5 items-center text-xl text-black"
+          className="flex flex-col gap-5 items-center text-lg md:text-xl text-black"
           onSubmit={handleSubmit}
         >
           <input
@@ -72,6 +64,7 @@ const SignUpPage = () => {
           ></input>
           <input
             type="password"
+            minLength={8}
             className="w-full rounded-full outline-none p-3.5 placeholder:text-black"
             placeholder="Password *"
             required={true}
@@ -83,23 +76,28 @@ const SignUpPage = () => {
             <input
               className="w-8/12 p-3.5 outline-none rounded-r-full placeholder:text-[#B0ADAD]"
               placeholder="Raise Fund"
+              minLength={6}
               required={true}
             ></input>
           </div>
-          <button className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-xl">
+          {
+            exists&&
+            <p className="text-sm text-red-600">Email already exists*</p>
+          }
+          <button className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-lg md:text-xl">
             Continue
           </button>
         </form>
-        <div className="flex flex-col gap-5 items-center text-xl text-black py-3">
-          <Link href={"/login"} className="font-medium text-2xl text-white">
+        <div className="flex flex-col gap-5 items-center text-lg md:text-xl text-black py-3">
+          <Link href={"/login"} className="font-medium text-lg md:text-2xl text-white">
             Login *
           </Link>
           <p className="text-white font-medium">OR</p>
           <button
-            className="flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
+            className="text-sm md:text-base flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
             onClick={() => signIn("google")}
           >
-            <div className="relative h-[40px] w-[40px]">
+            <div className="relative h-[35px] w-[35px] md:h-[40px] md:w-[40px]">
               <Image alt="image" fill={true} src={"/google.png"}></Image>
             </div>
             Continue with Google

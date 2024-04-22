@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='flex flex-wrap gap-5 md:gap-1 justify-between'>
+    <div id='footer' className='flex flex-wrap gap-5 md:gap-1 justify-between'>
         <div className='flex flex-col gap-2 w-[40%] md:w-[18%]'>
             <div className='flex gap-1.5 items-center'>
                 <Image alt="image" width={40} height={40} src={'/image5.png'}></Image>

@@ -1,7 +1,7 @@
-"use client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Post from "../post/Post";
+import axios from "axios";
 
 const services = [
   {
@@ -77,19 +77,14 @@ const services = [
 //     },
 // ];
 
-const LeftSection = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const LeftSection = ({token,user,posts,setCurrentPage}) => {
+  const [imageSrc, setImageSrc] = useState([]);
   const titleRef = useRef();
   const contentRef = useRef();
   const imageRef = useRef();
-  const [imageSrc, setImageSrc] = useState([]);
   const [uploadData, setUploadData] = useState();
   const [warn, setWarn] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token ? JSON.parse(localStorage.getItem(token)) : null;
-
+  
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
     const files = changeEvent.target.files;
@@ -104,27 +99,6 @@ const LeftSection = () => {
       reader.readAsDataURL(file);
     }
   }
-
-  useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const res = await fetch(
-          "https://we-out-backend.vercel.app/api/posts?page=" + currentPage,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token,
-            },
-          }
-        );
-        const resp = await res.json();
-        const data = resp.formattedPosts;
-        setPosts(data);
-      } catch (err) {}
-    };
-    getPosts();
-  }, [currentPage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -151,29 +125,26 @@ const LeftSection = () => {
         }
       }
     }
+    const user={
+      title,
+      content,
+      images,
+    }
     try {
-      const res = await fetch(
-        "https://we-out-backend.vercel.app/api/createpost",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-          body: JSON.stringify({
-            title,
-            content,
-            images,
-          }),
-        }
+      const res = await axios.post(
+        "https://we-out-backend.vercel.app/api/createpost",user,
+        { headers: { Authorization: token } }
       );
-      const data = await res.json();
       titleRef.current.value = "";
       contentRef.current.value = "";
       imageRef.current.value = [];
       setImageSrc([]);
       location.reload();
     } catch (err) {}
+  };
+
+  const handleImageRemove = (indexToRemove) => {
+    setImageSrc(prevImages => prevImages.filter((_, index) => index !== indexToRemove));
   };
 
   return (
@@ -215,13 +186,17 @@ const LeftSection = () => {
         </div>
         {imageSrc && (
           <div className="flex flex-col gap-2 pb-5">
-            {imageSrc.map((image) => (
-              <div key={image} className="relative h-[400px] w-[400px]">
+            {imageSrc.map((image,index) => (
+              <div key={image} className="">
+                <div onClick={() => handleImageRemove(index)} className="cursor-pointer relative top-4 -left-2">
+                    <span className="bg-gray-400 w-fit text-black px-2 py-0.5 font-medium rounded-full flex justify-center items-center">×</span>
+                </div>
                 <Image
                   alt="image"
-                  className="object-cover"
+                  className="w-full h-full"
                   src={image}
-                  fill={true}
+                  width={1000}
+                  height={1000}
                 />
               </div>
             ))}
@@ -273,16 +248,17 @@ const LeftSection = () => {
           </button>
         </div>
       </form>
-      <div className="flex flex-col gap-2">
+      {posts!==undefined?<div className="flex flex-col gap-2">
         {posts?.map((p) => (
-          <Post key={p?.id} post={p} user={user} />
+          <Post key={p?.id} post={p} user={user} token={token} />
         ))}
       </div>
+      :<div>Loading...</div>}
       <div className="w-full flex justify-center my-8">
         <div className="bg-white p-0.5 md:p-1 rounded-lg">
           <button
             onClick={() => {
-              setCurrentPage(currentPage + 1),
+              setCurrentPage((prev)=>(prev+1)),
                 window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="rounded-lg py-2 px-8 bg-gradient-to-b from-[#FF1111] to-[#692323] md:text-xl text-base text-white"

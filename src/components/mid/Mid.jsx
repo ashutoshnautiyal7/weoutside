@@ -92,7 +92,7 @@ const Mid = () => {
           slidesToSlide: 3 
         },
         mobile: {
-          breakpoint: { max: 767, min: 464 },
+          breakpoint: { max: 767, min: 300 },
           items: 1,
           slidesToSlide: 1 
         }

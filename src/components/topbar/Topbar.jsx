@@ -1,11 +1,15 @@
-"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
-const Topbar = () => {
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token ? JSON.parse(localStorage.getItem(token)) : null;
+const Topbar = ({user,onSearch}) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
+  };
+  
   return (
     <div className="flex items-center justify-between py-5">
       <div className="w-[50%] md:w-[65%] flex gap-2 md:gap-5 items-center ">
@@ -19,6 +23,8 @@ const Topbar = () => {
           <input
             className="w-full outline-none text-black text-xs md:text-base placeholder:text-xs md:placeholder:text-sm placeholder:text-black placeholder:font-light"
             placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearch}
           ></input>
         </div>
       </div>
