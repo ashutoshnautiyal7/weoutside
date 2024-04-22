@@ -63,7 +63,7 @@ const CommunityPage = () => {
             <Topbar onSearch={onSearch} user={user}/>
             <div className='flex justify-between my-5'>
                 <div className='w-full md:w-[65%]'>
-                    <LeftSection token={token} user={user} posts={filteredPosts} setCurrentPage={setCurrentPage}/>
+                    <LeftSection token={token} user={user} posts={filteredPosts} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>
             <div className='py-5'>

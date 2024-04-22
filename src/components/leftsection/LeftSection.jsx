@@ -77,7 +77,7 @@ const services = [
 //     },
 // ];
 
-const LeftSection = ({token,user,posts,setCurrentPage}) => {
+const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
   const [imageSrc, setImageSrc] = useState([]);
   const titleRef = useRef();
   const contentRef = useRef();
@@ -254,8 +254,19 @@ const LeftSection = ({token,user,posts,setCurrentPage}) => {
         ))}
       </div>
       :<div>Loading...</div>}
-      <div className="w-full flex justify-center my-8">
-        <div className="bg-white p-0.5 md:p-1 rounded-lg">
+      <div className={`w-full flex ${(currentPage<=1||posts.length<10)?"justify-center":"justify-between"} my-8`}>
+        {currentPage>1&&<div className="bg-white p-0.5 md:p-1 rounded-lg">
+          <button
+            onClick={() => {
+              setCurrentPage((prev)=>(prev-1)),
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="rounded-lg py-2 px-8 bg-gradient-to-b from-[#FF1111] to-[#692323] md:text-xl text-base text-white"
+          >
+            Previous Page
+          </button>
+        </div>}
+        {posts.length===10&&<div className="bg-white p-0.5 md:p-1 rounded-lg">
           <button
             onClick={() => {
               setCurrentPage((prev)=>(prev+1)),
@@ -265,7 +276,7 @@ const LeftSection = ({token,user,posts,setCurrentPage}) => {
           >
             Next Page
           </button>
-        </div>
+        </div>}
       </div>
     </div>
   );
