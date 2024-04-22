@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { debounce, forEach, update } from "lodash";
 import { format } from "timeago.js";
 import axios from "axios";
+import Comment from "../comment/Comment";
 
 const Post = ({ post, user, token }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -13,6 +14,8 @@ const Post = ({ post, user, token }) => {
   const [likes, setLikes] = useState(post?.likeCount);
   const [comments, setComments] = useState(post?.comments);
   const [commOpen, setcommopen] = useState(false);
+  const [numCommentsToShow, setNumCommentsToShow] = useState(5);
+  const [totalComments, setTotalComments] = useState(post?.comments?.length);
 
   useEffect(() => {
     post?.likes.forEach((like) => {
@@ -236,6 +239,7 @@ const Post = ({ post, user, token }) => {
           <div className="flex flex-col gap-2 pt-5">
             <form onSubmit={handleSubmit} className="py-1 flex gap-2">
               <input
+                required={true}
                 className="outline-none w-full bg-slate-200 px-2 py-1 rounded-lg"
                 placeholder="Write Comment"
               ></input>
@@ -247,7 +251,7 @@ const Post = ({ post, user, token }) => {
               </button>
             </form>
             <div className="flex flex-col gap-2 ">
-              {comments?.map((comment) => (
+              {comments?.slice(0, numCommentsToShow).map((comment) => (
                 <div
                   key={comment.commentId}
                   className="flex flex-col gap-0.5 px-2 py-1 bg-slate-200 rounded-lg"
@@ -256,7 +260,7 @@ const Post = ({ post, user, token }) => {
                     {comment.username}
                   </span>
                   <div className="flex justify-between items-end">
-                    <p className="">{comment.content}</p>
+                    <Comment text={comment.content}/>
                     {comment.userId == user?.id && (
                       <button
                         onClick={(e) => {
@@ -270,6 +274,14 @@ const Post = ({ post, user, token }) => {
                   </div>
                 </div>
               ))}
+              {totalComments > numCommentsToShow && (
+            <button
+              onClick={()=>{setNumCommentsToShow((prev)=>(prev+5))}}
+              className="pt-3 text-gray-500 hover:underline"
+            >
+              Load more comments
+            </button>
+          )}
             </div>
           </div>
         )}
