@@ -43,9 +43,9 @@ const LoginPage = () => {
         <Image alt="image" width={80} height={80} src={"/image5.png"}></Image>
       </div>
       <div className="w-11/12 md:w-4/12 ">
-        <h1 className="text-4xl text-center my-5">Log In</h1>
+        <h1 className="text-2xl md:text-4xl text-center my-5">Log In</h1>
         <form
-          className="flex flex-col gap-5 items-center text-xl text-black"
+          className="flex flex-col gap-5 items-center text-lg md:text-xl text-black"
           onSubmit={handleSubmit}
         >
           <input
@@ -66,21 +66,21 @@ const LoginPage = () => {
           }
           <button
             type="submit"
-            className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-xl"
+            className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-lg md:text-xl"
           >
             Continue
           </button>
         </form>
-        <div className="flex flex-col gap-5 items-center text-xl text-black py-3">
-          <span className="font-medium text-2xl text-white">
+        <div className="flex flex-col gap-5 items-center text-lg md:text-2xl text-black py-3">
+          <span className="font-medium text-white">
             <Link href={"/signup"}>Sign Up *</Link> / Forget Password *
           </span>
           <p className="text-white font-medium">OR</p>
           <button
-            className="flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
+            className="text-sm md:text-base flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
             onClick={() => signIn("google")}
           >
-            <div className="relative h-[40px] w-[40px]">
+            <div className="relative h-[35px] w-[35px] md:h-[40px] md:w-[40px]">
               <Image alt="image" fill={true} src={"/google.png"}></Image>
             </div>
             Continue with Google
