@@ -8,20 +8,16 @@ import Ujaama from "@/components/ujaama/Ujaama";
 import Footer from "@/components/footer/Footer";
 import GetCookie from "@/components/getCookie/GetCookie";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
   const [user,setUser]=useState("");
-
+  const router=useRouter();
 
   useEffect(() => {
-    if (!token) {
-      router.push("/login");
-    }
-    else
-    {
+      if(token)
       setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
-    }
   }, []);
 
   return (

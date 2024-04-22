@@ -94,7 +94,7 @@ const SignUpPage = () => {
           </Link>
           <p className="text-white font-medium">OR</p>
           <button
-            className="text-sm md:text-base flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
+            className="text-sm md:text-xl flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
             onClick={() => signIn("google")}
           >
             <div className="relative h-[35px] w-[35px] md:h-[40px] md:w-[40px]">
