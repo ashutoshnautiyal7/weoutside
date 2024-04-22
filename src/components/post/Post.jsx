@@ -58,7 +58,8 @@ const Post = ({post,user,token}) => {
             { headers: { Authorization: token } }
             );
             const data=res.data;
-            res.status===201&&setComments([{"commentId":data.data.id,"userId":user.id,"username":user.name,"content":content},...comments]);
+            const newComm={"commentId":data.data.id,"userId":user.id,"username":user.name,"content":content};
+            res.status===201&&setComments(prev=>([newComm,...prev]));
             e.target[0].value="";
         }
         catch(err){
