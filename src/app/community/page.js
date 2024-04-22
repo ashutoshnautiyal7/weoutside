@@ -10,6 +10,8 @@ import React, { useEffect, useState } from 'react'
 
 const page = () => {
     const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+    const [user,setUser]=useState("");
+
     useEffect(() => {
       if (!token) {
         router.push("/login");
@@ -19,11 +21,10 @@ const page = () => {
         setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
       }
     }, []);
-    
+
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredPosts, setFilteredPosts] = useState([]);
     const [posts, setPosts] = useState([]);
-    const [user,setUser]=useState("");
     const router=useRouter();
     
 
