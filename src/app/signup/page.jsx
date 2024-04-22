@@ -33,9 +33,19 @@ const SignUpPage = () => {
     try {
       const res = await axios.post("https://we-out-backend.vercel.app/api/auth/register",user
       );
-      // document.cookie="token="+res.data.access_token+"; max-age=7200";
-      // document.cookie=res.data.access_token+"="+JSON.stringify(res.data.user)+"; max-age=7200";
-      res.status === 200 && router.push("/login")
+      if(res.status === 200)
+      {
+        const userlogin={
+          email,password
+        }
+        const reslogin=await axios.post("https://we-out-backend.vercel.app/api/auth/login",userlogin);
+        if(reslogin.status==200)
+        {
+          document.cookie="token=Bearer "+reslogin.data.token+"; max-age=7200";
+          document.cookie="Bearer "+reslogin.data.token+"="+JSON.stringify(reslogin.data.payloadData)+"; max-age=7200";
+          router.push("/")
+        }
+      }
     } catch (err) {
       setExists(true)
     }

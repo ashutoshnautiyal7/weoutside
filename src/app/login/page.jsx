@@ -29,9 +29,12 @@ const LoginPage = () => {
     try {
       const res = await axios.post("https://we-out-backend.vercel.app/api/auth/login",user
       );
-      document.cookie="token=Bearer "+res.data.token+"; max-age=7200";
-      document.cookie="Bearer "+res.data.token+"="+JSON.stringify(res.data.payloadData)+"; max-age=7200";
-      res.status === 200 && router.push("/")
+      if(res.status===200)
+      {
+        document.cookie="token=Bearer "+res.data.token+"; max-age=7200";
+        document.cookie="Bearer "+res.data.token+"="+JSON.stringify(res.data.payloadData)+"; max-age=7200";
+        router.push("/")
+      }
     } catch (err) {
       setInvalid(true)
     }
