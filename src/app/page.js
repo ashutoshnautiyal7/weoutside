@@ -1,3 +1,4 @@
+"use client"
 import GetinTouch from "@/components/getintouch/GetinTouch";
 import Navbar from "../components/navbar/Navbar";
 import Joinus from "@/components/joinus/Joinus";
@@ -5,12 +6,28 @@ import Mid from "@/components/mid/Mid";
 import Support from "@/components/support/Support";
 import Ujaama from "@/components/ujaama/Ujaama";
 import Footer from "@/components/footer/Footer";
+import GetCookie from "@/components/getCookie/GetCookie";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+  const [user,setUser]=useState("");
+
+
+  useEffect(() => {
+    if (!token) {
+      router.push("/login");
+    }
+    else
+    {
+      setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
+    }
+  }, []);
+
   return (
     <>
       <div className="bg-gradient-to-b from-[#182023] to-[#0B1016]">
-        <Navbar/>
+        <Navbar user={user}/>
         <Joinus/>
       </div>
       <div className="bg-[#0D1218]">

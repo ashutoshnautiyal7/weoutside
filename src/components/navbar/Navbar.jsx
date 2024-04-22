@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   const [openMenu,setOpenMenu]=useState(false)
   return (
     <nav className='px-2 py-2 md:py-3 flex items-center justify-between w-full md:w-5/6 mx-auto'>
@@ -18,10 +18,14 @@ const Navbar = () => {
           <Link href="/#footer">CONTACT</Link>
           <Link href="/rnb">R&B MUSIC</Link>
         </div>
+        {user?
+        <span className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
+        :
         <Link href={"/login"} className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl'>
             <span className='text-red-600'>Login</span>
             <span>▼</span>
         </Link>
+        }
         <div>
           <button onClick={()=>{setOpenMenu(!openMenu)}} className='relative h-[32px] w-[32px] flex md:hidden'>
             <Image fill={true} src={"/hamburger.png"}></Image>
@@ -46,9 +50,9 @@ const Navbar = () => {
               <Link href="/rnb" className='p-3 bg-white flex justify-center items-center'>
               R&B MUSIC
               </Link>
-              <Link href="/login" className='p-3 bg-white flex justify-center items-center'>
+              {!user&&<Link href="/login" className='p-3 bg-white flex justify-center items-center'>
                 LOGIN
-              </Link>
+              </Link>}
             </div>
           }
         </div>
