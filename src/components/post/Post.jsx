@@ -230,44 +230,25 @@ const Post = ({ post, user, token }) => {
                 <span className="text-xs">Share</span>
               </div>
             </div>
-          </div>
-        )}
-        {commOpen && (
-          <div className="flex flex-col gap-2 pt-5">
-            <form onSubmit={handleSubmit} className="py-1 flex gap-2">
-              <input
-                className="outline-none w-full bg-slate-200 px-2 py-1 rounded-lg"
-                placeholder="Write Comment"
-              ></input>
-              <button
-                type="submit"
-                className="px-3 py-1 bg-[#2CC34D] rounded-lg text-white"
-              >
-                Post
-              </button>
-            </form>
-            <div className="flex flex-col gap-2 ">
-              {comments?.map((comment) => (
-                <div
-                  key={comment.commentId}
-                  className="flex flex-col gap-0.5 px-2 py-1 bg-slate-200 rounded-lg"
-                >
-                  <span className="text-sm font-semibold">
-                    {comment.username}
-                  </span>
-                  <div className="flex justify-between items-end">
-                    <p className="">{comment.content}</p>
-                    {comment.userId == user?.id && (
-                      <button
-                        onClick={(e) => {
-                          handleDeleteComment(e, comment.commentId);
-                        }}
-                        className="flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white"
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </div>
+            }
+            {commOpen&&
+            <div className='flex flex-col gap-2 pt-5'>
+                <form onSubmit={handleSubmit} className='py-1 flex gap-2'>
+                    <input className='outline-none w-full bg-slate-200 px-2 py-1 rounded-lg' placeholder='Write Comment'></input>
+                    <button type='submit' className='px-3 py-1 bg-[#2CC34D] rounded-lg text-white'>Post</button>
+                </form>
+                <div className='flex flex-col gap-2 '>
+                    {
+                        comments?.map((comment)=>(
+                            <div key={comment.commentId} className='flex flex-col gap-0.5 px-2 py-1 bg-slate-200 rounded-lg'>
+                                <span className='text-sm font-semibold'>{comment.username}</span>
+                                <div className='flex justify-between items-end'>
+                                    <p className=''>{comment.content}</p>
+                                    {comment.userId==user?.id&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
               ))}
             </div>
