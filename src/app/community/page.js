@@ -8,8 +8,9 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const CommunityPage = () => {
     const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+    const router=useRouter();
     const [user,setUser]=useState("");
 
     useEffect(() => {
@@ -25,7 +26,6 @@ const page = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredPosts, setFilteredPosts] = useState([]);
     const [posts, setPosts] = useState([]);
-    const router=useRouter();
     
 
   useEffect(() => {
@@ -74,4 +74,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CommunityPage

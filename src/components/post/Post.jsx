@@ -15,13 +15,13 @@ const Post = ({post,user,token}) => {
     const [commOpen,setcommopen]=useState(false);
 
     useEffect(()=>{
-        post.likes.forEach(like => {
+        post?.likes.forEach(like => {
             if(like.userId===user?.id)
             {
                 setIsLiked(true);
             }
         });
-    },[])
+    },[post?.likes])
     
 
     const likeUnlikePost=async()=>{
