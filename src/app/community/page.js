@@ -9,12 +9,6 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const page = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [filteredPosts, setFilteredPosts] = useState([]);
-    const [posts, setPosts] = useState([]);
-    const [user,setUser]=useState("");
-    const router=useRouter();
-    
     const token=typeof window !== "undefined" ? GetCookie("token")  : null;
     useEffect(() => {
       if (!token) {
@@ -25,6 +19,13 @@ const page = () => {
         setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
       }
     }, []);
+    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [filteredPosts, setFilteredPosts] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [user,setUser]=useState("");
+    const router=useRouter();
+    
 
   useEffect(() => {
 
