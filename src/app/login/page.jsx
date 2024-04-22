@@ -4,47 +4,39 @@ import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import GetCookie from "@/components/getCookie/GetCookie";
 
 const LoginPage = () => {
   const router = useRouter();
   const[invalid,setInvalid]=useState(false);
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  useEffect(() => {
+ 
+  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+   useEffect(() => {
     if (token) {
       router.push("/");
     }
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+    const user={
+      email,
+      password
+    }
     try {
-      const res = await fetch(
-        "https://we-out-backend.vercel.app/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
+      const res = await axios.post("https://we-out-backend.vercel.app/api/auth/login",user
       );
-      const data = await res.json();
-      res.status === 200 &&
-        localStorage.setItem("access_token", data.access_token);
-      res.status === 200 &&
-        localStorage.setItem(
-          data.access_token,
-          JSON.stringify(data.payloadData)
-        );
-      res.status === 200 ? router.push("/"):setInvalid(true);
+      document.cookie="token=Bearer "+res.data.token+"; max-age=7200";
+      document.cookie="Bearer "+res.data.token+"="+JSON.stringify(res.data.payloadData)+"; max-age=7200";
+      res.status === 200 && router.push("/")
     } catch (err) {
+      setInvalid(true)
     }
   };
+
   return (
     <div className="flex flex-col items-center bg-[#000000] h-screen">
       <div className="bg-[#F41717] rounded-b-full h-[120px] flex items-end">

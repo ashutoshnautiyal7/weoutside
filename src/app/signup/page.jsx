@@ -4,52 +4,41 @@ import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import GetCookie from "@/components/getCookie/GetCookie";
 
 const SignUpPage = () => {
   const router = useRouter();
   const [exists,setExists]=useState(false)
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  useEffect(() => {
+
+  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+   useEffect(() => {
     if (token) {
       router.push("/");
     }
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
     const goals = e.target[3].value;
+    const user={
+      name,
+      email,
+      password,
+      goals
+    }
     try {
-      const res = await fetch(
-        "https://we-out-backend.vercel.app/api/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-            goals,
-          }),
-        }
+      const res = await axios.post("https://we-out-backend.vercel.app/api/auth/register",user
       );
-      // console.log(res);
-      const data = await res.json();
-      // console.log(data.user);
-      res.status === 200 &&
-        localStorage.setItem("access_token", data.access_token);
-      res.status === 200 &&
-        localStorage.setItem(
-          data.access_token,
-          JSON.stringify(data.user)
-        );
-      res.status === 200 && router.push("/");
-      res.status===400&&setExists(true);
-    } catch (err) {}
+      // document.cookie="token="+res.data.access_token+"; max-age=7200";
+      // document.cookie=res.data.access_token+"="+JSON.stringify(res.data.user)+"; max-age=7200";
+      res.status === 200 && router.push("/login")
+    } catch (err) {
+      setExists(true)
+    }
   };
   return (
     <div className="flex flex-col items-center bg-[#000000] h-screen">

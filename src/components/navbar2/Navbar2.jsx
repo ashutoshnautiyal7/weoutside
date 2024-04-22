@@ -15,7 +15,7 @@ const Navbar2 = () => {
           <Link href={"/ujaama"}>UJAMA</Link>
           <Link href={"/"}>ABOUT US</Link>
           <Link href={"/"}>SUPPORT US</Link>
-          <Link href={"/"}>CONTACT</Link>
+          <Link href={"/#footer"}>CONTACT</Link>
         </div>
         <div className='relative md:flex hidden h-[30px] w-[75px] md:h-[45px] md:w-[100px]'>
           <Image alt="image" fill={true} src={"/rnbbutton.png"}></Image>
@@ -38,10 +38,10 @@ const Navbar2 = () => {
               <Link href="/" className='p-3 bg-white flex justify-center items-center'>
                 SUPPORT US
               </Link>
-              <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+              <Link href="/#footer" className='p-3 bg-white flex justify-center items-center'>
                 CONTACT
               </Link>
-              <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+              <Link href="/rnb" className='p-3 bg-white flex justify-center items-center'>
                 R&B MUSIC
               </Link>
             </div>

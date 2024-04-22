@@ -2,8 +2,9 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { debounce, forEach, update } from 'lodash';
 import {format} from 'timeago.js'
+import axios from 'axios';
 
-const Post = ({post,user}) => {
+const Post = ({post,user,token}) => {
     const [isLiked,setIsLiked]=useState(false);
     const [openMenu,setOpenMenu]=useState(false);
     const [openUpdate,setOpenUpdate]=useState(false)
@@ -12,12 +13,10 @@ const Post = ({post,user}) => {
     const [likes,setLikes]=useState(post?.likeCount);
     const [comments,setComments]=useState(post?.comments);
     const [commOpen,setcommopen]=useState(false);
-    const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
 
     useEffect(()=>{
         post.likes.forEach(like => {
-            if(like.userId===user.id)
+            if(like.userId===user?.id)
             {
                 setIsLiked(true);
             }
@@ -27,18 +26,13 @@ const Post = ({post,user}) => {
 
     const likeUnlikePost=async()=>{
         const postId=post.id;
+        const body={
+            postId
+        }
         try{
-            const res=await fetch("https://we-out-backend.vercel.app/api/likepost",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json",
-                    'Authorization': token,
-                },
-                body:JSON.stringify({
-                    postId
-                })
-            });
-            const data=await res.json();
+            const res=await axios.post("https://we-out-backend.vercel.app/api/likepost",body,
+            { headers: { Authorization: token } }
+            );
             setIsLiked(!isLiked)
             setLikes((likes+(isLiked?-1:1)));
         }
@@ -56,18 +50,14 @@ const Post = ({post,user}) => {
         e.preventDefault();
         const postId=post.id;
         const content=e.target[0].value;
+        const commentData={
+            postId,content
+        }
         try{
-            const res=await fetch("https://we-out-backend.vercel.app/api/comment",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json",
-                    'Authorization': token,
-                },
-                body:JSON.stringify({
-                    postId,content
-                })
-            });
-            const data=await res.json();
+            const res=await axios.post("https://we-out-backend.vercel.app/api/comment",commentData,
+            { headers: { Authorization: token } }
+            );
+            const data=res.data;
             res.status===201&&setComments([...comments,{"commentId":data.data.id,"userId":user.id,"username":user.name,"content":content}]);
             e.target[0].value="";
         }
@@ -75,22 +65,17 @@ const Post = ({post,user}) => {
 
         }
     }
-
+    
     const handleDelete=async(e)=>{
         e.preventDefault();
         const postId=post.id;
+       
         try{
-            const res=await fetch("https://we-out-backend.vercel.app/api/deletepost",{
-                method:"DELETE",
-                headers:{
-                    "Content-Type":"application/json",
-                    'Authorization': token,
-                },
-                body:JSON.stringify({
-                    postId
-                })
-            });
+            const res=await axios.delete("https://we-out-backend.vercel.app/api/deletepost",
+            { headers: { Authorization: token },data:{postId} }
+            );
             setOpenMenu(false)
+            location.reload()
         }
         catch(err){
 
@@ -102,18 +87,16 @@ const Post = ({post,user}) => {
         const title=e.target[0].value;
         const content=e.target[1].value;
         const postId=post.id;
+        const user={
+            title,
+            content,
+            postId
+          }
         try
         {
-            const res=await fetch("https://we-out-backend.vercel.app/api/updatepost",{
-                method:"PUT",
-                headers:{
-                    "Content-Type":"application/json",
-                    'Authorization': token,
-                },
-                body:JSON.stringify({
-                    title,content,postId
-                })
-            });
+            const res=await axios.put("https://we-out-backend.vercel.app/api/updatepost",user,
+                { headers: { Authorization: token } }
+            );
             setOpenUpdate(false)
             location.reload();
         }
@@ -125,18 +108,12 @@ const Post = ({post,user}) => {
 
     const handleDeleteComment=async(e,commId)=>{
         e.preventDefault();
+        console.log(commId)
         const commentId=commId;
         try{
-            const res=await fetch("https://we-out-backend.vercel.app/api/deletecomment",{
-                method:"DELETE",
-                headers:{
-                    "Content-Type":"application/json",
-                    'Authorization': token,
-                },
-                body:JSON.stringify({
-                    commentId
-                })
-            });
+            const res=await axios.delete("https://we-out-backend.vercel.app/api/deletecomment",
+            { headers: { Authorization: token },data:{commentId} }
+            );
             const newcomms=[]
             comments.forEach(comment=> {
                 if(comment.commentId!==commId)
@@ -223,7 +200,7 @@ const Post = ({post,user}) => {
                                 <span className='text-sm font-semibold'>{comment.username}</span>
                                 <div className='flex justify-between items-end'>
                                     <p className=''>{comment.content}</p>
-                                    {comment.userId==user.id&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
+                                    {comment.userId==user?.id&&<button onClick={(e)=>{handleDeleteComment(e,comment.commentId)}} className='flex items-center justify-center bg-[#2CC34D] px-1.5 py-1 rounded-md text-sm text-white'>Delete</button>}
                                 </div>
                             </div>
                         ))
@@ -233,7 +210,7 @@ const Post = ({post,user}) => {
         </div>
         <div className='w-1/12 md:w-3/12 flex justify-end'>
             <div className='flex flex-col items-end'>
-                <span onClick={()=>{setOpenMenu(!openMenu)}} className={`${post.userId===user.id?"cursor-pointer":"cursor-not-allowed"} text-lg font-semibold`}>•••</span>
+                <span onClick={()=>{setOpenMenu(!openMenu)}} className={`${post.userId===user?.id?"cursor-pointer":"cursor-not-allowed"} text-lg font-semibold`}>•••</span>
                 {openMenu&&post.userId===user.id&&
                     <div className='flex flex-col bg-slate-400 gap-[1px]'>
                         <div onClick={handleDelete} className='cursor-pointer flex justify-center items-center bg-slate-300 px-5 py-1'>Delete</div>

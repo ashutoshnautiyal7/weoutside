@@ -1,7 +1,7 @@
-"use client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Post from "../post/Post";
+import axios from "axios";
 
 const services = [
   {
@@ -77,17 +77,14 @@ const services = [
 //     },
 // ];
 
-const LeftSection = ({posts,setCurrentPage}) => {
+const LeftSection = ({token,user,posts,setCurrentPage}) => {
   const [imageSrc, setImageSrc] = useState([]);
   const titleRef = useRef();
   const contentRef = useRef();
   const imageRef = useRef();
   const [uploadData, setUploadData] = useState();
   const [warn, setWarn] = useState(false);
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token!==null ? JSON.parse(localStorage.getItem(token)) : null;
-
+  
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
     const files = changeEvent.target.files;
@@ -128,23 +125,16 @@ const LeftSection = ({posts,setCurrentPage}) => {
         }
       }
     }
+    const user={
+      title,
+      content,
+      images,
+    }
     try {
-      const res = await fetch(
-        "https://we-out-backend.vercel.app/api/createpost",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-          body: JSON.stringify({
-            title,
-            content,
-            images,
-          }),
-        }
+      const res = await axios.post(
+        "https://we-out-backend.vercel.app/api/createpost",user,
+        { headers: { Authorization: token } }
       );
-      const data = await res.json();
       titleRef.current.value = "";
       contentRef.current.value = "";
       imageRef.current.value = [];
@@ -152,9 +142,11 @@ const LeftSection = ({posts,setCurrentPage}) => {
       location.reload();
     } catch (err) {}
   };
+
   const handleImageRemove = (indexToRemove) => {
     setImageSrc(prevImages => prevImages.filter((_, index) => index !== indexToRemove));
   };
+
   return (
     <div>
       <div className="flex flex-wrap gap-3 md:gap-5">
@@ -258,7 +250,7 @@ const LeftSection = ({posts,setCurrentPage}) => {
       </form>
       {posts!==undefined?<div className="flex flex-col gap-2">
         {posts?.map((p) => (
-          <Post key={p?.id} post={p} user={user} />
+          <Post key={p?.id} post={p} user={user} token={token} />
         ))}
       </div>
       :<div>Loading...</div>}

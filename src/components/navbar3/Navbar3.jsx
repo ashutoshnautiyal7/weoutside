@@ -15,7 +15,7 @@ const Navbar3 = () => {
               <Link href={"/ujaama"}>UJAMA</Link>
               <Link href={"/"}>ABOUT US</Link>
               <Link href={"/"}>SUPPORT US</Link>
-              <Link href={"/"}>CONTACT</Link>
+              <Link href={"/#footer"}>CONTACT</Link>
             </div>
             <div>
               <button className='hidden md:flex justify-center items-center border-[2px] border-white rounded-md gap-2 bg-gradient-to-b from-[#FF1111] to-[#692323] px-2 py-1 md:px-6 md:py-3 '>
@@ -42,7 +42,7 @@ const Navbar3 = () => {
                   <Link href="/" className='p-3 bg-white flex justify-center items-center'>
                     SUPPORT US
                   </Link>
-                  <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+                  <Link href="/#footer" className='p-3 bg-white flex justify-center items-center'>
                     CONTACT
                   </Link>
                   <Link href="/" className='p-3 bg-white flex justify-center items-center'>

@@ -12,16 +12,16 @@ const Navbar = () => {
         </div>
         <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-9/12'>
           <Link href="/">HOME</Link>
-          <Link href="/">UJAMA</Link>
+          <Link href="/ujaama">UJAMA</Link>
           <Link href="/">ABOUT US</Link>
           <Link href="/">SUPPORT US</Link>
-          <Link href="/">CONTACT</Link>
-          <Link href="/">R&B MUSIC</Link>
+          <Link href="/#footer">CONTACT</Link>
+          <Link href="/rnb">R&B MUSIC</Link>
         </div>
-        <div className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl'>
+        <Link href={"/login"} className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl'>
             <span className='text-red-600'>Login</span>
             <span>▼</span>
-        </div>
+        </Link>
         <div>
           <button onClick={()=>{setOpenMenu(!openMenu)}} className='relative h-[32px] w-[32px] flex md:hidden'>
             <Image fill={true} src={"/hamburger.png"}></Image>
@@ -40,10 +40,10 @@ const Navbar = () => {
               <Link href="/" className='p-3 bg-white flex justify-center items-center'>
                 SUPPORT US
               </Link>
-              <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+              <Link href="/#footer" className='p-3 bg-white flex justify-center items-center'>
                 CONTACT
               </Link>
-              <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+              <Link href="/rnb" className='p-3 bg-white flex justify-center items-center'>
               R&B MUSIC
               </Link>
               <Link href="/login" className='p-3 bg-white flex justify-center items-center'>

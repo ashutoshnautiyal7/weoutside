@@ -1,8 +1,7 @@
-"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const Topbar = ({posts,onSearch}) => {
+const Topbar = ({user,onSearch}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
@@ -10,9 +9,7 @@ const Topbar = ({posts,onSearch}) => {
     setSearchQuery(query);
     onSearch(query);
   };
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
-  const user = token ? JSON.parse(localStorage.getItem(token)) : null;
+  
   return (
     <div className="flex items-center justify-between py-5">
       <div className="w-[50%] md:w-[65%] flex gap-2 md:gap-5 items-center ">
