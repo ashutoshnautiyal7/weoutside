@@ -2,7 +2,6 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
-import Card1 from '../card1/Card1'
 import Card2 from '../card2/Card2';
 import Card3 from '../card3/Card3';
 import Image from 'next/image';

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -41,8 +40,8 @@ const SignUpPage = () => {
         const reslogin=await axios.post("https://we-out-backend.vercel.app/api/auth/login",userlogin);
         if(reslogin.status==200)
         {
-          document.cookie="token=Bearer "+reslogin.data.token+"; max-age=7200";
-          document.cookie="Bearer "+reslogin.data.token+"="+JSON.stringify(reslogin.data.payloadData)+"; max-age=7200";
+          document.cookie="token=Bearer "+reslogin.data.token+"; max-age=86400";
+          document.cookie="Bearer "+reslogin.data.token+"="+JSON.stringify(reslogin.data.payloadData)+"; max-age=86400";
           router.push("/")
         }
       }
@@ -98,20 +97,10 @@ const SignUpPage = () => {
             Continue
           </button>
         </form>
-        <div className="flex flex-col gap-5 items-center text-lg md:text-xl text-black py-3">
+        <div className="flex flex-col items-center text-lg md:text-xl text-black py-3">
           <Link href={"/login"} className="font-medium text-lg md:text-2xl text-white">
             Login *
           </Link>
-          <p className="text-white font-medium">OR</p>
-          <button
-            className="text-sm md:text-xl flex items-center gap-2 justify-center w-3/4 h-12 px-1 bg-white text-black font-medium rounded-md"
-            onClick={() => signIn("google")}
-          >
-            <div className="relative h-[35px] w-[35px] md:h-[40px] md:w-[40px]">
-              <Image alt="image" fill={true} src={"/google.png"}></Image>
-            </div>
-            Continue with Google
-          </button>
         </div>
       </div>
     </div>

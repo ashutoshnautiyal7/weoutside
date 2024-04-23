@@ -11,11 +11,34 @@ const Post = ({ post, user, token }) => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const titleRef = useRef();
   const contentRef = useRef();
+  const [imageSrc, setImageSrc] = useState([]);
+  const imageRef = useRef();
+  const [uploadData, setUploadData] = useState();
+  const [warn, setWarn] = useState(false);
   const [likes, setLikes] = useState(post?.likeCount);
   const [comments, setComments] = useState(post?.comments);
   const [commOpen, setcommopen] = useState(false);
   const [numCommentsToShow, setNumCommentsToShow] = useState(5);
+  const [initImages,setInitImages]=useState(post?.images)
+  const [images,setImages]=useState(post?.images)
   const [totalComments, setTotalComments] = useState(post?.comments?.length);
+  const [update,setUpdate]=useState("Update");
+  
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+    const files = changeEvent.target.files;
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      reader.onload = function (onLoadEvent) {
+        setImageSrc([...imageSrc, onLoadEvent.target.result]);
+        setImages((prev)=>([...prev,onLoadEvent.target.result]));
+        setUploadData(undefined);
+        setWarn(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   useEffect(() => {
     post?.likes.forEach((like) => {
@@ -88,13 +111,38 @@ const Post = ({ post, user, token }) => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setUpdate("Updating...");
     const title = e.target[0].value;
     const content = e.target[1].value;
     const postId = post.id;
+    const addedImages=[];
+    if (imageSrc !== null) {
+      for (const imageUrl of imageSrc) {
+        const formData = new FormData();
+        formData.append("file", imageUrl);
+        formData.append("upload_preset", "my-upload");
+        try {
+          const data = await fetch(
+            "https://api.cloudinary.com/v1_1/dgav9ohkf/image/upload",
+            {
+              method: "POST",
+              body: formData,
+            }
+          ).then((r) => r.json());
+          console.log(data);
+          addedImages.push(data.url);
+        } catch (error) {
+          console.error("Error uploading image:", error);
+        }
+      }
+    }
+    const commonImages = initImages.filter(value => images.includes(value));
+    const updatedImages=[...addedImages,...commonImages]
     const user = {
       title,
       content,
       postId,
+      images:updatedImages
     };
     try {
       const res = await axios.put(
@@ -104,12 +152,14 @@ const Post = ({ post, user, token }) => {
       );
       setOpenUpdate(false);
       location.reload();
-    } catch (err) {}
+      setUpdate("Update");
+    } catch (err) {
+      setUpdate("Update")
+    }
   };
 
   const handleDeleteComment = async (e, commId) => {
     e.preventDefault();
-    console.log(commId);
     const commentId = commId;
     try {
       const res = await axios.delete(
@@ -124,6 +174,11 @@ const Post = ({ post, user, token }) => {
       });
       setComments(newcomms);
     } catch (err) {}
+  };
+
+  const handleImageRemove = (indexToRemove,image) => {
+    setImageSrc(prevImages => prevImages.filter((url, index) => url!==image));
+    setImages(prev=>prev.filter((url, i) => i !== indexToRemove))
   };
 
   return (
@@ -162,26 +217,50 @@ const Post = ({ post, user, token }) => {
               ></input>
             </div>
             <div className="flex flex-col">
-              {post?.images?.map((image) => (
+              {images?.map((image,index) => (
                 <div
                   key={image}
-                  className="relative w-full md:w-10/12 h-[250px] my-2"
+                  className="w-full h-full my-2"
                 >
+                <div onClick={()=>{handleImageRemove(index,image)}} className="cursor-pointer relative top-4 -left-2">
+                    <span className="bg-gray-400 w-fit text-black px-2 py-0.5 font-medium rounded-full flex justify-center items-center">×</span>
+                </div>
                   <Image
                     alt="image"
-                    className="object-cover"
-                    fill={true}
+                    className="w-full h-full"
+                    width={1000}
+                    height={1000}
                     src={image}
                   ></Image>
                 </div>
               ))}
             </div>
-            <div className="flex w-full justify-center items-center py-2">
+            <div className="flex w-full justify-between items-center py-2">
+            <label
+              for="photo"
+              className="cursor-pointer flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2"
+            >
+              <Image
+                alt="image"
+                width={20}
+                height={20}
+                src={"/gallery.png"}
+              ></Image>
+              <span>Gallery</span>
+            </label>
+            <input
+              name="file"
+              ref={imageRef}
+              onChange={handleOnChange}
+              id="photo"
+              className="hidden"
+              type="file"
+            />
               <button
                 type="submit"
                 className="bg-[#2CC34D] px-3 py-1 text-white rounded-md font-medium"
               >
-                Update
+                {update}
               </button>
             </div>
           </form>

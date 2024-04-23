@@ -12,6 +12,8 @@ const CommunityPage = () => {
     const token=typeof window !== "undefined" ? GetCookie("token")  : null;
     const router=useRouter();
     const [user,setUser]=useState("");
+    const [size,setSize]=useState(0)
+    const [loading,setLoading]=useState(true)
 
     useEffect(() => {
       if (!token) {
@@ -32,14 +34,19 @@ const CommunityPage = () => {
 
     const getPosts = async () => {
       try {
+        setLoading(true)
         const res = await axios.get(
           "https://we-out-backend.vercel.app/api/posts?page=" + currentPage,
           { headers: { Authorization: token } }
         );
         const data = res.data.formattedPosts;
+        setSize(res.data.size)
         setPosts(data);
         setFilteredPosts(data)
-      } catch (err) {}
+        setLoading(false)
+      } catch (err) {
+        setLoading(false)
+      }
     };
     getPosts();
   }, [currentPage]);
@@ -63,7 +70,7 @@ const CommunityPage = () => {
             <Topbar onSearch={onSearch} user={user}/>
             <div className='flex justify-between my-5'>
                 <div className='w-full md:w-[65%]'>
-                    <LeftSection token={token} user={user} posts={filteredPosts} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+                    <LeftSection loading={loading} token={token} user={user} posts={filteredPosts} size={size} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>
             <div className='py-5'>

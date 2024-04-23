@@ -77,13 +77,15 @@ const services = [
 //     },
 // ];
 
-const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
+const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage}) => {
+  const lastPage=Math.ceil(size/10);
   const [imageSrc, setImageSrc] = useState([]);
   const titleRef = useRef();
   const contentRef = useRef();
   const imageRef = useRef();
   const [uploadData, setUploadData] = useState();
   const [warn, setWarn] = useState(false);
+  const [publish,setPublish ]=useState("Publish");
   
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
@@ -102,6 +104,7 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setPublish("Publishing...")
     const title = e.target[0].value;
     const content = e.target[1].value;
     const images = [];
@@ -139,8 +142,11 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
       contentRef.current.value = "";
       imageRef.current.value = [];
       setImageSrc([]);
+      setPublish("Publish");
       location.reload();
-    } catch (err) {}
+    } catch (err) {
+      setPublish("Publish");
+    }
   };
 
   const handleImageRemove = (indexToRemove) => {
@@ -246,17 +252,20 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
               height={20}
               src={"/publish.png"}
             ></Image>
-            <span>Publish</span>
+            <span>{publish}</span>
           </button>
         </div>
       </form>
-      {posts!==undefined?<div className="flex flex-col gap-2">
+      {loading?
+      <div className="w-full flex justify-center py-5">Loading...</div>
+      :
+      <div className="flex flex-col gap-2">
         {posts?.map((p) => (
           <Post key={p?.id} post={p} user={user} token={token} />
         ))}
       </div>
-      :<div>Loading...</div>}
-      <div className={`w-full flex ${(currentPage<=1||posts.length<10)?"justify-center":"justify-between"} my-8`}>
+      }
+      <div className={`w-full flex ${(currentPage<=1||currentPage===lastPage)?"justify-center":"justify-between"} my-8`}>
         {currentPage>1&&<div className="bg-white p-0.5 md:p-1 rounded-lg">
           <button
             onClick={() => {
@@ -268,7 +277,7 @@ const LeftSection = ({token,user,posts,currentPage,setCurrentPage}) => {
             Previous Page
           </button>
         </div>}
-        {posts.length===10&&<div className="bg-white p-0.5 md:p-1 rounded-lg">
+        {currentPage<lastPage&&<div className="bg-white p-0.5 md:p-1 rounded-lg">
           <button
             onClick={() => {
               setCurrentPage((prev)=>(prev+1)),
