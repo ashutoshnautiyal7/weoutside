@@ -19,7 +19,12 @@ const Navbar = ({user}) => {
           <Link href="/rnb">R&B MUSIC</Link>
         </div>
         {user?
-        <span className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
+        <div className=" md:flex hidden items-center justify-start gap-2">
+          <div className="relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
+            <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
+          </div>
+          <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
+        </div>
         :
         <Link href={"/login"} className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl'>
             <span className='text-red-600'>Login</span>
