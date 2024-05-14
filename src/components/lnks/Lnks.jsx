@@ -10,7 +10,7 @@ const Lnks = ({data}) => {
         <div className='bg-white flex flex-col gap-2 text-black p-5 font-medium rounded-md text-sm'>
             {
                 data.map((d)=>(
-                    <Link href={d.link}>{d.title}</Link>
+                    <Link key={d.id} href={d.link}>{d.title}</Link>
                 ))
             }
         </div>

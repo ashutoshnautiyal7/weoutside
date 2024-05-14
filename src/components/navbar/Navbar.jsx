@@ -7,42 +7,51 @@ import GetCookie from '../getCookie/GetCookie';
 
 const serv=[
   {
+    id:0,
     title:"Fundraising",
     link:"/fundraising"
   },
   {
+    id:1,
     title:"Legal Support",
     link:"/legalsupport"
   },
   {
+    id:2,
     title:"Business",
     link:"/business"
   },
 ];
 const supp=[
   {
+    id:0,
     title:"My Mama Told Me",
     link:"/mymamatoldme"
   },
   {
+    id:1,
     title:"MELENATED LIFES MATTER",
     link:"/melenatedlifesmatter"
   },
   {
+    id:2,
     title:"Business",
     link:"/business"
   },
 ];
 const prof=[
   {
+    id:0,
     title:"Community",
     link:"/community"
   },
   {
+    id:1,
     title:"Profile",
     link:"/profile"
   },
   {
+    id:2,
     title:"Donation",
     link:"/donation"
   },
