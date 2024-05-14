@@ -1,6 +1,7 @@
 import Card4 from '@/components/card4/Card4';
 import Footer from '@/components/footer/Footer';
 import GetinTouch from '@/components/getintouch/GetinTouch';
+import Navbar from '@/components/navbar/Navbar';
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
@@ -29,13 +30,13 @@ const data=[
 const page = () => {
   return (
     <div>
-        <Navbar2/>
+        <Navbar/>
         <div className='flex flex-col md:flex-row py-16'>
             <div className='md:w-1/2 flex justify-end p-5'>
                 <div className='md:w-8/12 h-full'>
                     <div className='flex flex-col gap-2 justify-between items-center md:items-start h-5/6'>
                         <h1 className='text-lg md:text-4xl font-semibold md:leading-snug text-center md:text-left'>WE EMPOWERING LEGAL SUPPORT FOR OUR COMMUNITY <span className='text-red-600'>!</span></h1>
-                        <button className='w-7/12 bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl md:rounded-tr-full font-medium p-2'>
+                        <button className='w-7/12 bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl rounded-xl font-medium p-2'>
                             LETS CONNECT
                             <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
                                 <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>

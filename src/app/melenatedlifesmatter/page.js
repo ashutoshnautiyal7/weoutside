@@ -1,5 +1,6 @@
 import Footer from '@/components/footer/Footer'
 import GetinTouch from '@/components/getintouch/GetinTouch'
+import Navbar from '@/components/navbar/Navbar'
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
@@ -7,7 +8,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-        <Navbar2/>
+        <Navbar/>
         <div className='flex flex-col gap-10 items-center'>
             <h1 className='text-2xl md:text-5xl md:w-1/2 text-center'>Connecting Communities, Empowering Change</h1>
             <div className='w-full flex justify-center'>

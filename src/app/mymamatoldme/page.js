@@ -1,5 +1,6 @@
 import Footer from '@/components/footer/Footer'
 import GetinTouch from '@/components/getintouch/GetinTouch'
+import Navbar from '@/components/navbar/Navbar'
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
@@ -7,7 +8,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-        <Navbar2/>
+        <Navbar/>
         <div className='py-10'>
             <Image className='w-screen h-full' width={1000} height={1000} src={"/mmtmm.png"}></Image>
         </div>

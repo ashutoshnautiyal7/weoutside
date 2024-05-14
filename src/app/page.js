@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <div className="bg-gradient-to-b from-[#182023] to-[#0B1016]">
-        <Navbar user={user}/>
+        <Navbar/>
         <Joinus/>
       </div>
       <div className="bg-[#0D1218]">

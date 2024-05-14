@@ -2,6 +2,7 @@
 import Footer from '@/components/footer/Footer'
 import GetCookie from '@/components/getCookie/GetCookie'
 import LeftSection from '@/components/leftsection/LeftSection'
+import Navbar from '@/components/navbar/Navbar'
 import RightSection from '@/components/rightsection/RightSection'
 import Topbar from '@/components/topbar/Topbar'
 import axios from 'axios'
@@ -65,10 +66,11 @@ const CommunityPage = () => {
 };
 
   return (
-    <div className='w-full bg-gradient-to-b from-[#470a0a] via-black to-[#480203]'>
+    <div className='w-full'>
+        <Navbar/>
         <div className='w-full px-2 md:px-0 md:w-10/12 mx-auto'>
-            <Topbar onSearch={onSearch} user={user}/>
-            <div className='flex justify-between my-5'>
+            <div className='flex flex-col justify-center items-center my-5'>
+                <Topbar onSearch={onSearch} user={user}/>
                 <div className='w-full md:w-[65%]'>
                     <LeftSection loading={loading} token={token} user={user} posts={filteredPosts} size={size} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
                 </div>

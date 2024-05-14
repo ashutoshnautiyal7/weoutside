@@ -2,6 +2,7 @@
 import Card3 from '@/components/card3/Card3';
 import Footer from '@/components/footer/Footer';
 import GetinTouch from '@/components/getintouch/GetinTouch';
+import Navbar from '@/components/navbar/Navbar';
 import Navbar3 from '@/components/navbar3/Navbar3'
 import Image from 'next/image'
 import React from 'react'
@@ -148,7 +149,7 @@ const page = () => {
   return (
     <div>
       <div className="bg-[url('/rndb.png')] bg-cover">
-        <Navbar3/>
+        <Navbar/>
         <div className='md:w-5/6 mx-auto pb-6 md:pb-[120px] md:px-0 px-2'>
           <div className='flex items-center justify-between '>
             <div className='flex flex-col gap-5 md:w-[30%]'>

@@ -1,10 +1,68 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Lnks from '../lnks/Lnks';
+import GetCookie from '../getCookie/GetCookie';
 
-const Navbar = ({user}) => {
+const serv=[
+  {
+    title:"Fundraising",
+    link:"/fundraising"
+  },
+  {
+    title:"Legal Support",
+    link:"/legalsupport"
+  },
+  {
+    title:"Business",
+    link:"/business"
+  },
+];
+const supp=[
+  {
+    title:"My Mama Told Me",
+    link:"/mymamatoldme"
+  },
+  {
+    title:"MELENATED LIFES MATTER",
+    link:"/melenatedlifesmatter"
+  },
+  {
+    title:"Business",
+    link:"/business"
+  },
+];
+const prof=[
+  {
+    title:"Community",
+    link:"/community"
+  },
+  {
+    title:"Profile",
+    link:"/profile"
+  },
+  {
+    title:"Donation",
+    link:"/donation"
+  },
+  {
+    title:"Log out",
+    link:"/logout"
+  },
+]
+const Navbar = () => {
   const [openMenu,setOpenMenu]=useState(false)
+  const [services,setServices]=useState(false);
+  const [support,setSupport]=useState(false);
+  const [profile,setProfile]=useState(false);
+  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
+  const [user,setUser]=useState("");
+
+  useEffect(() => {
+      if(token)
+      setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
+  }, []);
   return (
     <nav className='px-2 py-2 md:py-3 flex items-center justify-between w-full md:w-5/6 mx-auto'>
         <Link href={"/"} className='relative w-[30px] h-[30px] md:w-[70px] md:h-[70px]'>
@@ -12,23 +70,41 @@ const Navbar = ({user}) => {
         </Link>
         <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-9/12'>
           <Link href="/">HOME</Link>
+          <div className=''>
+            <span className='cursor-pointer' onClick={()=>{setServices(!services)}} href="/">SERVICES</span>
+            {services&&<div className='absolute'>
+              <Lnks data={serv}/>
+            </div>}
+          </div>
           <Link href="/ujaama">UJAMA</Link>
-          <Link href="/">ABOUT US</Link>
-          <Link href="/">SUPPORT US</Link>
+          <div>
+            <span onClick={()=>{setSupport(!support)}} className='cursor-pointer'>SUPPORT US</span>
+            {
+              support&&<div className='absolute'>
+              <Lnks data={supp}/>
+            </div>
+            }
+          </div>
           <Link href="/#footer">CONTACT</Link>
           <Link href="/rnb">R&B MUSIC</Link>
         </div>
         {user?
-        <div className=" md:flex hidden items-center justify-start gap-2">
-          <div className="relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-            <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
+        <div onClick={()=>{setProfile(!profile)}}>
+          <div className="cursor-pointer md:flex hidden items-center justify-start gap-2">
+            <div className="relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
+              <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
+            </div>
+            <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
           </div>
-          <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
+            {
+              profile&&<div className='absolute'>
+              <Lnks data={prof}/>
+            </div>
+            }
         </div>
         :
-        <Link href={"/login"} className='md:flex hidden gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl'>
-            <span className='text-red-600'>Login</span>
-            <span>▼</span>
+        <Link href={"/login"} className='bg-white md:flex hidden gap-0.5 px-5 py-1 rounded-md md:gap-1 font-bold text-md md:text-xl'>
+            <span className='text-red-600 text-sm'>Login</span>
         </Link>
         }
         <div>
@@ -43,9 +119,9 @@ const Navbar = ({user}) => {
               <Link href="/ujaama" className='p-3 bg-white flex justify-center items-center'>
                 UJAMA
               </Link>
-              <Link href="/" className='p-3 bg-white flex justify-center items-center'>
+              {/* <Link href="/" className='p-3 bg-white flex justify-center items-center'>
                 ABOUT US
-              </Link>
+              </Link> */}
               <Link href="/" className='p-3 bg-white flex justify-center items-center'>
                 SUPPORT US
               </Link>

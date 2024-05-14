@@ -2,6 +2,7 @@
 
 import Footer from '@/components/footer/Footer'
 import GetinTouch from '@/components/getintouch/GetinTouch'
+import Navbar from '@/components/navbar/Navbar';
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
@@ -9,7 +10,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-        <Navbar2/>
+        <Navbar/>
         <div className='flex flex-col items-center py-5'>
             <div className='text-center text-xl md:text-5xl flex flex-col gap-2 font-semibold leading-4 md:leading-snug'>
                 <h1>WE HELP</h1>
