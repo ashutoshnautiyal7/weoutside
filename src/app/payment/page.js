@@ -1,4 +1,5 @@
 import Footer from '@/components/footer/Footer'
+import Navbar from '@/components/navbar/Navbar'
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
@@ -6,7 +7,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-        <Navbar2/>
+        <Navbar/>
         <div className='flex flex-col w-full md:w-5/6 justify-center mx-auto items-center'>
           <h3 className='text-3xl md:text-5xl font-medium text-center py-2'>Choose Payment</h3>
           <div className='flex flex-wrap gap-3 py-1 md:py-5'>
@@ -92,8 +93,10 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className='px-2 md:px-0 md:w-5/6 mx-auto py-8'>
-          <Footer/>
+        <div className='px-2 md:px-0 py-10 bg-[#190808]'>
+          <div className='md:w-5/6 mx-auto'>
+            <Footer/>
+          </div>
         </div>
     </div>
   )

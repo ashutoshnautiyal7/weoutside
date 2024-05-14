@@ -30,12 +30,14 @@ export default function Home() {
         <Mid/>
         <Ujaama/>
         <Support/>
-        <div className="w-full px-2 md:px-0 md:w-5/6 pt-10 mx-auto">
-          <div className="py-16">
+        <div className="w-full md:px-0  pt-10 ">
+          <div className="py-16 px-2 md:w-5/6 mx-auto">
             <GetinTouch/>
           </div>
-          <div className="py-10">
-            <Footer/>
+          <div className="py-10 bg-black px-2">
+            <div className="md:w-5/6 mx-auto">
+              <Footer/>
+            </div>
           </div>
         </div>
       </div>

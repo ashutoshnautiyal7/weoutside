@@ -68,7 +68,7 @@ const Navbar = () => {
         <Link href={"/"} className='relative w-[30px] h-[30px] md:w-[70px] md:h-[70px]'>
             <Image alt="image" fill={true} src={'/image5.png'}></Image>
         </Link>
-        <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-9/12'>
+        <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-8/12'>
           <Link href="/">HOME</Link>
           <div className=''>
             <span className='cursor-pointer' onClick={()=>{setServices(!services)}} href="/">SERVICES</span>
@@ -91,10 +91,10 @@ const Navbar = () => {
         {user?
         <div onClick={()=>{setProfile(!profile)}}>
           <div className="cursor-pointer md:flex hidden items-center justify-start gap-2">
-            <div className="relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
+            <div className="relative h-[30px] w-[30px] md:h-[40px] md:w-[40px]">
               <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
             </div>
-            <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-red-600'>{user.name}</span>
+            <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-white'>{user.name}</span>
           </div>
             {
               profile&&<div className='absolute'>

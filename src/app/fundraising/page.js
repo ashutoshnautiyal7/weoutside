@@ -12,12 +12,12 @@ const page = () => {
     <div>
         <Navbar/>
         <Fundraise/>
-        <div className="w-full px-2 md:px-0 md:w-5/6 pt-10 mx-auto">
+        <div className="w-full px-2 md:px-0 md:w-5/6 py-10 mx-auto">
           <div className="py-5">
             <GetinTouch/>
           </div>
         </div>
-        <div className="py-10 bg-gradient-to-b from-[black] to-[#BE0000]">
+        <div className="py-10 bg-[#190808]">
             <div className='w-full px-2 md:px-0 md:w-5/6 pt-10 mx-auto'>
                 <Footer/>
             </div>

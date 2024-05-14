@@ -9,10 +9,10 @@ const page = () => {
   return (
     <div>
         <Navbar/>
-        <div className='py-10'>
-            <Image className='w-screen h-full' width={1000} height={1000} src={"/mmtmm.png"}></Image>
+        <div className='py-10 flex justify-center'>
+            <Image className='w-3/6 ' width={1000} height={1000} src={"/mymama.png"}></Image>
         </div>
-        <div className='md:w-5/6 px-2 md:px-0 mx-auto text-center text-xl'>
+        <div className='md:w-4/6 px-2 md:px-0 mx-auto text-center text-sm md:text-xl'>
             <p>Welcome to our video series dedicated to empowering the Black community through informed political engagement. Our mission is to provide informative content on political candidates and issues, equipping viewers with the knowledge and resources they need to make a difference in their communities.</p>
         </div>
         <div className='py-16 md:w-5/6 mx-auto md:px-0 px-2 overflow-hidden'>
@@ -90,12 +90,14 @@ const page = () => {
                 <span className='text-lg md:text-2xl font-medium'>COMMUNITY FORMS</span>
             </button>
         </div>
-        <div className="w-full px-2 md:px-0 md:w-5/6 mx-auto">
-          <div className="py-16">
+        <div className="w-full px-2 md:px-0 ">
+          <div className="py-16 md:w-5/6 mx-auto">
             <GetinTouch/>
           </div>
-          <div className="py-10">
-            <Footer/>
+          <div className="py-10 bg-[#190808]">
+            <div className='md:w-5/6 mx-auto'>
+                <Footer/>
+            </div>
           </div>
         </div>
     </div>

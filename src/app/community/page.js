@@ -68,15 +68,17 @@ const CommunityPage = () => {
   return (
     <div className='w-full'>
         <Navbar/>
-        <div className='w-full px-2 md:px-0 md:w-10/12 mx-auto'>
-            <div className='flex flex-col justify-center items-center my-5'>
+        <div className='w-full md:px-0'>
+            <div className='md:w-10/12 mx-auto px-2 flex flex-col justify-center items-center my-5'>
                 <Topbar onSearch={onSearch} user={user}/>
                 <div className='w-full md:w-[65%]'>
                     <LeftSection loading={loading} token={token} user={user} posts={filteredPosts} size={size} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>
-            <div className='py-5'>
+            <div className='py-10 px-2 bg-[#190808]'>
+              <div className='md:w-10/12 mx-auto '>
                 <Footer/>
+              </div>
             </div>
         </div>
     </div>

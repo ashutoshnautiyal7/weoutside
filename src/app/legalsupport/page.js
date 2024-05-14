@@ -87,8 +87,10 @@ const page = () => {
         <div className='md:w-5/6 mx-auto px-2 md:px-0 py-16'>
             <GetinTouch/>
         </div>
-        <div className="md:w-5/6 pb-16 px-2 md:px-0 mx-auto">
-            <Footer/>
+        <div className=" py-10 px-2 md:px-0 mx-auto bg-[#190808]">
+            <div className='w-5/6 mx-auto'>
+                <Footer/>
+            </div>
         </div>
     </div>
   )

@@ -2,42 +2,50 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Post from "../post/Post";
 import axios from "axios";
+import Link from "next/link";
 
 const services = [
   {
     id: 0,
     icon: "/fund.png",
     title: "Fund Raising",
+    link:"/fundraising"
   },
   {
     id: 1,
     icon: "/legal.png",
     title: "Legal Support",
+    link:"/legalsupport"
   },
   {
     id: 2,
     icon: "/business.png",
     title: "Business Incubator",
+    link:"/fundraising"
   },
   {
     id: 3,
     icon: "/community.png",
     title: "Community Forums",
+    link:"/community"
   },
   {
     id: 4,
     icon: "/sign.png",
     title: "Ujamaa",
+    link:"/ujaama"
   },
   {
     id: 5,
     icon: "/mama.png",
     title: "My MAMA Told me",
+    link:"/mymamatoldme"
   },
   {
     id: 6,
     icon: "/melanated.png",
     title: "Melenated Lifes Matter",
+    link:"/melenatedlifesmatter"
   },
 ];
 
@@ -155,17 +163,18 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3 md:gap-5">
+      <div className="flex flex-wrap gap-3 md:gap-2">
         {services.map((s) => (
-          <button
+          <Link
+            href={s.link}
             key={s.id}
-            className="py-1.5 md:py-2 px-2 md:px-3 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
           >
             <div className="relative h-[25px] w-[25px]">
               <Image alt="image" fill={true} src={s.icon}></Image>
             </div>
             <span className="text-xs">{s.title}</span>
-          </button>
+          </Link>
         ))}
       </div>
       <form
