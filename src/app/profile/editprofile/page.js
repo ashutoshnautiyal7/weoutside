@@ -24,11 +24,12 @@ const EditProfile = () => {
     getProfile();
   }, []);
 
-  const prevImage=user.image;
+  const prevImage=user.image?user.image:"/prof.jpg";
   const [imageSrc, setImageSrc] = useState(null);
   const imageRef = useRef();
   const [uploadData, setUploadData] = useState();
   const [warn, setWarn] = useState(false);
+  const [submit,setSubmit]=useState("Submit");
 
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
@@ -54,6 +55,7 @@ const EditProfile = () => {
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    setSubmit("Submiting...")
     const name=nameref.current.value;
     const goals=goalsref.current.value;
     const address=addressref.current.value;
@@ -100,6 +102,12 @@ const EditProfile = () => {
           body,
           { headers: { Authorization: token } }
         );
+        
+        if(res.data.status===200)
+          {
+            document.cookie=token+"="+JSON.stringify(res.data.updatedData)+"; max-age=86400";
+            location.reload();
+          }
       }
       catch(err)
       {
@@ -175,7 +183,7 @@ const EditProfile = () => {
             </div>
           </div>
           <div className='w-full flex justify-center md:justify-end'>
-            <button type='submit' className='border-[1px] border-[#676767] px-3 py-2'>Submit</button>
+            <button type='submit' className='border-[1px] border-[#676767] px-3 py-2'>{submit}</button>
           </div>
         </div>
       </form>

@@ -73,6 +73,14 @@ const Navbar = () => {
     if (token)
       setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)) : null);
   }, []);
+  
+  const handleLogOut=async()=>{
+    var Cookies = document.cookie.split(';');
+    for (var i = 0; i < Cookies.length; i++) {
+      document.cookie = Cookies[i] + "=; expires="+ new Date(0).toUTCString();
+    }
+    location.reload();
+  }
 
   return (
     <nav className='px-2 py-2 md:py-3 flex items-center justify-between w-full md:w-5/6 mx-auto'>
@@ -102,8 +110,8 @@ const Navbar = () => {
       {user ?
         <div className='relative' onClick={() => { setProfile(!profile) }}>
           <div className="cursor-pointer md:flex hidden items-center justify-start gap-2">
-            <div className="relative h-[30px] w-[30px] md:h-[40px] md:w-[40px]">
-              <Image alt="image" fill={true} src={"/Ellipse_3.png"}></Image>
+            <div className="relative h-[30px] w-[30px] md:h-[40px] md:w-[40px] ">
+              <Image className='rounded-full' alt="image" fill={true} src={user.image?user.image:"/prof.jpg"}></Image>
             </div>
             <span className='gap-0.5 md:gap-1 font-bold text-[13px] md:text-xl text-white'>{user.name}</span>
           </div>
@@ -200,6 +208,8 @@ const Navbar = () => {
                           {item.title}
                         </Link>
                       ))}
+                      {user&&
+                      <h6 className='cursor-pointer' onClick={handleLogOut}>Log out</h6>}
                     </div>
                   )}
                 </div>
