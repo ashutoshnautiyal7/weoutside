@@ -2,6 +2,7 @@
 import Footer from '@/components/footer/Footer'
 import GetCookie from '@/components/getCookie/GetCookie'
 import Navbar from '@/components/navbar/Navbar'
+import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -14,11 +15,26 @@ const Profile = ({children}) => {
   const router=useRouter();
 
   useEffect(() => {
-      if(token)
-      setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
-      else
+      if(!token)
       router.push("/")
   }, []);
+
+  useEffect(() => {
+  
+    const getProfile = async () => {
+      try {
+        const res = await axios.get(
+          "https://we-out-backend.vercel.app/api/profile",
+          { headers: { Authorization: token } }
+        );
+        setUser(res.data.user)
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    getProfile();
+  }, []);
+  console.log(user)
   return (
     <div>
       <Navbar/>
