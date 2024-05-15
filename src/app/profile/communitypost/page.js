@@ -4,7 +4,7 @@ import Post from '@/components/post/Post';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const CommunityPage = () => {
   const [posts, setPosts] = useState([]);
   const [user,setUser]=useState([]);
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
@@ -29,7 +29,7 @@ const page = () => {
     };
     getPosts();
   }, []);
-console.log(posts)
+  
   return (
     <div>
       <div className='p-5'>
@@ -46,4 +46,4 @@ console.log(posts)
   )
 }
 
-export default page
+export default CommunityPage;
