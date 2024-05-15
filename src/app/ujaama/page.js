@@ -123,11 +123,11 @@ const page = () => {
               </button>
           </div>
         </div>
-        <div className="w-full px-2 md:px-0 pt-10">
-          <div className="py-16 md:w-5/6 mx-auto">
+        <div className="w-full md:px-0 pt-10">
+          <div className=" px-2 py-16 md:w-5/6 mx-auto">
             <GetinTouch/>
           </div>
-          <div className="py-10 bg-[#190808]">
+          <div className="px-2 py-10 bg-[#190808]">
             <div className='md:w-5/6 mx-auto'>
               <Footer/>
             </div>
