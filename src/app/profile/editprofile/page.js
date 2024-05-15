@@ -4,7 +4,7 @@ import axios from 'axios';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const EditProfile = () => {
   const [user,setUser]=useState("");
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
 
@@ -122,4 +122,4 @@ console.log(user)
   )
 }
 
-export default page
+export default EditProfile
