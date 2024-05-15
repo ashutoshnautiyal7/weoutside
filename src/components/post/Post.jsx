@@ -5,7 +5,7 @@ import { format } from "timeago.js";
 import axios from "axios";
 import Comment from "../comment/Comment";
 
-const Post = ({ post, user, token }) => {
+const Post = ({ post, user, token,prof }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
@@ -182,7 +182,7 @@ const Post = ({ post, user, token }) => {
   };
 
   return (
-    <div className="bg-white p-4 md:p-6 rounded-3xl flex text-black">
+    <div className={`bg-white p-4 md:p-6  flex text-black ${prof!=="prof"&&"rounded-3xl"}`}>
       <div className="w-full md:w-9/12">
         <div className="flex items-center gap-2 my-2">
           <div className="relative rounded-full h-[60px] w-[60px]">
@@ -190,11 +190,11 @@ const Post = ({ post, user, token }) => {
               alt="image"
               className="rounded-full object-cover"
               fill={true}
-              src={"/usericon.png"}
+              src={prof==="prof"?user.image:"/prof.jpg"}
             ></Image>
           </div>
           <div className="flex flex-col">
-            <h2 className="text-sm font-semibold">{post?.user}</h2>
+            <h2 className="text-sm font-semibold">{prof==="prof"?user.name:post?.user}</h2>
             <h3 className="text-xs">{format(post?.createdAt)}</h3>
           </div>
         </div>

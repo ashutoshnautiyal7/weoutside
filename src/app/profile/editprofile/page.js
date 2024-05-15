@@ -117,7 +117,7 @@ const EditProfile = () => {
     }
   
   return (
-    <div>
+    <div className='p-2 md:p-5'>
       <div className='border-b-[1px] border-[#676767] pb-2'>
         <span className='text-sm font-semibold'>Edit Profile</span>
       </div>
