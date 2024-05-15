@@ -55,10 +55,10 @@ const prof = [
     title: "Donation",
     link: "/donation"
   },
-  {
-    title: "Log out",
-    link: "/logout"
-  },
+  // {
+  //   title: "Log out",
+  //   link: "/logout"
+  // },
 ]
 
 const Navbar = () => {
@@ -109,7 +109,7 @@ const Navbar = () => {
           </div>
           {
             profile && <div className='absolute'>
-              <Lnks data={prof} />
+              <Lnks user={"user"} data={prof} />
             </div>
           }
         </div>

@@ -4,17 +4,20 @@ import GetCookie from '@/components/getCookie/GetCookie'
 import Navbar from '@/components/navbar/Navbar'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const Profile = ({children}) => {
   const pathname=usePathname().substring(9)
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
   const [user,setUser]=useState("");
+  const router=useRouter();
 
   useEffect(() => {
       if(token)
       setUser(typeof window !== "undefined" ? JSON.parse(GetCookie(token)):null);
+      else
+      router.push("/")
   }, []);
   return (
     <div>
