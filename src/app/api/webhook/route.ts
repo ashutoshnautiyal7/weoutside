@@ -13,8 +13,7 @@ export const POST = async (req: NextRequest) => {
       console.log('req.headers', req.headers);
   
       const sig: any = req.headers.get('stripe-signature');
-    const resp = await req.text();
-    const rawBody = JSON.parse(resp);
+    const rawBody = await req.text();
   
       let event;
   
