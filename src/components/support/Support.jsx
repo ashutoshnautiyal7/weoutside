@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const Support = () => {
@@ -9,8 +10,10 @@ const Support = () => {
         <div className='relative h-[200px] w-[290px] md:h-[500px] md:w-[700px] py-10'>
           <Image alt="image" className='' fill={true} src={"/financial-icon.png"}></Image>
         </div>
-        <button className='flex gap-3 p-2 md:p-4 rounded-md items-center justify-center text-xl md:text-4xl font-bold bg-white shadow-2xl shadow-black text-[#AC1010]'>
-        <Image alt="image" className='w-[20px] h-[15px] md:w-[40px] md:h-[30px]' width={40} height={40} src={"/Vector.png"}></Image><span>SUPPORT US</span></button>
+        <Link href={"/payment"}>
+          <button className='flex gap-3 p-2 md:p-4 rounded-md items-center justify-center text-xl md:text-4xl font-bold bg-white shadow-2xl shadow-black text-[#AC1010]'>
+          <Image alt="image" className='w-[20px] h-[15px] md:w-[40px] md:h-[30px]' width={40} height={40} src={"/Vector.png"}></Image><span>SUPPORT US</span></button>
+        </Link>
     </div>
   )
 }

@@ -42,9 +42,9 @@ const page = () => {
                         <Image className='rounded-3xl' fill={true} src={"/commune.png"}></Image>
                     </div>
                 </div>
-                <div className='md:w-[55%] flex flex-col gap-5 md:gap-10 items-center md:items-end'>
+                <div className='md:w-[55%] flex flex-col gap-5 md:gap-10 items-center md:items-start'>
                     <h2 className='text-2xl md:text-5xl font-semibold'>Community Engagement</h2>
-                    <p className=' text-center md:text-right text-sm w-2/3 leading-relaxed'>We foster community dialogue, education, and empowerment through workshops, forums, and cultural events.</p>
+                    <p className=' text-center md:text-left text-sm w-2/3 leading-relaxed'>We foster community dialogue, education, and empowerment through workshops, forums, and cultural events.</p>
                     <div>
                         <button className='px-8 py-2 bg-white text-black rounded-md flex justify-center items-center text-xl font-semibold'>MORE INFO</button>
                     </div>

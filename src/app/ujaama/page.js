@@ -3,6 +3,7 @@ import GetinTouch from '@/components/getintouch/GetinTouch'
 import Navbar from '@/components/navbar/Navbar'
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -18,10 +19,12 @@ const page = () => {
             <div className='flex flex-col text-xl gap-8 md:w-[55%]'>
               <h4 className='md:w-5/6 text-center md:text-left'>At We outside, we take pride in our vibrant and diverse community. Rooted in the principles of unity, collaboration, and self-determination, we actively support and promote Ujaama, a concept deeply rooted in African culture that emphasizes cooperative economics and community building.</h4>
               <div className='flex justify-center md:justify-start'>
-                <button className='bg-[#D93737] w-1/2 py-3 flex gap-2 justify-center items-center rounded-xl'>
+              <Link href={"/community"} className='w-1/2'>
+                <button className='bg-[#D93737] w-full py-3 flex gap-2 justify-center items-center rounded-xl'>
                   LETS JOIN
                   <Image className='h-[20px] w-[30px]' width={1000} height={1000} src={"/rightarrow.png"}></Image>
                 </button>
+              </Link>
               </div>
             </div>
             <div className='flex justify-center md:w-[40%]'>
@@ -43,8 +46,8 @@ const page = () => {
           </div>
           <div className='md:w-5/6 mx-auto flex gap-4 md:gap-0 flex-col-reverse md:flex-row justify-between'>
             <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[50%]'>
-              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Building Social Infrastructure</h2>
-              <h4 className='w-5/6 text-base text-center md:text-right'>Strong communities are built on a foundation of social cohesion and mutual support. Through social gatherings, community events, and networking opportunities, we cultivate meaningful connections and relationships that enrich the fabric of our community.</h4>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-left leading-tight'>Building Social Infrastructure</h2>
+              <h4 className='w-5/6 text-base text-center md:text-left'>Strong communities are built on a foundation of social cohesion and mutual support. Through social gatherings, community events, and networking opportunities, we cultivate meaningful connections and relationships that enrich the fabric of our community.</h4>
             </div>
             <div className='flex justify-center md:justify-start md:w-[40%]'>
               <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>

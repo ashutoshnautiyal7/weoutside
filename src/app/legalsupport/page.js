@@ -4,6 +4,7 @@ import GetinTouch from '@/components/getintouch/GetinTouch';
 import Navbar from '@/components/navbar/Navbar';
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 const data=[
@@ -36,12 +37,14 @@ const page = () => {
                 <div className='md:w-8/12 h-full'>
                     <div className='flex flex-col gap-2 justify-between items-center md:items-start h-5/6'>
                         <h1 className='text-lg md:text-4xl font-semibold md:leading-snug text-center md:text-left'>WE EMPOWERING LEGAL SUPPORT FOR OUR COMMUNITY <span className='text-red-600'>!</span></h1>
-                        <button className='w-7/12 bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl rounded-xl font-medium p-2'>
-                            LETS CONNECT
-                            <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
-                                <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
-                            </div>
-                        </button>
+                        <Link className='w-7/12' href={"/community"}>
+                            <button className='w-full bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl rounded-xl font-medium p-2'>
+                                LETS CONNECT
+                                <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
+                                    <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
+                                </div>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

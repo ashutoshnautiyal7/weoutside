@@ -5,6 +5,7 @@ import GetinTouch from '@/components/getintouch/GetinTouch'
 import Navbar from '@/components/navbar/Navbar';
 import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 const page = () => {
@@ -22,12 +23,14 @@ const page = () => {
                     <Image alt="image" fill={true} src={"/busi.png"}></Image>
                 </div>
             </div>
-            <button className='flex text-lg md:text-3xl tracking-tight font-semibold justify-center items-center bg-[#D32626] px-3 py-2 md:px-5 md:py-4 rounded-2xl gap-2'>
-                LETS CONNECT
-                <div className='relative w-[20px] h-[15px] md:w-[30px] md:h-[20px]'>
-                    <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
-                </div>
-            </button>
+            <Link href={"/community"}>
+                <button className='flex text-lg md:text-3xl tracking-tight font-semibold justify-center items-center bg-[#D32626] px-3 py-2 md:px-5 md:py-4 rounded-2xl gap-2'>
+                    LETS CONNECT
+                    <div className='relative w-[20px] h-[15px] md:w-[30px] md:h-[20px]'>
+                        <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
+                    </div>
+                </button>
+            </Link>
         </div>
         <div className='flex flex-col gap-8 py-8 md:py-16 px-2 md:px-0 md:w-4/6 mx-auto'>
             <div className='flex items-center justify-between'>

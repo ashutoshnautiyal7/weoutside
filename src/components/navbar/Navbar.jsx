@@ -146,7 +146,7 @@ const Navbar = () => {
         <div
           className={`${
             openMenu ? 'translate-x-0' : '-translate-x-full'
-          } transform z-10 fixed top-0 left-0 w-3/4 h-full bg-gray-500 p-4 transition-transform duration-300 ease-in-out lg:static lg:w-auto lg:h-auto lg:bg-transparent lg:translate-x-0 lg:flex lg:items-center`}
+          } transform z-10 fixed top-0 left-0 w-3/4 h-full bg-black p-4 transition-transform duration-300 ease-in-out lg:static lg:w-auto lg:h-auto lg:bg-transparent lg:translate-x-0 lg:flex lg:items-center`}
         >
           <ul className="text-white md:hidden lg:justify-between lg:space-x-6 space-y-4 lg:space-y-0">
             <li>

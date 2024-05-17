@@ -5,6 +5,7 @@ import GetinTouch from '@/components/getintouch/GetinTouch';
 import Navbar from '@/components/navbar/Navbar';
 import Navbar3 from '@/components/navbar3/Navbar3'
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
@@ -158,7 +159,9 @@ const page = () => {
               </div>
               <p className='text-sm md:text-base leading-relaxed'>Welcome to our platform dedicated to the revival of R&B music and its profound impact on cultural identity and community cohesion. Join us on a journey to rediscover the soulful rhythms and heartfelt lyrics that once served as the heartbeat of our neighborhoods.</p>
               <div className='w-1/3 md:w-1/2'>
-                <button className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold'>SUPPORT US</button>
+                <Link href={"/payment"}>
+                  <button className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold'>SUPPORT US</button>
+                </Link>
               </div>
             </div>
             <div className='md:block hidden w-[45%]'>
