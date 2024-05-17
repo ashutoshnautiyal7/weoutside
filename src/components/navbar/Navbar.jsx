@@ -53,7 +53,7 @@ const prof = [
   {
     id: 2,
     title: "Donation",
-    link: "/donation"
+    link: "/payment"
   },
   // {
   //   title: "Log out",
