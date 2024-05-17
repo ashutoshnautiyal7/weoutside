@@ -32,7 +32,7 @@ const LoginPage = () => {
       {
         document.cookie="token=Bearer "+res.data.token+"; max-age=86400";
         document.cookie="Bearer "+res.data.token+"="+JSON.stringify(res.data.payloadData)+"; max-age=86400";
-        router.push("/")
+        router.push("/community")
       }
     } catch (err) {
       setInvalid(true)
