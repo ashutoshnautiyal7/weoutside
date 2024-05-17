@@ -1,5 +1,5 @@
 "use client"
-import GetCookie from '../../../../components/getCookie/GetCookie';
+import GetCookie from '../../../components/getCookie/GetCookie';
 import axios from 'axios';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'

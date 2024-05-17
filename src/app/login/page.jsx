@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import GetCookie from "../../../components/getCookie/GetCookie";
+import GetCookie from "../../components/getCookie/GetCookie";
 
 const LoginPage = () => {
   const router = useRouter();

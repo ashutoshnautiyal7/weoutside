@@ -1,6 +1,6 @@
-import Footer from '../../../components/footer/Footer'
-import Navbar from '../../../components/navbar/Navbar'
-import Navbar2 from '../../../components/navbar2/Navbar2'
+import Footer from '../../components/footer/Footer'
+import Navbar from '../../components/navbar/Navbar'
+import Navbar2 from '../../components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
 

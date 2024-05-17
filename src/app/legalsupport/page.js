@@ -1,8 +1,8 @@
-import Card4 from '../../../components/card4/Card4';
-import Footer from '../../../components/footer/Footer';
-import GetinTouch from '../../../components/getintouch/GetinTouch';
-import Navbar from '../../../components/navbar/Navbar';
-import Navbar2 from '../../../components/navbar2/Navbar2'
+import Card4 from '../../components/card4/Card4';
+import Footer from '../../components/footer/Footer';
+import GetinTouch from '../../components/getintouch/GetinTouch';
+import Navbar from '../../components/navbar/Navbar';
+import Navbar2 from '../../components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
 
