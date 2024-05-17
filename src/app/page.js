@@ -9,6 +9,7 @@ import Footer from "../components/footer/Footer";
 import GetCookie from "../components/getCookie/GetCookie";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
