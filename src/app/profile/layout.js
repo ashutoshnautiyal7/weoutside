@@ -55,7 +55,7 @@ const Profile = ({children}) => {
               <Link className={`${pathname==="donations"&&"font-semibold"}`} href={"donations"}>Donations</Link>
               <Link className={`${pathname==="communitypost"&&"font-semibold"}`} href={"communitypost"}>Community Post</Link>
             </div>
-            <div className='w-[75%] md:w-[80%] p-2 md:p-5'>
+            <div className='w-[75%] md:w-[80%]'>
               {children}
             </div>
           </div>

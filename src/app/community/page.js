@@ -51,7 +51,7 @@ const CommunityPage = () => {
     };
     getPosts();
   }, [currentPage]);
-
+  
   const onSearch = (query) => {
     if (query.trim() === "") {
         setFilteredPosts(posts);
