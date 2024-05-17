@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 // // import getRawBody from 'raw-body';
+import { headers } from "next/headers"
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: '2024-04-10'
@@ -12,13 +14,14 @@ export const POST = async (req: NextRequest) => {
     try {
       console.log('req.headers', req.headers);
   
-      const sig: any = req.headers.get('stripe-signature');
+      const signature = headers().get("Stripe-Signature") as string
+
     const rawBody = await req.text();
   
       let event;
   
       try {
-        event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
+        event = stripe.webhooks.constructEvent(rawBody, signature, endpointSecret);
       } catch (err: any) {
         return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
       }
