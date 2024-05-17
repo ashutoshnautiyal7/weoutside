@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import GetCookie from "@/components/getCookie/GetCookie";
+import GetCookie from "../../../components/getCookie/GetCookie";
 
 const LoginPage = () => {
   const router = useRouter();
-  const[invalid,setInvalid]=useState(false);
- 
-  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
-   useEffect(() => {
+  const [invalid, setInvalid] = useState(false);
+
+  const token = typeof window !== "undefined" ? GetCookie("token") : null;
+  useEffect(() => {
     if (token) {
       router.push("/");
     }
@@ -21,21 +21,27 @@ const LoginPage = () => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    const user={
+    const user = {
       email,
-      password
-    }
+      password,
+    };
     try {
-      const res = await axios.post("https://we-out-backend.vercel.app/api/auth/login",user
+      const res = await axios.post(
+        "https://we-out-backend.vercel.app/api/auth/login",
+        user
       );
-      if(res.status===200)
-      {
-        document.cookie="token=Bearer "+res.data.token+"; max-age=86400";
-        document.cookie="Bearer "+res.data.token+"="+JSON.stringify(res.data.payloadData)+"; max-age=86400";
-        router.push("/")
+      if (res.status === 200) {
+        document.cookie = "token=Bearer " + res.data.token + "; max-age=86400";
+        document.cookie =
+          "Bearer " +
+          res.data.token +
+          "=" +
+          JSON.stringify(res.data.payloadData) +
+          "; max-age=86400";
+        router.push("/");
       }
     } catch (err) {
-      setInvalid(true)
+      setInvalid(true);
     }
   };
 
@@ -62,10 +68,9 @@ const LoginPage = () => {
             placeholder="Password *"
             required={true}
           ></input>
-          {
-            invalid&&
+          {invalid && (
             <p className="text-red-600 text-sm">Invalid Credentials*</p>
-          }
+          )}
           <button
             type="submit"
             className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-lg md:text-xl"

@@ -1,9 +1,9 @@
 "use client"
-import Card3 from '@/components/card3/Card3';
-import Footer from '@/components/footer/Footer';
-import GetinTouch from '@/components/getintouch/GetinTouch';
-import Navbar from '@/components/navbar/Navbar';
-import Navbar3 from '@/components/navbar3/Navbar3'
+import Card3 from '../../../components/card3/Card3';
+import Footer from '../../../components/footer/Footer';
+import GetinTouch from '../../../components/getintouch/GetinTouch';
+import Navbar from '../../../components/navbar/Navbar';
+import Navbar3 from '../../../components/navbar3/Navbar3'
 import Image from 'next/image'
 import React from 'react'
 import Carousel from 'react-multi-carousel';

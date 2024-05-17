@@ -1,12 +1,12 @@
 "use client"
-import GetinTouch from "@/components/getintouch/GetinTouch";
-import Navbar from "../components/navbar/Navbar";
-import Joinus from "@/components/joinus/Joinus";
-import Mid from "@/components/mid/Mid";
-import Support from "@/components/support/Support";
-import Ujaama from "@/components/ujaama/Ujaama";
-import Footer from "@/components/footer/Footer";
-import GetCookie from "@/components/getCookie/GetCookie";
+import GetinTouch from "../../components/getintouch/GetinTouch";
+import Navbar from "../../components/navbar/Navbar";
+import Joinus from "../../components/joinus/Joinus";
+import Mid from "../../components/mid/Mid";
+import Support from "../../components/support/Support";
+import Ujaama from "../../components/ujaama/Ujaama";
+import Footer from "../../components/footer/Footer";
+import GetCookie from "../../components/getCookie/GetCookie";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 

@@ -4,14 +4,14 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import GetCookie from "@/components/getCookie/GetCookie";
+import GetCookie from "../../../components/getCookie/GetCookie";
 
 const SignUpPage = () => {
   const router = useRouter();
-  const [exists,setExists]=useState(false)
+  const [exists, setExists] = useState(false);
 
-  const token=typeof window !== "undefined" ? GetCookie("token")  : null;
-   useEffect(() => {
+  const token = typeof window !== "undefined" ? GetCookie("token") : null;
+  useEffect(() => {
     if (token) {
       router.push("/");
     }
@@ -23,30 +23,40 @@ const SignUpPage = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const goals = e.target[3].value;
-    const user={
+    const user = {
       name,
       email,
       password,
-      goals
-    }
+      goals,
+    };
     try {
-      const res = await axios.post("https://we-out-backend.vercel.app/api/auth/register",user
+      const res = await axios.post(
+        "https://we-out-backend.vercel.app/api/auth/register",
+        user
       );
-      if(res.status === 200)
-      {
-        const userlogin={
-          email,password
-        }
-        const reslogin=await axios.post("https://we-out-backend.vercel.app/api/auth/login",userlogin);
-        if(reslogin.status==200)
-        {
-          document.cookie="token=Bearer "+reslogin.data.token+"; max-age=86400";
-          document.cookie="Bearer "+reslogin.data.token+"="+JSON.stringify(reslogin.data.payloadData)+"; max-age=86400";
-          router.push("/")
+      if (res.status === 200) {
+        const userlogin = {
+          email,
+          password,
+        };
+        const reslogin = await axios.post(
+          "https://we-out-backend.vercel.app/api/auth/login",
+          userlogin
+        );
+        if (reslogin.status == 200) {
+          document.cookie =
+            "token=Bearer " + reslogin.data.token + "; max-age=86400";
+          document.cookie =
+            "Bearer " +
+            reslogin.data.token +
+            "=" +
+            JSON.stringify(reslogin.data.payloadData) +
+            "; max-age=86400";
+          router.push("/");
         }
       }
     } catch (err) {
-      setExists(true)
+      setExists(true);
     }
   };
   return (
@@ -89,16 +99,18 @@ const SignUpPage = () => {
               required={true}
             ></input>
           </div>
-          {
-            exists&&
+          {exists && (
             <p className="text-sm text-red-600">Email already exists*</p>
-          }
+          )}
           <button className="bg-[#F41717] text-white py-2 px-10 rounded-md font-semibold text-lg md:text-xl">
             Continue
           </button>
         </form>
         <div className="flex flex-col items-center text-lg md:text-xl text-black py-3">
-          <Link href={"/login"} className="font-medium text-lg md:text-2xl text-white">
+          <Link
+            href={"/login"}
+            className="font-medium text-lg md:text-2xl text-white"
+          >
             Login *
           </Link>
         </div>
