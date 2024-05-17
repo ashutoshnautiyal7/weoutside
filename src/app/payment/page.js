@@ -48,7 +48,7 @@ const page = () => {
             <div className='text-black'>
               <h4 className='text-lg md:text-2xl text-white'>Email*</h4>
               <input type='email' className='bg-white w-full h-10 md:h-12 rounded-md outline-none px-2 text-xl'></input>
-              <p className='text-xs text-white pt-1'>Your receipt will be emailed here.</p>
+              <p className='text-xs text-white p  t-1'>Your receipt will be emailed here.</p>
             </div>
             <div className='text-black'>
               <h4 className='text-lg md:text-2xl text-white'>Contact Number*</h4>
