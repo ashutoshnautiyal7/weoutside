@@ -42,6 +42,8 @@ const webhookHandler = async (req: NextRequest) => {
 		const subscription = event.data.object as Stripe.Subscription;
 		const subscriptionId = subscription.id;
 
+
+
 		// switch (event.type) {
 		// 	case "customer.subscription.created":
 		// 		await prisma.user.update({
@@ -71,7 +73,7 @@ const webhookHandler = async (req: NextRequest) => {
 		// }
 
 		// Return a response to acknowledge receipt of the event.
-		return NextResponse.json({ received: true });
+		return NextResponse.json({subscription,  received: true });
 	} catch {
 		return NextResponse.json(
 			{
