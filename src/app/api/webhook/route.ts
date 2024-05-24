@@ -42,6 +42,27 @@ const webhookHandler = async (req: NextRequest) => {
 		const subscription = event.data.object as Stripe.Subscription;
 		const subscriptionId = subscription.id;
 
+    let news; 
+
+
+    if (event.type === 'customer.subscription.created') {
+      const subscription = event.data.object as Stripe.Subscription;
+    
+      // Get the customer ID from the subscription
+      const customerId = subscription.customer as string;
+    
+      // Retrieve the customer object from Stripe
+      const customer = await stripe.customers.retrieve(customerId);
+    
+      // Extract the billing details from the customer object
+      const billingDetails = customer;
+
+      news = billingDetails; 
+    
+      // Do something with the billing details
+      console.log('Billing details:', billingDetails);
+    }
+
 
 
 		// switch (event.type) {
@@ -73,7 +94,7 @@ const webhookHandler = async (req: NextRequest) => {
 		// }
 
 		// Return a response to acknowledge receipt of the event.
-		return NextResponse.json({subscription,  received: true });
+		return NextResponse.json({news,  received: true });
 	} catch {
 		return NextResponse.json(
 			{
