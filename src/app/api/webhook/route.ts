@@ -1,70 +1,87 @@
-import Stripe from "stripe"
+import Stripe from "stripe";
+import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers"
-import { NextResponse } from "next/server"
 
-import { stripe } from "../../../../lib/stripe"
-export async function POST(req: Request) {
-  const body = await req.text()
-  const signature = headers().get("Stripe-Signature") as string
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+	// https://github.com/stripe/stripe-node#configuration
+	apiVersion: "2022-11-15",
+});
 
-  let event: Stripe.Event
+const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!;
 
-  try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    )
-  } catch (error: any) {
-    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
-  }
+const webhookHandler = async (req: NextRequest) => {
+	try {
+		const buf = await req.text();
+		const sig = headers().get("Stripe-Signature") as string
 
-  const session = event.data.object as Stripe.Checkout.Session;
-  const address = session?.customer_details?.address;
+		let event: Stripe.Event;
 
-  const addressComponents = [
-    address?.line1,
-    address?.line2,
-    address?.city,
-    address?.state,
-    address?.postal_code,
-    address?.country
-  ];
+		try {
+			event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+		} catch (err) {
+			const errorMessage =
+				err instanceof Error ? err.message : "Unknown error";
+			// On error, log and return the error message.
+			if (err! instanceof Error) console.log(err);
+			console.log(`❌ Error message: ${errorMessage}`);
 
-  const addressString = addressComponents.filter((c) => c !== null).join(', ');
+			return NextResponse.json(
+				{
+					error: {
+						message: `Webhook Error: ${errorMessage}`,
+					},
+				},
+				{ status: 400 }
+			);
+		}
 
+		// Successfully constructed event.
+		console.log("✅ Success:", event.id);
 
-  if (event.type === "checkout.session.completed") {
-    // const order = await prisma.order.update({
-    //   where: {
-    //     id: session?.metadata?.orderId,
-    //   },
-    //   data: {
-    //     isPaid: true,
-    //     address: addressString,
-    //     phone: session?.customer_details?.phone || '',
-    //   },
-    //   include: {
-    //     orderItems: true,
-    //   }
-    // });
+		// getting to the data we want from the event
+		const subscription = event.data.object as Stripe.Subscription;
+		const subscriptionId = subscription.id;
 
-    // const productIds = order.orderItems.map((orderItem) => orderItem.productId);
+		// switch (event.type) {
+		// 	case "customer.subscription.created":
+		// 		await prisma.user.update({
+		// 			where: {
+		// 				stripeCustomerId: subscription.customer as string,
+		// 			},
+		// 			data: {
+		// 				isActive: true,
+		// 				subscriptionID: subscriptionId,
+		// 			},
+		// 		});
+		// 		break;
+		// 	case "customer.subscription.deleted":
+		// 		await prisma.user.update({
+		// 			where: {
+		// 				stripeCustomerId: subscription.customer as string,
+		// 			},
+		// 			data: {
+		// 				isActive: false,
+		// 			},
+		// 		});
+		// 		break;
 
-    // await prisma.product.updateMany({
-    //   where: {
-    //     id: {
-    //       in: [...productIds],
-    //     },
-    //   },
-    //   data: {
-    //     isArchived: true
-    //   }
-    // });
+		// 	default:
+		// 		console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
+		// 		break;
+		// }
 
-    console.log("the api is running successfully");
-    
-  }
-
-  return new NextResponse(null, { status: 200 });
+		// Return a response to acknowledge receipt of the event.
+		return NextResponse.json({ received: true });
+	} catch {
+		return NextResponse.json(
+			{
+				error: {
+					message: `Method Not Allowed`,
+				},
+			},
+			{ status: 405 }
+		).headers.set("Allow", "POST");
+	}
 };
+
+export { webhookHandler as POST };
