@@ -1,9 +1,11 @@
+import Link from 'next/link'
 import Footer from '../../components/footer/Footer'
 import GetinTouch from '../../components/getintouch/GetinTouch'
 import Navbar from '../../components/navbar/Navbar'
 import Navbar2 from '../../components/navbar2/Navbar2'
 import Image from 'next/image'
 import React from 'react'
+
 
 const page = () => {
   return (
@@ -18,10 +20,10 @@ const page = () => {
             <div className='flex flex-col text-xl gap-8 md:w-[55%]'>
               <h4 className='md:w-5/6 text-center md:text-left'>At We outside, we take pride in our vibrant and diverse community. Rooted in the principles of unity, collaboration, and self-determination, we actively support and promote Ujaama, a concept deeply rooted in African culture that emphasizes cooperative economics and community building.</h4>
               <div className='flex justify-center md:justify-start'>
-                <button className='bg-[#D93737] w-1/2 py-3 flex gap-2 justify-center items-center rounded-xl'>
+                <Link href={"https://buy.stripe.com/test_fZe9BF78V0kFbRe4gg"} className='bg-[#D93737] w-1/2 py-3 flex gap-2 justify-center items-center rounded-xl'>
                   LETS JOIN
                   <Image className='h-[20px] w-[30px]' width={1000} height={1000} src={"/rightarrow.png"}></Image>
-                </button>
+                </Link>
               </div>
             </div>
             <div className='flex justify-center md:w-[40%]'>
@@ -62,7 +64,7 @@ const page = () => {
               <div className='flex flex-col gap-3 items-center'>
                 <h2 className='text-4xl font-semibold'>Gold</h2>
                 <h2 className='text-4xl font-semibold'>$12/Month</h2>
-                <button className='bg-gradient-to-b from-[#8F1313] to-[#FF0101] px-8 py-1 text-xl font-semibold rounded-full text-white'>SUBSCRIBE NOW</button>
+                <Link href={"https://buy.stripe.com/test_fZe9BF78V0kFbRe4gg"} className='bg-gradient-to-b from-[#8F1313] to-[#FF0101] px-8 py-1 text-xl font-semibold rounded-full text-white'>SUBSCRIBE NOW</Link>
               </div>
               <div className='flex flex-col gap-4'>
                 <div className='flex gap-2 items-center'>
@@ -89,7 +91,7 @@ const page = () => {
               <div className='flex flex-col gap-3 items-center'>
                 <h2 className='text-4xl font-semibold'>Platinum</h2>
                 <h2 className='text-4xl font-semibold'>$18/Month</h2>
-                <button className='bg-gradient-to-b from-[#FFC642] to-[#FF7B01] px-8 py-1 text-xl font-semibold rounded-full text-white'>SUBSCRIBE NOW</button>
+                <Link href={"https://buy.stripe.com/test_bIYeVZbpb1oJ9J65kl"} className='bg-gradient-to-b from-[#FFC642] to-[#FF7B01] px-8 py-1 text-xl font-semibold rounded-full text-white'>SUBSCRIBE NOW</Link>
               </div>
               <div className='flex flex-col gap-4'>
                 <div className='flex gap-2 items-center'>
