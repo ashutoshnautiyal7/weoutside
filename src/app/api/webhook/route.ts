@@ -38,7 +38,7 @@ const webhookHandler = async (req: NextRequest) => {
 		// Successfully constructed event.
 		console.log("✅ Success:", event.id);
 
-
+		let updateProfileResponse;
 
 		switch (event.type) {
 			case "customer.subscription.created":
@@ -61,7 +61,7 @@ const webhookHandler = async (req: NextRequest) => {
 					}
 
 				// Make a request to the Express server's /api/update-profile endpoint
-				const updateProfileResponse = await fetch(`https://we-out-backend.vercel.app/api/gen-update`, {
+				 updateProfileResponse = await fetch(`https://we-out-backend.vercel.app/api/gen-update`, {
 					method: 'PATCH',
 					headers: {
 					'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const webhookHandler = async (req: NextRequest) => {
 
    
 
-		return NextResponse.json({  received: true });
+		return NextResponse.json({updateProfileResponse,   received: true });
 	} catch {
 		return NextResponse.json(
 			{
