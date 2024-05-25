@@ -7,9 +7,9 @@ const Joinus = () => {
     <div className="flex flex-col-reverse md:flex-row flex-wrap justify-between w-full md:w-5/6 mx-auto">
       <div className="flex flex-col justify-center w-full md:w-[40%]">
         <div className="flex flex-col md:items-start items-center justify-center px-3 py-2">
-          <Link href={"https://buy.stripe.com/test_fZe9BF78V0kFbRe4gg"}>
+          {/* <Link href={"https://buy.stripe.com/test_fZe9BF78V0kFbRe4gg"}>
             purchase ujama gold membership
-          </Link>
+          </Link> */}
 
           <h2 className="text-4xl md:text-5xl  font-semibold text-center md:text-left leading-snug">
             EMPOWERING THE MELANATED COMMMUNITY
