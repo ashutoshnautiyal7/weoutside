@@ -62,7 +62,7 @@ const webhookHandler = async (req: NextRequest) => {
 
 				// Make a request to the Express server's /api/update-profile endpoint
 				 updateProfileResponse = await fetch(`https://we-out-backend.vercel.app/api/gen-update`, {
-					method: 'PATCH',
+					method: 'PUT',
 					headers: {
 					'Content-Type': 'application/json',
 					},
