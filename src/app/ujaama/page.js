@@ -1,7 +1,6 @@
 import Footer from '@/components/footer/Footer'
 import GetinTouch from '@/components/getintouch/GetinTouch'
 import Navbar from '@/components/navbar/Navbar'
-import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -11,8 +10,9 @@ const page = () => {
     <div>
         <Navbar/>
         <div className='flex flex-col gap-1 text-center'>
-          <h1 className='text-5xl md:text-7xl font-bold'>UJAAMA</h1>
-          <h3 className='text-lg md:text-3xl'>Cooperative Economics</h3>
+          <h4 className='text-lg md:text-2xl'>Investing with Purpose</h4>
+          <h1 className='text-5xl md:text-7xl font-bold'>UJAMAA</h1>
+          <h3 className='text-lg md:text-2xl pt-5'>Real Estate Model</h3>
         </div>
         <div className='flex flex-col gap-24 py-10 px-2 md:px-0'>
           <div className='md:w-5/6 mx-auto flex flex-col-reverse gap-4 md:gap-0 md:flex-row items-center justify-between'>
@@ -36,11 +36,11 @@ const page = () => {
           <div className='md:w-5/6 mx-auto gap-4 md:gap-0 flex flex-col-reverse md:flex-row-reverse justify-between'>
             <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[40%]'>
               <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Educational Initiatives</h2>
-              <h4 className='w-5/6 text-base text-center md:text-right'>Education is key to empowering individuals and fostering economic independence. Through workshops, seminars, and mentorship programs, we provide opportunities for skill development, financial literacy, and entrepreneurship training within our community.</h4>
+              <h4 className='w-5/6 text-base text-center md:text-right'>We operate on a cooperative ownership model where investors pool resources to acquire and own properties collectively.Each investor has a stake in decision-making and benefits from shared resources and risks.</h4>
             </div>
             <div className='flex justify-center md:justify-start items-start md:w-[40%]'>
               <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>
-                <Image fill={true} src={"/educational_init.png"}></Image>
+                <Image fill={true} src={"/coopow.png"}></Image>
               </div>
             </div>
           </div>
@@ -52,6 +52,39 @@ const page = () => {
             <div className='flex justify-center md:justify-start md:w-[40%]'>
               <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>
                 <Image fill={true} src={"/coop.png"}></Image>
+              </div>
+            </div>
+          </div>
+          <div className='md:w-5/6 mx-auto gap-4 md:gap-0 flex flex-col-reverse md:flex-row-reverse justify-between'>
+            <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[40%]'>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Educational Initiatives</h2>
+              <h4 className='w-5/6 text-base text-center md:text-right'>Education is key to empowering individuals and fostering economic independence. Through workshops, seminars, and mentorship programs, we provide opportunities for skill development, financial literacy, and entrepreneurship training within our community.</h4>
+            </div>
+            <div className='flex justify-center md:justify-start items-start md:w-[40%]'>
+              <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>
+                <Image fill={true} src={"/educational_init.png"}></Image>
+              </div>
+            </div>
+          </div>
+          <div className='md:w-5/6 mx-auto flex gap-4 md:gap-0 flex-col-reverse md:flex-row justify-between'>
+            <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[50%]'>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-left leading-tight'>Education and Skills Development</h2>
+              <h4 className='w-5/6 text-base text-center md:text-left'>We invest in the people as much as the properties. Our programs focus on financial literacy, vocational training, and mentorship.By empowering individuals, we create a pipeline of informed investors and skilled community members</h4>
+            </div>
+            <div className='flex justify-center md:justify-start md:w-[40%]'>
+              <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>
+                <Image fill={true} src={"/nerd.png"}></Image>
+              </div>
+            </div>
+          </div>
+          <div className='md:w-5/6 mx-auto gap-4 md:gap-0 flex flex-col-reverse md:flex-row-reverse justify-between'>
+            <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[40%]'>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Sustainable and Affordable Housing</h2>
+              <h4 className='w-5/6 text-base text-center md:text-right'>We're committed to building sustainable and affordable housing options.From renovating existing properties to constructing energy-efficient homes, our goal is to address housing affordability while promoting environmental sustainability.</h4>
+            </div>
+            <div className='flex justify-center md:justify-start items-start md:w-[40%]'>
+              <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>
+                <Image fill={true} src={"/sust.png"}></Image>
               </div>
             </div>
           </div>

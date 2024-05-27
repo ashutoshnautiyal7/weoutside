@@ -4,7 +4,6 @@ import Footer from '@/components/footer/Footer';
 import Fundraise from '@/components/fundraise/Fundraise';
 import GetinTouch from '@/components/getintouch/GetinTouch';
 import Navbar from '@/components/navbar/Navbar';
-import Navbar2 from '@/components/navbar2/Navbar2'
 import React from 'react'
 
 const page = () => {

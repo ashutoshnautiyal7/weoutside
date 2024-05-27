@@ -3,7 +3,6 @@ import Footer from '@/components/footer/Footer'
 import GetCookie from '@/components/getCookie/GetCookie'
 import LeftSection from '@/components/leftsection/LeftSection'
 import Navbar from '@/components/navbar/Navbar'
-import RightSection from '@/components/rightsection/RightSection'
 import Topbar from '@/components/topbar/Topbar'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
@@ -70,8 +69,8 @@ const CommunityPage = () => {
         <Navbar/>
         <div className='w-full md:px-0'>
             <div className='md:w-10/12 mx-auto px-2 flex flex-col justify-center items-center my-5'>
-                <Topbar onSearch={onSearch} user={user}/>
                 <div className='w-full md:w-[65%]'>
+                <Topbar onSearch={onSearch} user={user}/>
                     <LeftSection loading={loading} token={token} user={user} posts={filteredPosts} size={size} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>

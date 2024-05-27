@@ -2,7 +2,6 @@ import Card4 from '@/components/card4/Card4';
 import Footer from '@/components/footer/Footer';
 import GetinTouch from '@/components/getintouch/GetinTouch';
 import Navbar from '@/components/navbar/Navbar';
-import Navbar2 from '@/components/navbar2/Navbar2'
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
@@ -37,8 +36,8 @@ const page = () => {
                 <div className='md:w-8/12 h-full'>
                     <div className='flex flex-col gap-2 justify-between items-center md:items-start h-5/6'>
                         <h1 className='text-lg md:text-4xl font-semibold md:leading-snug text-center md:text-left'>WE EMPOWERING LEGAL SUPPORT FOR OUR COMMUNITY <span className='text-red-600'>!</span></h1>
-                        <Link className='w-7/12' href={"/community"}>
-                            <button className='w-full bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl rounded-xl font-medium p-2'>
+                        <Link className='w-7/12 md:w-8/12' href={"/community"}>
+                            <button className='w-full bg-[#D32626] flex justify-center items-center gap-2 text-xs md:text-2xl rounded-xl font-medium p-2 md:p-3'>
                                 LETS CONNECT
                                 <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
                                     <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
@@ -79,7 +78,7 @@ const page = () => {
                 </div>
             </div>
         </div>
-        <div className='flex justify-center'>
+        <div className='flex justify-center py-20'>
             <button className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
                 <div className='relative h-[20px] w-[25px] md:h-[25px] md:w-[40px]'>
                     <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>

@@ -12,8 +12,8 @@ const Topbar = ({user,onSearch}) => {
   };
   
   return (
-    <div className="flex w-full md:w-[65%] items-center justify-between py-5">
-      <div className="w-[80%] flex gap-2 justify-center md:gap-5 items-center ">
+    <div className="flex w-full items-center justify-between py-5">
+      <div className="w-full flex gap-2 justify-center md:gap-5 items-center ">
         <div className="bg-white flex gap-1 h-fit w-full justify-center items-center py-1 md:py-2 px-2 md:px-5 rounded-md md:rounded-xl">
           <div className="relative w-[18px] h-[14px] md:w-[20px] md:h-[20px]">
             <Image alt="image" fill={true} src={"/search.png"}></Image>
@@ -26,9 +26,6 @@ const Topbar = ({user,onSearch}) => {
           ></input>
         </div>
       </div>
-        <div className="relative h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <Image alt="image" fill={true} src={"/Group_97.png"}></Image>
-        </div>
     </div>
   );
 };

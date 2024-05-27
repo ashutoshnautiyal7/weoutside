@@ -3,7 +3,6 @@ import Card3 from '@/components/card3/Card3';
 import Footer from '@/components/footer/Footer';
 import GetinTouch from '@/components/getintouch/GetinTouch';
 import Navbar from '@/components/navbar/Navbar';
-import Navbar3 from '@/components/navbar3/Navbar3'
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
@@ -153,19 +152,29 @@ const page = () => {
         <Navbar/>
         <div className='md:w-5/6 mx-auto pb-6 md:pb-[120px] md:px-0 px-2'>
           <div className='flex items-center justify-between '>
-            <div className='flex flex-col gap-5 md:w-[30%]'>
-              <div className='relative h-[100px] w-[100px] md:h-[300px] md:w-[300px]'>
-                <Image alt="image" fill={true} src={"/rnbmusic.png"}></Image>
+            <div className='flex flex-col gap-5 md:w-[40%]'>
+              <div className='flex flex-col relative top-4 md:top-10'>
+                <div className='relative top-4 md:top-16 h-[80px] w-[300px] md:h-[200px] md:w-[650px]'>
+                  <Image alt="image" fill={true} src={"/rev.png"}></Image>
+                </div>
+                <div className='flex gap-6 items-center'>
+                  <div className='relative h-[70px] w-[100px] md:h-[250px] md:w-[350px]'>
+                    <Image alt="image" fill={true} src={"/rnbm.png"}></Image>
+                  </div>
+                  <div className='relative h-[20px] w-[70px] md:h-[40px] md:w-[180px]'>
+                    <Image alt="image" fill={true} src={"/mus.png"}></Image>
+                  </div>
+                </div>
               </div>
-              <p className='text-sm md:text-base leading-relaxed'>Welcome to our platform dedicated to the revival of R&B music and its profound impact on cultural identity and community cohesion. Join us on a journey to rediscover the soulful rhythms and heartfelt lyrics that once served as the heartbeat of our neighborhoods.</p>
-              <div className='w-1/3 md:w-1/2'>
-                <Link href={"/payment"}>
-                  <button className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold'>SUPPORT US</button>
-                </Link>
-              </div>
+                <p className='text-sm md:text-base leading-relaxed'>Welcome to our platform dedicated to the revival of R&B music and its profound impact on cultural identity and community cohesion. Join us on a journey to rediscover the soulful rhythms and heartfelt lyrics that once served as the heartbeat of our neighborhoods.</p>
+                <div className='w-1/3 md:w-1/2'>
+                  <Link href={"/payment"}>
+                    <button className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold'>SUPPORT US</button>
+                  </Link>
+                </div>
             </div>
-            <div className='md:block hidden w-[45%]'>
-              <div className='relative h-[500px] w-[500px]'>
+            <div className='md:block hidden w-[40%] relative top-16'>
+              <div className='relative h-[400px] w-[400px]'>
                 <Image alt="image" fill={true} src={"/rnbheart.png"}></Image>
               </div>
             </div>
@@ -267,7 +276,7 @@ const page = () => {
           <div className="py-10 md:w-5/6 mx-auto">
             <GetinTouch/>
           </div>
-          <div className='flex justify-center py-10'>
+          <div className='flex justify-center pt-14 pb-24'>
             <button className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
                 <div className='relative h-[20px] w-[25px] md:h-[25px] md:w-[40px]'>
                     <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>

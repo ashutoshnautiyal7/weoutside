@@ -5,7 +5,7 @@ import { format } from "timeago.js";
 import axios from "axios";
 import Comment from "../comment/Comment";
 
-const Post = ({ post, user, token,prof }) => {
+const Post = ({ post, user, token, prof, index, size }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
@@ -89,6 +89,7 @@ const Post = ({ post, user, token,prof }) => {
         userId: user.id,
         username: user.name,
         content: content,
+        userImage:user.image
       };
       res.status === 201 && setComments((prev) => [newComm, ...prev]);
       e.target[0].value = "";
@@ -180,9 +181,9 @@ const Post = ({ post, user, token,prof }) => {
     setImageSrc(prevImages => prevImages.filter((url, index) => url!==image));
     setImages(prev=>prev.filter((url, i) => i !== indexToRemove))
   };
-
+  
   return (
-    <div className={`bg-white p-4 md:p-6  flex text-black ${prof!=="prof"&&"rounded-3xl"}`}>
+    <div className={`bg-white p-4 md:p-6 flex text-black ${prof!=="prof"&&"last:rounded-b-3xl"}`}>
       <div className="w-full md:w-9/12">
         <div className="flex items-center gap-2 my-2">
           <div className="relative rounded-full h-[60px] w-[60px]">
@@ -335,9 +336,12 @@ const Post = ({ post, user, token,prof }) => {
                   key={comment.commentId}
                   className="flex flex-col gap-0.5 px-2 py-1 bg-slate-200 rounded-lg"
                 >
+                <div className="flex gap-1 items-center">
+                  <Image className="relative h-[35px] w-[35px] rounded-full bg-cover" height={1000} width={1000} src={comment.userImage?comment.userImage:"/prof.jpg"}></Image>
                   <span className="text-sm font-semibold">
                     {comment.username}
                   </span>
+                </div>
                   <div className="flex justify-between items-end">
                     <Comment text={comment.content}/>
                     {comment.userId == user?.id && (
