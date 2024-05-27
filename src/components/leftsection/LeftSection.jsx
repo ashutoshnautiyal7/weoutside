@@ -184,7 +184,7 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
               <span className="text-xs">Legal Support</span>
             </Link>
             <Link
-              href={"/fundraising"}
+              href={"/business"}
               className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
             >
               <div className="relative h-[25px] w-[25px]">
