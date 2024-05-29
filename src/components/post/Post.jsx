@@ -5,7 +5,7 @@ import { format } from "timeago.js";
 import axios from "axios";
 import Comment from "../comment/Comment";
 
-const Post = ({ post, user, token, prof, index, size }) => {
+const Post = ({ post, user, token, prof }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
@@ -191,7 +191,7 @@ const Post = ({ post, user, token, prof, index, size }) => {
               alt="image"
               className="rounded-full object-cover"
               fill={true}
-              src={prof==="prof"?user.image:"/prof.jpg"}
+              src={prof==="prof"?user.image?user.image:"/prof.jpg":post.userImage?post.userImage:"/prof.jpg"}
             ></Image>
           </div>
           <div className="flex flex-col">

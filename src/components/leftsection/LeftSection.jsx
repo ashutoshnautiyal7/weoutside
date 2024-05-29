@@ -325,7 +325,7 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
       :
       <div className="flex flex-col gap-2">
         {posts?.map((p,index) => (
-          <Post key={p?.id} post={p} user={user} token={token} index={index} size={size}/>
+          <Post key={p?.id} post={p} user={user} token={token}/>
         ))}
       </div>
       }

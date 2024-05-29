@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -9,7 +9,10 @@ import GetCookie from "@/components/getCookie/GetCookie";
 const LoginPage = () => {
   const router = useRouter();
   const[invalid,setInvalid]=useState(false);
- 
+  const [invemail,setInvEmail]=useState(false);
+  const emailRef=useRef();
+  const [checkMail,setCheckMail]=useState(false);
+
   const token=typeof window !== "undefined" ? GetCookie("token")  : null;
    useEffect(() => {
     if (token) {
@@ -38,7 +41,30 @@ const LoginPage = () => {
       setInvalid(true)
     }
   };
-
+  const handleForgotPassword=async(e)=>{
+    e.preventDefault();
+    const email = emailRef.current.value;
+    if(email==="")
+    {
+      setInvEmail(true);
+    }
+    else{
+      const user={
+        email,
+      }
+      try {
+        const res = await axios.post("https://we-out-backend.vercel.app/api/forget-pass",user
+        );
+        if(res.status===200)
+        {
+          setCheckMail(true);
+          setInvEmail(false);
+        }
+      } catch (err) {
+        setInvEmail(true)
+      }
+    }
+  }
   return (
     <div className="flex flex-col items-center bg-[#000000] h-screen">
       <div className="bg-[#F41717] rounded-b-full h-[120px] flex items-end">
@@ -51,6 +77,7 @@ const LoginPage = () => {
           onSubmit={handleSubmit}
         >
           <input
+            ref={emailRef}
             type="email"
             className="w-full rounded-full outline-none p-3.5 placeholder:text-black"
             placeholder="Email *"
@@ -75,10 +102,12 @@ const LoginPage = () => {
         </form>
         <div className="flex flex-col items-center text-lg md:text-2xl text-black py-3">
           <span className="font-medium text-white">
-            <Link href={"/signup"}>Sign Up *</Link> / Forget Password *
+            <Link href={"/signup"}>Sign Up *</Link> / <span className="cursor-pointer" onClick={handleForgotPassword}>Forget Password *</span>
           </span>
         </div>
       </div>
+        {invemail&&<div className="text-red-500">Invalid Email</div>}
+        {checkMail&&<div>Please check your mailbox</div>}
     </div>
   );
 };
