@@ -53,7 +53,7 @@ const prof = [
   {
     id: 2,
     title: "Donation",
-    link: "/donation"
+    link: "/payment"
   },
   // {
   //   title: "Log out",
@@ -83,11 +83,11 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='px-2 py-2 md:py-3 flex items-center justify-between w-full md:w-5/6 mx-auto'>
+    <nav className='px-2 py-2 md:py-3 flex items-center justify-between w-full md:w-11/12 mx-auto'>
       <Link href={"/"} className='relative w-[30px] h-[30px] md:w-[70px] md:h-[70px]'>
         <Image alt="image" fill={true} src={'/image5.png'}></Image>
       </Link>
-      <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-9/12'>
+      <div className='text-[9px] gap-[1px] md:gap-0 md:text-sm hidden md:flex items-center justify-between w-8/12'>
         <Link href="/">HOME</Link>
         <div className='relative'>
           <span className='cursor-pointer' onClick={() => { setServices(!services) }}>SERVICES</span>
@@ -146,7 +146,7 @@ const Navbar = () => {
         <div
           className={`${
             openMenu ? 'translate-x-0' : '-translate-x-full'
-          } transform z-10 fixed top-0 left-0 w-3/4 h-full bg-gray-500 p-4 transition-transform duration-300 ease-in-out lg:static lg:w-auto lg:h-auto lg:bg-transparent lg:translate-x-0 lg:flex lg:items-center`}
+          } transform z-10 fixed top-0 left-0 w-3/4 h-full bg-black p-4 transition-transform duration-300 ease-in-out lg:static lg:w-auto lg:h-auto lg:bg-transparent lg:translate-x-0 lg:flex lg:items-center`}
         >
           <ul className="text-white md:hidden lg:justify-between lg:space-x-6 space-y-4 lg:space-y-0">
             <li>

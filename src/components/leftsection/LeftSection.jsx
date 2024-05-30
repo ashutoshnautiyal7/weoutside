@@ -163,23 +163,78 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3 md:gap-2">
-        {services.map((s) => (
-          <Link
-            href={s.link}
-            key={s.id}
-            className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
-          >
-            <div className="relative h-[25px] w-[25px]">
-              <Image alt="image" fill={true} src={s.icon}></Image>
-            </div>
-            <span className="text-xs">{s.title}</span>
-          </Link>
-        ))}
+      <div className="flex flex-col gap-2">
+          <div className="flex gap-2 flex-wrap">
+            <Link
+              href={"/fundraising"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/fund.png"}></Image>
+              </div>
+              <span className="text-xs">Fund Raising</span>
+            </Link>
+            <Link
+              href={"/legalsupport"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/legal.png"}></Image>
+              </div>
+              <span className="text-xs">Legal Support</span>
+            </Link>
+            <Link
+              href={"/business"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/business.png"}></Image>
+              </div>
+              <span className="text-xs">Business Incubator</span>
+            </Link>
+            <Link
+              href={"/community"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/community.png"}></Image>
+              </div>
+              <span className="text-xs">Community Forums</span>
+            </Link>
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            <Link
+              href={"/ujaama"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/sign.png"}></Image>
+              </div>
+              <span className="text-xs">Ujamaa</span>
+            </Link>
+            <Link
+              href={"/mymamatoldme"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/mama.png"}></Image>
+              </div>
+              <span className="text-xs">My MAMA Told me</span>
+            </Link>
+            <Link
+              href={"/melenatedlifesmatter"}
+              className="py-1.5 md:py-2.5 px-2 md:px-4 rounded-md bg-[#DD2929] flex gap-2 items-center justify-center"
+            >
+              <div className="relative h-[25px] w-[25px]">
+                <Image alt="image" fill={true} src={"/melanated.png"}></Image>
+              </div>
+              <span className="text-xs">Melenated Lifes Matter</span>
+            </Link>
+          </div>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="bg-white text-black my-2 rounded-xl p-3 md:p-5 overflow-hidden"
+        className="bg-white text-black my-2 rounded-t-xl p-3 md:p-5 overflow-hidden"
       >
         <h2 className="text-base font-medium ml-5">Create Post</h2>
         <div className="flex items-center gap-2 my-2 bg-[#F6F3F3] rounded-xl py-3 px-5">
@@ -223,7 +278,7 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
           <div className="flex items-center justify-center gap-1.5 md:gap-5">
             <label
               for="gallery"
-              className="cursor-pointer flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2"
+              className="cursor-pointer flex items-center justify-center gap-2 md:gap-4 rounded-t-2xl bg-[#C2F6C8] text-black px-6 py-2"
             >
               <Image
                 alt="image"
@@ -241,7 +296,7 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
               className="hidden"
               type="file"
             />
-            <label className="flex items-center justify-center gap-2 md:gap-4 rounded-full bg-[#C2F6C8] text-black px-6 py-2">
+            <label className="flex items-center justify-center gap-2 md:gap-4 rounded-t-2xl bg-[#C2F6C8] text-black px-6 py-2">
               <Image
                 alt="image"
                 width={20}
@@ -253,7 +308,7 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
           </div>
           <button
             type="submit"
-            className="bg-[#2CC34D] flex items-center justify-center gap-2 text-white rounded-full px-6 py-2"
+            className="bg-[#2CC34D] flex items-center justify-center gap-2 text-white rounded-t-2xl px-6 py-2"
           >
             <Image
               alt="image"
@@ -269,8 +324,8 @@ const LeftSection = ({loading,token,user,posts,size,currentPage,setCurrentPage})
       <div className="w-full flex justify-center py-5">Loading...</div>
       :
       <div className="flex flex-col gap-2">
-        {posts?.map((p) => (
-          <Post key={p?.id} post={p} user={user} token={token} />
+        {posts?.map((p,index) => (
+          <Post key={p?.id} post={p} user={user} token={token}/>
         ))}
       </div>
       }

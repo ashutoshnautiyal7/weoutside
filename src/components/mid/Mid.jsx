@@ -103,7 +103,7 @@ const Mid = () => {
                 <div className='relative h-[120px] w-[120px]'>
                     <Image alt="image" fill={true} src={"/vision.png"}></Image>
                 </div>
-                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md shadow-md shadow-black'>
+                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR VISION</span>
                 </div>
                 <p className='text-center md:text-left'>Our vision is a world where the Melanated Community is empowered, prosperous, and celebrated for its contributions to society. We envision a future where every individual has access to the resources and support they need to achieve their fullest potential, regardless of race or background.</p>
@@ -112,7 +112,7 @@ const Mid = () => {
                 <div className='relative h-[120px] w-[120px]'>
                     <Image alt="image" fill={true} src={"/mission.png"}></Image>
                 </div>
-                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md'>
+                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm'>
                     <span className='text-3xl font-semibold'>OUR MISSION</span>
                 </div>
                 <p className='text-center'>Our mission is to empower and uplift the Melanated Community through a digital platform built on the principles of unity, solidarity, and self-sufficiency. We are committed to providing resources, support, and opportunities that enable individuals within our community to thrive and excel.</p>
@@ -121,7 +121,7 @@ const Mid = () => {
                 <div className='relative h-[120px] w-[125px]'>
                     <Image alt="image" fill={true} src={"/goal.png"}></Image>
                 </div>
-                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-md shadow-md shadow-black'>
+                <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR GOAL</span>
                 </div>
                 <p className='text-center md:text-right'>We aim to empower individuals in the Melanated Community by offering access to resources, opportunities, and supportive networks, facilitating personal and professional advancement.</p>

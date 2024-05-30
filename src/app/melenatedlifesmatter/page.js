@@ -1,8 +1,8 @@
-import Footer from '../../components/footer/Footer'
-import GetinTouch from '../../components/getintouch/GetinTouch'
-import Navbar from '../../components/navbar/Navbar'
-import Navbar2 from '../../components/navbar2/Navbar2'
+import Footer from '@/components/footer/Footer'
+import GetinTouch from '@/components/getintouch/GetinTouch'
+import Navbar from '@/components/navbar/Navbar'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -10,16 +10,16 @@ const page = () => {
     <div>
         <Navbar/>
         <div className='flex flex-col gap-10 items-center'>
-            <h1 className='text-2xl md:text-5xl md:w-1/2 text-center'>Connecting Communities, Empowering Change</h1>
+            <h1 className='text-2xl md:text-5xl md:w-1/2 text-center pt-14 pb-8'>Connecting Communities, Empowering Change</h1>
             <div className='w-full flex justify-center'>
                 <Image className='h-full w-5/6 md:w-4/6' width={1000} height={1000} src={"/change.png"}></Image>
             </div>
-            <button className='bg-white rounded-2xl px-8 py-3 flex gap-2 justify-center items-center text-black font-bold text-sm md:text-2xl'>
+            <Link href="/community" className='bg-white rounded-2xl px-8 py-3 flex gap-2 justify-center items-center text-black font-bold text-sm md:text-2xl'>
                 LETS CONNECT
                 <div className='relative h-[15px] w-[20px] md:h-[20px] md:w-[30px]'>
                     <Image fill={true} src={"/rightarrowb.png"}></Image>
                 </div>
-            </button>
+            </Link>
         </div>
         <div className='py-16 flex flex-col gap-8 md:w-4/6 mx-auto px-2 md:px-0'>
             <div className='flex flex-col gap-5 md:gap-0 md:flex-row justify-between'>
@@ -42,9 +42,9 @@ const page = () => {
                         <Image className='rounded-3xl' fill={true} src={"/commune.png"}></Image>
                     </div>
                 </div>
-                <div className='md:w-[55%] flex flex-col gap-5 md:gap-10 items-center md:items-end'>
+                <div className='md:w-[55%] flex flex-col gap-5 md:gap-10 items-center md:items-start'>
                     <h2 className='text-2xl md:text-5xl font-semibold'>Community Engagement</h2>
-                    <p className=' text-center md:text-right text-sm w-2/3 leading-relaxed'>We foster community dialogue, education, and empowerment through workshops, forums, and cultural events.</p>
+                    <p className=' text-center md:text-left text-sm w-2/3 leading-relaxed'>We foster community dialogue, education, and empowerment through workshops, forums, and cultural events.</p>
                     <div>
                         <button className='px-8 py-2 bg-white text-black rounded-md flex justify-center items-center text-xl font-semibold'>MORE INFO</button>
                     </div>
