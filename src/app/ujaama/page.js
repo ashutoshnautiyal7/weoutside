@@ -2,10 +2,8 @@ import Link from 'next/link'
 import Footer from '../../components/footer/Footer'
 import GetinTouch from '../../components/getintouch/GetinTouch'
 import Navbar from '../../components/navbar/Navbar'
-import Navbar2 from '../../components/navbar2/Navbar2'
 import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+
 
 
 const page = () => {
