@@ -1,6 +1,6 @@
 "use client"
-import GetCookie from '@/components/getCookie/GetCookie';
-import Post from '@/components/post/Post';
+import GetCookie from '../../../components/getCookie/GetCookie';
+import Post from '../../../components/post/Post';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
