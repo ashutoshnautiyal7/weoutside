@@ -4,6 +4,7 @@ import { debounce, forEach, update } from "lodash";
 import { format } from "timeago.js";
 import axios from "axios";
 import Comment from "../comment/Comment";
+import Link from "next/link";
 
 const Post = ({ post, user, token, prof }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -182,6 +183,14 @@ const Post = ({ post, user, token, prof }) => {
     setImages(prev=>prev.filter((url, i) => i !== indexToRemove))
   };
   
+    const isValidUrl = (string) => {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    };
   return (
     <div className={`bg-white p-4 md:p-6 flex text-black ${prof!=="prof"&&"last:rounded-b-3xl"}`}>
       <div className="w-full md:w-9/12">
@@ -268,7 +277,7 @@ const Post = ({ post, user, token, prof }) => {
         ) : (
           <div>
             <h2 className="text-2xl font-bold">{post?.title}</h2>
-            <p>{post?.content}</p>
+            {isValidUrl(post?.content) ?<Link className="text-blue-700" href={post.content} target="_blank" rel="noopener noreferrer">{post?.content}</Link>:<p>{post?.content}</p>}
             <div className="flex flex-col">
               {post?.images?.map((image) => (
                 <div key={image} className="relative w-full h-full my-2">
