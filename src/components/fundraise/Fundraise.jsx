@@ -74,12 +74,12 @@ const Fundraise = () => {
             </div>
         </div>
         <div className='flex justify-center'>
-            <button className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
+            <Link href={"/community"} className='flex justify-center items-center border-[1px] border-white rounded-md gap-2 md:gap-5 bg-gradient-to-b from-[#FF1111] to-[#692323] px-6 py-3 md:px-10 md:py-6'>
                 <div className='relative h-[20px] w-[25px] md:h-[25px] md:w-[40px]'>
                     <Image alt="image" fill={true} src={"/rightarrow.png"}></Image>
                 </div>
                 <span className='text-lg md:text-2xl font-medium'>COMMUNITY FORMS</span>
-            </button>
+            </Link>
         </div>
     </div>
   )
