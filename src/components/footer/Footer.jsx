@@ -18,7 +18,7 @@ const Footer = () => {
                     <Link href={'#'}><Image className='w-[24px] h-[20px] md:w-[34px] md:h-[24px]' height={1000} width={1000} src={"/yt.png"}></Image></Link>
                 </div>
             </div>
-            <p className='text-xs md:text-lg font-medium text-center md:text-left md:w-5/6 py-2 md:py-0'>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+            <p className='text-xs md:text-lg font-medium text-center md:text-left md:w-5/6 py-2 md:py-0'>We Outside is dedicated to empowering the melanated community through support, resources, and initiatives that celebrate our culture and drive collective success. Join us to connect, grow, and thrive together.</p>
         </div>
         <div className='text-xs md:text-sm w-[40%] md:w-[18%] flex flex-col gap-2 md:gap-5'>
             <h5 className='text-sm md:text-lg font-semibold'>Contact</h5>

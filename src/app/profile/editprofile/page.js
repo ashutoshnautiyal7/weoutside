@@ -48,10 +48,14 @@ const EditProfile = () => {
 
 
   const [mispass,setMissPass]=useState(false)
+  const [notmatch, setNotMatch]=useState(false)
   const nameref=useRef();
   const goalsref=useRef();
   const addressref=useRef();
   const emailref=useRef();
+  const oldPassRef=useRef();
+  const confPassRef=useRef();
+  const newPassRef=useRef();
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -60,14 +64,40 @@ const EditProfile = () => {
     const goals=goalsref.current.value;
     const address=addressref.current.value;
     const email=emailref.current.value;
-    // const currp=e.target[4].value;
-    // const newp=e.target[5].value;
-    // const confp=e.target[6].value;
     const images=imageSrc===null?[user.image]:[];
-    // if(newp!==confp)
-    // setMissPass(true)
-    // else
-    // {
+    const oldPassword=oldPassRef.current.value;
+    const confPassword=confPassRef.current.value;
+    const newPassword=newPassRef.current.value;
+
+      if(newPassword!==confPassword)
+      {
+        setMissPass(true)
+      }
+      else if(oldPassword!==""&&newPassword!=="")
+      {
+        const body={
+          oldPassword,
+          newPassword
+        }
+        try{
+          const res = await axios.post(
+            "https://we-out-backend.vercel.app/api/update-pass",
+            body,
+            { headers: { Authorization: token } }
+          );
+          
+          if(res.data.status===200)
+            {
+              oldPassRef.current.value="";
+              newPassRef.current.value="";
+              confPassRef.current.value="";
+            }
+        }
+        catch(err)
+        {
+          setNotMatch(true)
+        }
+      }
       if (imageSrc!==null) {
         const formData = new FormData();
         formData.append("file", imageSrc);
@@ -114,6 +144,7 @@ const EditProfile = () => {
         
       }
       // }
+      location.reload();
     }
   
   return (
@@ -169,16 +200,17 @@ const EditProfile = () => {
             <div className='flex flex-col gap-4'>
               <div className='flex flex-col gap-1'>
                 <h4 className=''>Current Password</h4>
-                <input type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='Current Password'></input>
+                <input ref={oldPassRef} type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='Current Password'></input>
               </div>
               <div className='flex flex-col gap-1'>
                 <h4 className=''>New Password</h4>
-                <input type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='New Password'></input>
+                <input ref={newPassRef} minLength={8} type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='New Password'></input>
               </div>
               <div className='flex flex-col gap-1'>
                 <h4 className=''>Confirm New Password</h4>
-                <input type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='Confirm New Password'></input>
+                <input ref={confPassRef} type='password' className='border-[1px] border-[#676767] py-2 bg-transparent px-2 text-[#676767] placeholder:text-[#676767] outline-none' placeholder='Confirm New Password'></input>
                 {mispass&&<span className='text-xs text-red-700'>Passwords dont match</span>}
+                {notmatch&&<span className='text-xs text-red-700'>Old and Current Passwords dont match</span>}
               </div>
             </div>
           </div>
