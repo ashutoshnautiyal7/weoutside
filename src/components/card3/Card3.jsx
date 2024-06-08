@@ -3,7 +3,7 @@ import React from 'react'
 
 const Card3 = ({d}) => {
   return (
-    <div className='p-8 mx-2 md:mx-5 mb-12 flex flex-col gap-5 text-black bg-white rounded-xl'>
+    <div className='p-8 mx-2 md:mx-5 mb-12 flex flex-col gap-5 text-black bg-white rounded-xl min-h-[300px]'>
         <p className='text-xs leading-relaxed'>{d.desc}</p>
         <div className='flex gap-5'>
             <div className='relative w-[60px] h-[60px] rounded-full'>

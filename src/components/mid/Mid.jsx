@@ -11,15 +11,15 @@ const Mid = () => {
         {
             id:0,
             img:"/Group_25.png",
-            title:"Fund Raising",
-            desc:"Join us in making a difference! Our fundraising efforts are dedicated to supporting vital initiatives within the Melanated Community. Together, we can create positive change by contributing to causes that uplift and empower our community.",
+            title:"501c3",
+            desc:"The fundraising section of the WeOutside app serves as a critical component of our mission to empower Melanated communities. While other communities often receive large grants and funding, systemic inequalities have historically",
             h:300,
             w:300
         },
         {
             id:1,
             img:"/Group_27.png",
-            title:"Legal Support",
+            title:"Seeking Justice",
             desc:"Access to legal support is essential for ensuring justice and equality within the Melanated Community. Our legal support services are here to assist you in navigating legal challenges and advocating for your rights.",
             h:200,
             w:200
@@ -27,7 +27,7 @@ const Mid = () => {
         {
             id:2,
             img:"/Group.png",
-            title:"Business Incubator",
+            title:"Join Home Growth Collective",
             desc:"Turn your entrepreneurial dreams into reality with our business incubator program. Whether you're launching a startup or scaling your existing business, our incubator provides the resources, mentorship, and support you need to succeed.",
             h:200,
             w:200
@@ -128,7 +128,7 @@ const Mid = () => {
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR VISION</span>
                 </div>
-                <p className='text-center md:text-left'>Our vision is a world where the Melanated Community is empowered, prosperous, and celebrated for its contributions to society. We envision a future where every individual has access to the resources and support they need to achieve their fullest potential, regardless of race or background.</p>
+                <p className='text-center md:text-left'>Our vision at WeOutside is to create a thriving ecosystem where Melanated individuals are empowered to shape their own destinies and build prosperous futures for themselves and their communities</p>
             </div>
             <div className='flex flex-col items-center gap-3 md:gap-8 w-[320px]'>
                 <div className='relative h-[120px] w-[120px]'>
@@ -137,7 +137,7 @@ const Mid = () => {
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm'>
                     <span className='text-3xl font-semibold'>OUR MISSION</span>
                 </div>
-                <p className='text-center'>Our mission is to empower and uplift the Melanated Community through a digital platform built on the principles of unity, solidarity, and self-sufficiency. We are committed to providing resources, support, and opportunities that enable individuals within our community to thrive and excel.</p>
+                <p className='text-center'>At WeOutside, our mission is deeply rooted in organizing to empowering the Melanated community by organizing us so we can unite ,collaboration and  achieve economic empowerment. We believe in</p>
             </div>
             <div className='flex flex-col items-center gap-3 md:gap-8 w-[320px]'>
                 <div className='relative h-[120px] w-[125px]'>
@@ -146,11 +146,12 @@ const Mid = () => {
                 <div className='bg-[#F41717] w-full py-1 flex justify-center items-center rounded-sm shadow-md shadow-black'>
                     <span className='text-3xl font-semibold'>OUR GOAL</span>
                 </div>
-                <p className='text-center md:text-right'>We aim to empower individuals in the Melanated Community by offering access to resources, opportunities, and supportive networks, facilitating personal and professional advancement.</p>
+                <p className='text-center md:text-right'>Our goal is to be the premier platform for Melanated individuals seeking to elevate themselves and their communities through collective action and empowerment. We strive to facilitate meaningful connections,   foster collaboration,</p>
             </div>
         </div>
         <div className='py-5'>
-            <h1 className='text-4xl md:text-6xl font-medium text-shadow-xs shadow-black text-center pt-0 md:pt-10'>Why Empowering Community</h1>
+            <h1 className='text-4xl md:text-6xl font-medium text-shadow-xs shadow-black text-center pt-0 md:pt-10'>Why Organize the</h1>
+            <h1 className='text-4xl md:text-6xl font-medium text-shadow-xs shadow-black text-center pt-0 md:pt-10'>Melenated Community</h1>
             <div className='hidden md:flex justify-between relative -top-5'>
                 <div className='flex flex-col items-center gap-5'>
                     <div className='relative h-[100px] w-[100px]'>

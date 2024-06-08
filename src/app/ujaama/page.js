@@ -34,7 +34,7 @@ const page = () => {
           </div>
           <div className='md:w-5/6 mx-auto gap-4 md:gap-0 flex flex-col-reverse md:flex-row-reverse justify-between'>
             <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[40%]'>
-              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Educational Initiatives</h2>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Cooperative Ownership</h2>
               <h4 className='w-5/6 text-base text-center md:text-right'>We operate on a cooperative ownership model where investors pool resources to acquire and own properties collectively.Each investor has a stake in decision-making and benefits from shared resources and risks.</h4>
             </div>
             <div className='flex justify-center md:justify-start items-start md:w-[40%]'>
@@ -45,7 +45,7 @@ const page = () => {
           </div>
           <div className='md:w-5/6 mx-auto flex gap-4 md:gap-0 flex-col-reverse md:flex-row justify-between'>
             <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[50%]'>
-              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-left leading-tight'>Building Social Infrastructure</h2>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-left leading-tight'>Community Developement Focus</h2>
               <h4 className='w-5/6 text-base text-center md:text-left'>Strong communities are built on a foundation of social cohesion and mutual support. Through social gatherings, community events, and networking opportunities, we cultivate meaningful connections and relationships that enrich the fabric of our community.</h4>
             </div>
             <div className='flex justify-center md:justify-start md:w-[40%]'>
@@ -56,8 +56,8 @@ const page = () => {
           </div>
           <div className='md:w-5/6 mx-auto gap-4 md:gap-0 flex flex-col-reverse md:flex-row-reverse justify-between'>
             <div className='flex flex-col items-center md:items-start text-xl gap-4 md:w-[40%]'>
-              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Educational Initiatives</h2>
-              <h4 className='w-5/6 text-base text-center md:text-right'>Education is key to empowering individuals and fostering economic independence. Through workshops, seminars, and mentorship programs, we provide opportunities for skill development, financial literacy, and entrepreneurship training within our community.</h4>
+              <h2 className='md:w-5/6 text-4xl md:text-6xl font-bold text-center md:text-right leading-tight'>Profit-Sharing and Wealth Redistribution</h2>
+              <h4 className='w-5/6 text-base text-center md:text-right'>We believe in sharing the success. A portion of rental income or property appreciation is reinvested back into the community. This ensures economic equality and fosters sustainable growth within the community</h4>
             </div>
             <div className='flex justify-center md:justify-start items-start md:w-[40%]'>
               <div className='relative h-[300px] w-[300px] md:h-[450px] md:w-[450px]'>

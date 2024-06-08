@@ -6,8 +6,8 @@ const Ujaama = () => {
   return (
     <div className="flex flex-col gap-[120px] px-2 w-full md:w-7/12 mx-auto py-[100px]">
       <div className="flex flex-col md:flex-row items-center gap-1 md:gap-0 md:items-start justify-between">
-        <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-          <Image alt="image" fill={true} src={"/ujaama.png"}></Image>
+        <div className="relative w-[300px] h-[350px] md:w-[400px] md:h-[450px]">
+          <Image alt="image" fill={true} src={"/coopeco.png"}></Image>
         </div>
         <div className="flex flex-col items-center md:items-end md:w-[50%]">
           <h2 className="text-2xl md:text-7xl font-bold tracking-wide">
@@ -35,11 +35,16 @@ const Ujaama = () => {
         </div>
         <div className="flex flex-col md:items-start items-center md:w-[50%]">
           <h2 className="text-2xl md:text-7xl font-bold tracking-wide">
-            R & B
+            REVIVING
           </h2>
-          <h5 className="text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-widest py-1 text-right">
-            MUSIC
-          </h5>
+          <div className="flex items-end gap-2">
+            <h2 className="text-2xl md:text-7xl font-bold tracking-wide">
+              R & B
+            </h2>
+            <h5 className="text-base md:text-2xl leading-tight md:leading-none tracking-normal md:tracking-wider py-1 md:py-2 text-right">
+              MUSIC
+            </h5>
+          </div>
           <p className="text-center md:text-left text-xs md:text-sm leading-tight md:leading-loose w-5/6 md:w-9/12 pb-2  md:pb-5">
             We&apos;re passionate about celebrating the rich history, vibrant
             culture, and timeless music of R&B.
@@ -53,7 +58,7 @@ const Ujaama = () => {
       </div>
       <div className="flex flex-col md:flex-row items-center gap-1 md:gap-0 md:items-start justify-between">
         <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-          <Image alt="image" fill={true} src={"/mmtm.png"}></Image>
+          <Image className="rounded-tr-lg" alt="image" fill={true} src={"/mmtmm.png"}></Image>
         </div>
         <div className="flex flex-col items-center md:items-end md:w-[50%]">
           <h2 className="text-2xl md:text-7xl font-bold tracking-wide">MMTM</h2>
