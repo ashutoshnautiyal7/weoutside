@@ -190,8 +190,8 @@ const page = () => {
               </div>
                 <p className='text-sm md:text-base leading-relaxed'>Welcome to our platform dedicated to the revival of R&B music and its profound impact on cultural identity and community cohesion. Join us on a journey to rediscover the soulful rhythms and heartfelt lyrics that once served as the heartbeat of our neighborhoods.</p>
                 <div className='w-1/3 md:w-1/2'>
-                  <Link href={"/payment"}>
-                    <button className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold'>SUPPORT US</button>
+                  <Link className='w-full bg-[#FF0000] py-2 border-[1px] border-white text-xs md:text-xl font-semibold' href={"https://www.paypal.com/donate/?hosted_button_id=77AASDQBKQMJA"}>
+                   SUPPORT US
                   </Link>
                 </div>
             </div>
